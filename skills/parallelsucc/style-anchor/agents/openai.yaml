@@ -1,0 +1,7 @@
+interface:
+  display_name: "Style Anchor"
+  short_description: "Keep a batch in one coherent style"
+  default_prompt: "Use $style-anchor to generate a batch of outputs that stay in one style while varying only approved axes."
+
+policy:
+  allow_implicit_invocation: true

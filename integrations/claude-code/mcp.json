@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "the-librarian": {
+      "command": "librarian",
+      "args": ["mcp"]
+    }
+  }
+}

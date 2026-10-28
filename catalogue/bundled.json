@@ -1,0 +1,4219 @@
+{
+ "about": "Third-party skills bundled with The Librarian. Each folder is the upstream files at the pinned commit, unchanged, plus the upstream LICENSE (and NOTICE) when the skill folder had none. tools/vendor.py verify checks every hash; tools/vendor.py fetch re-downloads from upstream.",
+ "skills": [
+  {
+   "id": "addyosmani/doubt-driven-development",
+   "upstream_name": "doubt-driven-development",
+   "repo": "addyosmani/agent-skills",
+   "commit": "cda4542ade0f3c532494b9a48837eb01d39925f1",
+   "path": "skills/doubt-driven-development",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "6fa1fcd8420c28daf7e53c5b08b0f20b907911efd2a6d9bce0b9740da20a4008"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "addyosmani/git-workflow-and-versioning",
+   "upstream_name": "git-workflow-and-versioning",
+   "repo": "addyosmani/agent-skills",
+   "commit": "cda4542ade0f3c532494b9a48837eb01d39925f1",
+   "path": "skills/git-workflow-and-versioning",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "b7465d187935c52546d39fdc7bd6ac36d94eda25a9500ef8c18b767d2eb116ea"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "adevra/texture-packing-variant-stripping",
+   "upstream_name": "texture-packing-variant-stripping",
+   "repo": "adevra/unity-shader-agent-skills",
+   "commit": "9a4bfa42dd7b32eda3217f8276bcf8229f578296",
+   "path": "skills/texture-packing-variant-stripping",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "83b4d20b5840ddf4e6daada3035657c9faec2ee6d464cfb1f3e32397c69ec38d"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "adevra/urp-hlsl-templates",
+   "upstream_name": "urp-hlsl-templates",
+   "repo": "adevra/unity-shader-agent-skills",
+   "commit": "9a4bfa42dd7b32eda3217f8276bcf8229f578296",
+   "path": "skills/urp-hlsl-templates",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "860d590d8cee89be3f7183eaf1fbadc842a580d03d5a16431e4b89d85743cdd8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "adevra/water-fluid-shaders",
+   "upstream_name": "water-fluid-shaders",
+   "repo": "adevra/unity-shader-agent-skills",
+   "commit": "9a4bfa42dd7b32eda3217f8276bcf8229f578296",
+   "path": "skills/water-fluid-shaders",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "6b0b8a86e8e5c6d7e6caadfecfbc327510868130e3a06ee819352b852796f56b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "affaan-m/loop-design-check",
+   "upstream_name": "loop-design-check",
+   "repo": "affaan-m/ECC",
+   "commit": "f3904009440af24f00617343910ee89714df8be3",
+   "path": "skills/loop-design-check",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "d48c239c8b9ff253d103d7de7b9839c5bf9dbd3c90eddef7c4ac612b28d71bbd"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "alhnzgrr/dots",
+   "upstream_name": "dots",
+   "repo": "Alhnzgrr/unity-claude-kit",
+   "commit": "8002bbddfcd088d91c9f4b843b733ddbe9be105b",
+   "path": "template/skills/dots",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "aaf0f2aa3fcbb8f886ef23b1c5935f972edf21a7fd008694696b0c012c578045"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "3cf5b2861a2b0386903fbec4fef0e8616e158fedc925675be0f0c4875a68984c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "alirezarezvani/ai-decision-authority",
+   "upstream_name": "ai-decision-authority",
+   "repo": "alirezarezvani/claude-skills",
+   "commit": "6d2f02ea077eead1bee5411a31bcc6db5a11a70c",
+   "path": "marketing-skill/skills/ai-decision-authority",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "77df2a7bbe480ee598a4c47306155b6a1a87a973687acd3d17d026c4f9b9c10e"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a20126646f93d32a8989c3cf4772d59194f405034f7babe7daebeac22b8ab151",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "anthropics/frontend-design",
+   "upstream_name": "frontend-design",
+   "repo": "anthropics/skills",
+   "commit": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+   "path": "skills/frontend-design",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "LICENSE.txt": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+   },
+   "added": {}
+  },
+  {
+   "id": "anthropics/mcp-builder",
+   "upstream_name": "mcp-builder",
+   "repo": "anthropics/skills",
+   "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+   "path": "skills/mcp-builder",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "LICENSE.txt": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+    "SKILL.md": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295",
+    "reference/evaluation.md": "8c99479f8a2d22a636c38e274537aac3610879e26f34e0709825077c4576f427",
+    "reference/mcp_best_practices.md": "80fb4369a349447cf18ecdd7494fe7938b6065377e9f08c077cec411093a3007",
+    "reference/node_mcp_server.md": "c3ba35a4f599dd53be9c6555ae72c19a7bf412cd5426576c2c08d42755482c66",
+    "reference/python_mcp_server.md": "2da52f77e675191014ca2e146a4b95aa04d0ca7dd7e2b100322df15ade685e80",
+    "scripts/connections.py": "9403668a2041568772082a8b334122c1f88daf0541fb393af4522d0094a47a6e",
+    "scripts/evaluation.py": "49ed1d17cdce5da101b210197740713f49b935c29d4f339542a14b132658e6f7",
+    "scripts/example_evaluation.xml": "9272b348ddcc4b06ba562367ccd0770e018158c0068ac5116d5e34aaeff8777a",
+    "scripts/requirements.txt": "d5d7558b2368ecea9dfeed7d1fbc71ee9e0750bebd1282faa527d528a344c3c7"
+   },
+   "added": {}
+  },
+  {
+   "id": "anthropics/playground",
+   "upstream_name": "playground",
+   "repo": "anthropics/claude-plugins-official",
+   "commit": "af59ee3a1051a29dda4a2e7a2af221aa457ae08b",
+   "path": "plugins/playground/skills/playground",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "521a3d62211e5f47b65ed17b660e001b15cf8d88d058cbf31bc00e889bcb63cc",
+    "templates/code-map.md": "0eb7c0d1ac3dbd1401c4a2348631e7be2a02ec30739dd514aab6f162cfade77f",
+    "templates/concept-map.md": "153810786435a1f3e3948aba075ebf3c887df827464bebca61f48ce7974e9622",
+    "templates/data-explorer.md": "4b884e4b400f3af82b7f33210c5c2017a5296cab16f1496963bd42061a1fe342",
+    "templates/design-playground.md": "190f7da424ebd3226a679045420b64171a98d081b7d84e26be4553de13c91fe7",
+    "templates/diff-review.md": "32112ba4e82fbb8b656af166d1e21f8461cedbb4fdb5d2c314c43d210ea7e37d",
+    "templates/document-critique.md": "c5bd7a68a53f2075d127e482c93b5f3d0b51c24bf8d301c1124801cca7be2d41"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "from": "plugins/playground/LICENSE"
+    }
+   }
+  },
+  {
+   "id": "anthropics/session-report",
+   "upstream_name": "session-report",
+   "repo": "anthropics/claude-plugins-official",
+   "commit": "d19dab67e891a932a78d68ccc63b6580d4692c65",
+   "path": "plugins/session-report/skills/session-report",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ef0fbc4259a41b7fd61b517fb1c9a95f02b83ea3c79ba0b3afbeee4942570397",
+    "analyze-sessions.mjs": "7e660e93b4089e9262c822f36f7233f55b77d2d6d7e19dd664596cd90c6331ea",
+    "template.html": "b2981488f8e9eeadb305330e8f6ddf795b0360d756a7f1f175f8320811202fc3"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "from": "plugins/session-report/LICENSE"
+    }
+   }
+  },
+  {
+   "id": "anthropics/skill-creator",
+   "upstream_name": "skill-creator",
+   "repo": "anthropics/skills",
+   "commit": "b9e19e6f44773509fbdd7001d77ff41a49a486c1",
+   "path": "skills/skill-creator",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "LICENSE.txt": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+    "SKILL.md": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf",
+    "agents/analyzer.md": "bf68f4cac5a56c673a928c2e6d619586c5b93ea364026ab37547772cb45a663a",
+    "agents/comparator.md": "fe1fc9787c495d864c5d6eada47396478572325fde1b33a96d78bf4b849b7a3e",
+    "agents/grader.md": "57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a",
+    "assets/eval_review.html": "ce477dcc74dc1c0d1d3352646a79167b5a63634e936b1019160025065974e452",
+    "eval-viewer/generate_review.py": "fc9d1b9243fe5ab6012ebd579bd76d0035de1b79fd3b969de114defab26478fb",
+    "eval-viewer/viewer.html": "a53213426ee1100441d701a3a0d49cda7a842f992d2c36463f4d3cc0258575fa",
+    "references/schemas.md": "8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f",
+    "scripts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/aggregate_benchmark.py": "123ef128ea5ccc01a4b1ac212ef5567f21e9c13d3d240609780beeb3200c49aa",
+    "scripts/generate_report.py": "13df7118a3c50c83c4c3250a606d5f2b20b25a3d44cbc392b3d669ec75281453",
+    "scripts/improve_description.py": "87d864570220b699fac52da309d2d6efdb060647bfebc74f768128e646accf80",
+    "scripts/package_skill.py": "1a33059b0db1ef73375d46d513e5ea81369d2e8838c970597b0d52ddef8d1c0f",
+    "scripts/quick_validate.py": "67cf5703402013936c8fb75ad6a1afecd8841d45cc5e606b634eb05825fde365",
+    "scripts/run_eval.py": "43e3b8f80dbf69c343967ba77e268fae991d9fa3ed68b32a0ff02532cd48657f",
+    "scripts/run_loop.py": "7bd6f674203168520517eec94c55f493c0d154339b061b4d7c0f0dad187d0f21",
+    "scripts/utils.py": "3af8ae62c40c73ab712207436a0d9a981e845f25c5a7040229eb189cc8e45bb1"
+   },
+   "added": {}
+  },
+  {
+   "id": "anthropics/statistical-analysis",
+   "upstream_name": "statistical-analysis",
+   "repo": "anthropics/knowledge-work-plugins",
+   "commit": "33d3dea41a341b341d4f5da2e8801ae0c89be2b8",
+   "path": "data/skills/statistical-analysis",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "91a15cfc144efffcd622b09827362a73993a3ff30e3a78114801832477c9f8a0"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "from": "data/LICENSE"
+    }
+   }
+  },
+  {
+   "id": "anthropics/validate-data",
+   "upstream_name": "validate-data",
+   "repo": "anthropics/knowledge-work-plugins",
+   "commit": "33d3dea41a341b341d4f5da2e8801ae0c89be2b8",
+   "path": "data/skills/validate-data",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "1e424822043480375b80aef9416227b1c8083af749ca536568716265f79ca54b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "from": "data/LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/environment-artist",
+   "upstream_name": "environment-artist",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/environment-artist",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "989c55a26e5db78bf719bfbbe0ba00e0fb1319a4816bce07c08a11472b2cd321",
+    "references/composition.md": "422dd5075cf943a3b506fbcd8ae806458f9a0811c14880ee84c9213f50a21277",
+    "references/modular-kits.md": "90cf2c12a88065bb787a6748ce2178a7d73bf02d159aeac0907ece203690bd9b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/geometry-nodes",
+   "upstream_name": "geometry-nodes",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/geometry-nodes",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "f04add65d17201c3d58d09575fc1da7408e95e270b35614e66bf0928663196d9",
+    "references/building-generators.md": "18fbd0a59cfb4fd6bc8b15e838699c389b8db48042145d211559839ea2f3ee83",
+    "references/scatter-systems.md": "e5554a81f75cf9efb14d59d7be204a7e10e9720c9f693777b3c844f8c17a6957"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/hand-painted-style",
+   "upstream_name": "hand-painted-style",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/hand-painted-style",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "fd8c4418c2f3c51ddb494d51a558b935dc6c3de7aa9bf65f45349e4b1aa0022f",
+    "references/paint-workflow.md": "e1bd3e0cc8c7e64c8702df3f8f582365ffe2d47551a838e3ba166cbbaf1b0cda"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/lod-pipeline",
+   "upstream_name": "lod-pipeline",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/lod-pipeline",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "8025238b3ef5238e9d5304d8014645df2889e0fc09aa5d86de5fea57eafd5b0e",
+    "references/lod-budgets.md": "188a4f4f8d9859cf1fa06629921569a86ac3902eb1c9fe60bc80f73ee18432c8",
+    "references/lod-validation.md": "8d49b435f95e690dbc1e94995bc6c4fc6070bb551fe24c08baefc16675e8dbfe"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/prop-artist",
+   "upstream_name": "prop-artist",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/prop-artist",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "f8db44db9707474893cf265592242148cbe7b4a597eed1f017c25131fb2b91ff",
+    "references/everyday-prop-checklist.md": "e62b07c0c62be963ba101bf1c91340204c750fc244a37f0a156618bc436920c6",
+    "references/kitbash-library.md": "e1c50514a674920efe7ed745d1f21ebc1fb1bdde38ace132909e5524759fc5ea",
+    "references/prop-tiers.md": "8f3427f8c38bc97780ab5f11c86a07d66c08c13b20ba4e7f995859e77eb4af56"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/scene-assembly",
+   "upstream_name": "scene-assembly",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/scene-assembly",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "9aad0ebdeac897304989b9a06efdaa566a76962ef9409e6e4076474dec23e34f",
+    "references/collection-template.md": "cac0ee86159b18a1acacfc90d04c16261a5ddbe89dfcae5a813331ae603555e6",
+    "references/linking-overrides.md": "dabce0052c44b45b530430577e857f012b5edb22824f04dddd37e8c7aaeff0c1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/stylized-style",
+   "upstream_name": "stylized-style",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/stylized-style",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "3e819081e503a6de37ae4f2e9ffc2fa54ba4b08808eeb764c2f2a19519094129",
+    "references/npr-shaders.md": "acba8c1818ab1099f4ad0ad7cacd8126b3274fd0ba6da55a30001b391e0d519c",
+    "references/palette-examples.md": "31dfc76206c76ad5831636e56020879573eda56a695948860b5b235a6e85fa9a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/vegetation-artist",
+   "upstream_name": "vegetation-artist",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/vegetation-artist",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "3b1f43f0f456b95f5c00f1372f64db75f34967c581b02068d80ee6ef63d476ec",
+    "references/leaf-atlas.md": "40b60d3d2ea7ac44feb1641574fb96c6929d84e4379ea7c43db21fede26ff677",
+    "references/tree-lod.md": "658a4689ef1071cfbe3330dce7b44b5641f54971274bdb450a32a4097bef3a9c",
+    "references/wind-vertex-colors.md": "d4c65000899c94ca72fc7c701ce87c21db859927b6ba41ecfba6feb6e2fb16a9"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "arjun988/vfx-fx",
+   "upstream_name": "vfx-fx",
+   "repo": "arjun988/blender-skills",
+   "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+   "path": ".claude/skills/vfx-fx",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "4ea783380362cab44aa635f5cc967e46d6b1bf74061341a576aa4f37b3c72b0c",
+    "references/fx-timing-brief.md": "e230decf5efb23bf26310a1ff63175f3ec156b7a9052f88af4888a809f2aa821",
+    "references/game-fx-export.md": "bfe4e4e16350ebafcea1a2c3264d909df06bf24f5a58b3d4e8f6cd909b5bba09",
+    "references/volume-domain-rules.md": "d52798361bd001faf7a578143f6dded239f064600093a43f63e0d594be72be54"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "blader/humanizer",
+   "upstream_name": "humanizer",
+   "repo": "blader/humanizer",
+   "commit": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+   "path": "",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "AGENTS.md": "de84a449da400454df1225ddb1ced728c35bf0be7811b239e3370c7dbe1f4e69",
+    "CHANGELOG.md": "b3591fe203429f1a6bd2f713c79272e9a8e58a487843d0908d2bbe0700722afa",
+    "LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+    "README.md": "a07a054f230dca1e3d25e32ba6c808905b743cc6fa56bf8b6868cee0b12a0432",
+    "SKILL.md": "0612f1dfb1672b0ea9b97e139bf1f06cabe98d8b27424fe8ff01e1fb4cc99cad",
+    "agents/openai.yaml": "9d87ff83149a04f86a372948b8ee35fa249de20923867bbc2a49304290aad736",
+    "scripts/validate-package.py": "941bd99e52b2ba21449719bb7969607ac8117e3dc173d0c9dfe64fd274c65938"
+   },
+   "added": {}
+  },
+  {
+   "id": "boshu2/test",
+   "upstream_name": "test",
+   "repo": "boshu2/agentops",
+   "commit": "8b55609099f9188e34999a217483d532fd84de6a",
+   "path": "skills/test",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "5afca65699dd5e249e52ea39b9cb1da9b06126d6cad49ebec8ae3f258013654c",
+    "references/conformance-harnesses.md": "910e6a3f910ad65a634a11799f101f644cf1467df2f203cfaed7b40bdbcc71d0",
+    "references/error-recovery.md": "43d3baf08f7cc3b7d50292d23aaf4af28bb5d94aa5c4a5cc496784126e7de20f",
+    "references/exploratory-qa.md": "ccb76b618cbe4da5d32aba74a8748671d6d82a69763f4759c7ab9420ad858979",
+    "references/fuzzing.md": "347088349d7cccf477d460f0641fdd8a34ed56e4756e4cdcb91795d5844f5f54",
+    "references/golden-artifact-strategy.md": "c7e85a3c85970884d753c7d87d20224b3452bedd88d1e3a00bc9a5aa1e78c180",
+    "references/golden-artifacts.md": "abd54c6533b6fd76f97dece9d6d4f6fa554031251953764007f07fb8f209e2dd",
+    "references/metamorphic-testing.md": "d61de7c7d800dae31496763837e787457807d6bb6882bda518139e8e28dcca64",
+    "references/proof-fidelity.md": "8176e837850639010782c049dbebb5b007e94c5f5de1c05c1f26a66d72b80b75",
+    "references/real-service-e2e.md": "64975bfa1edf94e229239d537ff96f01e917854838bc932c1023b30704826c2b",
+    "references/subject-performance.md": "5bec72d15dff99933ce38f7bdfa99d6c28177b6790d462407fe7f4fb57aa3c0a",
+    "references/suite-audit.md": "af0cafc09ae671ccbd62e3b9876ab37d65e5d688122a209fb3e0045a43f20ee7",
+    "references/test.feature": "110f9da750a9b674db34a28519b34e7386f32f81dc93994a1bff9018a417b7b9",
+    "scripts/validate.sh": "fb460f7c1a9b2f21dc5828666df8b0919f2241a87ab5506837c85ea2c3f993e7"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "167e4064e2cf91d0d3159e7cbe65bc9820988b6bbaf8c809fef299743b67c435",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "calesthio/editing-montage",
+   "upstream_name": "editing-montage",
+   "repo": "calesthio/generative-media-skills",
+   "commit": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+   "path": "skills/production/post-production/editing-montage",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "EVAL.md": "d291421d5db4aa48991e0786ff324a5398d9ee6ec0f8325cca7f24bdb3ff5d78",
+    "SKILL.md": "c1cc77a249f5607d11ab4b562a3982dfc61583a5f79dfbcc3755550fcc5cfe1a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "calesthio/music-supervision-scoring",
+   "upstream_name": "music-supervision-scoring",
+   "repo": "calesthio/generative-media-skills",
+   "commit": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+   "path": "skills/production/audio-craft/music-supervision-scoring",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "EVAL.md": "cddf532f6338f9b12437e9d7ed792aacdbddd0def4488a64cde358a19d60df43",
+    "SKILL.md": "b6c94b209dd9da72a2e8a5d8bffebfe72463654a3bf633ea7792037dd6c7a124"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "calesthio/social-short-production",
+   "upstream_name": "social-short-production",
+   "repo": "calesthio/generative-media-skills",
+   "commit": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+   "path": "skills/production/content-formats/social-short-production",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "EVAL.md": "4bc3de25793e3a4b249d9d3ff36c0cc32cd8c900517d107055203c6e76fe6ab1",
+    "SKILL.md": "ab74fa1593456bbf69ff60530cfab13bddbd87976dce5b3a7332a9b15ef2ae3c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-animation",
+   "upstream_name": "threejs-animation",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-animation",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "0ab1b79cb977a1b5b03b247f9ef677acc76c3ee80d42904afb1b66838a19c481"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-fundamentals",
+   "upstream_name": "threejs-fundamentals",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-fundamentals",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "cb6a0db8f05bb7d8196cad0ca6ae245e2baec53da4675e1b94be4fa735ed8a09"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-geometry",
+   "upstream_name": "threejs-geometry",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-geometry",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "c29c1568cb56e902999b6a50316cd5079c53ee620138148897d269e9716e8da7"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-lighting",
+   "upstream_name": "threejs-lighting",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-lighting",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "f12faf79625a7f42952124a5456d338e8399a65e16326c1a6a3239aa8e5ce489"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-loaders",
+   "upstream_name": "threejs-loaders",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-loaders",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ddf6ed2d7dfc809ce722482541fe88af7d349cd8066a4617fabaea865a2a831d"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-materials",
+   "upstream_name": "threejs-materials",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-materials",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "7d17cefac80196f3dd5068e2042e66244073925d24a55b7ca77534d594c5bc81"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-performance",
+   "upstream_name": "threejs-performance",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-performance",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "dacbf6a43ed280bdfcda2ce9fcf7a3f0ae54c25ed264e62f6e9a0117d6534285"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-postprocessing",
+   "upstream_name": "threejs-postprocessing",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-postprocessing",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "0063f5f544215748ed666d878f1d69112094e662792228445a3ab9a56d209fb1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-shaders",
+   "upstream_name": "threejs-shaders",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-shaders",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "8dc55ed6cc348abaad60851ae9f3f5ebcc6e3027dd7f7a55acc1832c73f11bca"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cloudai-x/threejs-textures",
+   "upstream_name": "threejs-textures",
+   "repo": "CloudAI-X/threejs-skills",
+   "commit": "0e181866f095b5f06d005133876e926515390d95",
+   "path": "skills/threejs-textures",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "43b4fde95cf9fe42b05f38fe6a6c6d5f36eb062cb15b3fd21a0eed376a5d1d9b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d26f12fa1a0e03fd5aa4d3cbf05262a9f1c684672d0864abac78b3bbb12b268c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "coreyhaines31/cold-email",
+   "upstream_name": "cold-email",
+   "repo": "coreyhaines31/marketingskills",
+   "commit": "f86637eace00fe4df586680bb0cda89990da6138",
+   "path": "skills/cold-email",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "b7f8d793169a5111c857e5720c6b80028686cc95d5a0d0d6570957c2710aff9e",
+    "evals/evals.json": "e760f7766434923508d6491be56be68e3d19e2ed2508b075b37601d62c95dd98",
+    "references/benchmarks.md": "3dc1d38a2d1f4fbb2706be7ca3d40156b66a3d7078c183a930ff373c3bb04c09",
+    "references/follow-up-sequences.md": "87e14749104b0c5bcd865e55d33513a161edb8e6773b2a2d9802b5460f2f7369",
+    "references/frameworks.md": "b29fb89922f96ae1c6911675a7e173a8f7c6a40999c9a18b14ac7f357b5f5a03",
+    "references/personalization.md": "08f18652938e14143402786fbdb8e1a6269650bb5eef9106898f1cdf31e47e36",
+    "references/subject-lines.md": "f71f31b1151d972bb19ff03791ffb9d24941a8ccea8b913e5a5c7aca439b45ce"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "coreyhaines31/copywriting",
+   "upstream_name": "copywriting",
+   "repo": "coreyhaines31/marketingskills",
+   "commit": "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b",
+   "path": "skills/copywriting",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "13c580c2432a4499e9dfdcf5d553df7aa6589e90cf5bd869fb4fbde5caf9f567",
+    "evals/evals.json": "ccec86052a0edd8646d0e50e63c08e0e971f443d8f6e9178843a1629f79efdb0",
+    "references/ai-tells.md": "b98c3a19b3a75c714d69e80a0076e4c07244b0e833c2ce81ff2631224fb7f7b2",
+    "references/copy-frameworks.md": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d",
+    "references/natural-transitions.md": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "coreyhaines31/copywriting-marketingskills",
+   "upstream_name": "copywriting",
+   "repo": "coreyhaines31/marketingskills",
+   "commit": "c7d7dfb6b460fc376b4b2204b78a9c9fd5ca6467",
+   "path": "skills/copywriting",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ecb4693fba9cc4f8841ec20f179574f04f69cbb1fb4cc66c59d955a22eccea6f",
+    "evals/evals.json": "c365b3208b3e07b97520bce9acca496fc5f939e3e1d70fec54bf1e8f9f92b0d7",
+    "references/ai-tells.md": "048a436d35d011313a4dd49dd1c6a6fb9f05203a2e40b8970ff88e7a2c548591",
+    "references/copy-frameworks.md": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d",
+    "references/natural-transitions.md": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "coreyhaines31/launch",
+   "upstream_name": "launch",
+   "repo": "coreyhaines31/marketingskills",
+   "commit": "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b",
+   "path": "skills/launch",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "30537ad3f4b0429fcc4053cf6bf04bc0dee316b9e5f7e7ec2e74a9bc44a9ead7",
+    "evals/evals.json": "f2ceb01d664e24ea253789a9a686997f5cc33a0fc99f57bf215acdada787322c",
+    "references/shipped-changes.md": "873c79d17d3f428147348a9cc2a5e3d6bb8282cf13fc8a143d539840e8abaa96",
+    "references/site-launch-qa.md": "aac0447d0d518468e86e971f4e781b61ee05e81dada402e2edcef709cc6418ab"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "cursor/maintain-formal-verification-skill",
+   "upstream_name": "maintain-formal-verification-skill",
+   "repo": "cursor/plugins",
+   "commit": "99b609a72323b70204eab407c622f436e858e112",
+   "path": "pstack/skills/maintain-formal-verification-skill",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "0c96f54293542d3818b68754562b338073958781a9684454611dca37592e2d2c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+     "from": "pstack/LICENSE"
+    }
+   }
+  },
+  {
+   "id": "dotnet/csharp-refactoring",
+   "upstream_name": "csharp-refactoring",
+   "repo": "dotnet/skills",
+   "commit": "a6bf43ab61967c30919334986515163ab24d7635",
+   "path": "plugins/dotnet/skills/csharp-refactoring",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "a5516d690bc0713665870e31b7db6c6d09089c0d1a524482a156e01377ef0d72",
+    "references/operation-catalog.md": "94311ac23ea1098c130942084ceb07969f73790d59072c90b87967cbdc3b8dfa"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "dotnet/microbenchmarking",
+   "upstream_name": "microbenchmarking",
+   "repo": "dotnet/skills",
+   "commit": "a6bf43ab61967c30919334986515163ab24d7635",
+   "path": "plugins/dotnet-diag/skills/microbenchmarking",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "64dab692a441a8af87b40cda1f3c2c9e5046551446fdea55d2801eaabb34785e",
+    "references/bdn-internals-and-tuning.md": "213842a5ced85bbdd5db4d7f6de4c3bdd231367b292f7c994a504960e32c83f0",
+    "references/comparison-strategies.md": "cdbc8e7d4b9b2c9eeb1dbc1a7ceaee5b3cb453d041211bf30fc93b150c4fecf7",
+    "references/diagnosers-and-exporters.md": "9410eb556b83af2a63bdb593a791077a4a070210df569887f6265d9ecd825b14",
+    "references/project-setup-and-running.md": "dd6866d218be83e84e772b9bda17d1d8261da4a8318d6b098faffe71b95bfcdf",
+    "references/writing-benchmarks.md": "00279137333ae46cec081a3b85d53858cec9a7565beddf902e15a6f7abe81f09"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "dotnet/test-gap-analysis",
+   "upstream_name": "test-gap-analysis",
+   "repo": "dotnet/skills",
+   "commit": "a6bf43ab61967c30919334986515163ab24d7635",
+   "path": "plugins/dotnet-test/skills/test-gap-analysis",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "1214a29071033d4b3da9f24062dcb517b88f7b1f7265a330f72521d92773495a",
+    "references/mutation-catalog.md": "38db5656c50813868692c9fff592e6c8cb928b3bfd574dab00674394d9a0e7ca",
+    "references/per-test-read-only.md": "ce9582d6dccc52847c51f717818f049a831e6eed4e9cda6b1931f3bc21421bea"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "dotnet/test-smell-detection",
+   "upstream_name": "test-smell-detection",
+   "repo": "dotnet/skills",
+   "commit": "a6bf43ab61967c30919334986515163ab24d7635",
+   "path": "plugins/dotnet-test/skills/test-smell-detection",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ea63c61cadcda2ef1da556836057e13f5827a1665b60dbc4371df508c8ebce16",
+    "references/test-smell-catalog.md": "974791cc1338c2c9d72556df47e3a7efec878aa90b28e72282018a3309a37a80"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "dotnet/test-value-evidence",
+   "upstream_name": "test-value-evidence",
+   "repo": "dotnet/skills",
+   "commit": "a6bf43ab61967c30919334986515163ab24d7635",
+   "path": "plugins/dotnet-test/skills/test-value-evidence",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "25199cc2c189957da34fd9fa417c582a0033d75cfb1772b91caac7d4a135b634"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "el4cteo/blender-asset-qa",
+   "upstream_name": "blender-asset-qa",
+   "repo": "EL4CTEO/blender-skills",
+   "commit": "71d031dab8bc6729504d11a78cbe91945401045f",
+   "path": "skills/blender-asset-qa",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "345c5f16c7ae9cfd31b3b58ee0642e31ce9fd406265305c03c0fdffd0fb551eb",
+    "scripts/_bpyx.py": "a3339ba8a678469e8ed29510e32a7331e0235202191ca4edb977af4720819b4b",
+    "scripts/qa_check.py": "11b4fa11244bfa6719689a06eec58c050a3ad5b6d17ac0f75113f332f97b274b",
+    "scripts/review_shots.py": "ffd4361f313592b67c124cdf0ec54b8d9866c9b29eefdac5c47731ce133d3f01"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "elevenlabs/music",
+   "upstream_name": "music",
+   "repo": "elevenlabs/skills",
+   "commit": "269e5f0e5a4cf296a8a38beb166245b89d5e2c1c",
+   "path": "music",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "9aa83356f505da832d32171e2349d29da043bb895d09baba1adb67ce1697324a",
+    "references/api_reference.md": "fd913eb337ca12c456236f26c5d5d046c3bcb7d9c9feb8075c5f9699106fb57a",
+    "references/installation.md": "bc434123987153fc0eb96409f503cee37c84b53a6ae95873ae85b368b2986bb9"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "4ab5e9af2296f748eefa6c0696667f83aa9c0edda7b6972785966b60644b3da6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/ai-behavior-trees-utility-ai",
+   "upstream_name": "ai-behavior-trees-utility-ai",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/ai-behavior-trees-utility-ai",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "185960eddb169cb81490e0d01efb9240663b8a465ca34ec34e0f015a727f06e4",
+    "references/behavior-tree-core.md": "df96b3faf1b7107240ed9c5f3bed793733dd9bdd25c05577abb7a69edd95521b",
+    "references/best-practices-and-pitfalls.md": "8ff83984ad998bc949d7524bae38c4d5b1acec34ff24587fdc9a9e9952c23c53",
+    "references/practical-examples.md": "9be856be9e5375fa218e927125dfca3f4f1c7b2ecd9089e5fa8b86d76b07cf1e",
+    "references/utility-ai-system.md": "a414ecd074e467d598664cde01305be054387fd3dc3e0045525ea3673d33309b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/audio-design",
+   "upstream_name": "audio-design",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/audio-design",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "4d8418660c0423164a0319d4429a196ee0ec86b4f05f764bae1a212f73e287e1",
+    "references/adaptive-music.md": "ca6fd287054294004acd85d9acd773d7b52c327911116c9c02344bab5e61df13"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/camera-systems",
+   "upstream_name": "camera-systems",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/camera-systems",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cec5e9ef16aaf8d42a7b86e3b17678d57920ab7692bbbfe710a34ac0d09b32c7",
+    "references/follow-and-framing.md": "daf21e0079ed86580f670c3f503a4dd835511534dc0dcecda9750b6eda3ceeec"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/game-ai",
+   "upstream_name": "game-ai",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/game-ai",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "ef23a6440743b3583d1072c92f6b0b45f3d11df33b3b77db53bce8b82c2f8940",
+    "references/behavior-trees.md": "2b69a6ae71a1034c049889fb4b0ccbc8697db9ad9f177f07c1053379cb0ef1fc",
+    "references/pathfinding.md": "3f1ce44462b4d1789245758b72d0b20e8053df458df1f743455dcd5d7319bba3"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/game-feel",
+   "upstream_name": "game-feel",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/game-feel",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "68fc818ad939151be2db9e358e4295a71830c19d61f3aff849f1599307f39f9d",
+    "references/feedback-recipes.md": "c1d0c4d9480bf4cd729ca99f2b36ebc1f3f264a873b408f2145898841e5d6685"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/game-ui-ux",
+   "upstream_name": "game-ui-ux",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/game-ui-ux",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "8a094c84a377503aa8f4c40df676d1c6b6fc07d36ff95554ce06467f1614397e",
+    "references/layout-and-flow.md": "000d944db77155ebf97fde035a3d4fbe69ef0ae348e9dbcaff48c5ea134d7d69"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/input-systems",
+   "upstream_name": "input-systems",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/input-systems",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "4cb79ad13d54b5b7412efc978d8c5bc3dab529182feb531f304d7d75879f2308",
+    "references/buffering-and-accessibility.md": "4ddc70151a9d72fdc7e0a310f242834ab55c2f7f1133f44e4a51ecda95b4f563"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/level-design",
+   "upstream_name": "level-design",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/level-design",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "f1656cb00b9af8dc625a9655448b410b37ce6f1e523048a5abf09fda25cbfd32",
+    "references/pacing-and-flow.md": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/performance-optimization",
+   "upstream_name": "performance-optimization",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/performance-optimization",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "ddfc68c927f9a482d78cc0e103edb2e2711bc876a5965ff53eabd9a7d308dfab",
+    "references/profiling-and-budgets.md": "fb161af3797b364c5a9032dc3836bc25f05762508f2831f6a19a6aa416811dd8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/procedural-gen",
+   "upstream_name": "procedural-gen",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/procedural-gen",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "709ccd2dd1e02177f45ccc903bb11d20d3c57365761fb2c9a784880e7b2c9270",
+    "references/dungeon-generation.md": "e743e7fa562b93eec3793acc76b40e276a385215844ca2783c0ca572225c9e51",
+    "references/noise.md": "067b4430cfc5121ac2f94e071492c910692fd10a295cedec0f25ae212fee769e"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/save-systems",
+   "upstream_name": "save-systems",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/save-systems",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "bf9184965b3eb4bc0b20be00681d08ef1af63fd85ca5b7afb7453ca09e80e490",
+    "references/versioning-and-migration.md": "a0127a2443049a801f01f950ec6f0581ca3d74f6b20e309af4e5095b162175ae"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/shader-programming",
+   "upstream_name": "shader-programming",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/disciplines/shader-programming",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "e89558b15691c891e12cece81d4bafd4d61159bd4de2ae580ac109aecadca7ad",
+    "references/effects.md": "bf0665485e8b12d42d4bd6cfe5d1ebd93fbcef315b703e4657f0d40a23224975"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/steam-publish",
+   "upstream_name": "steam-publish",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/workflows/steam-publish",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "d0d1237a5f79657693a2ab915644da5764a551bc04756c28247721ecf0377510",
+    "references/steampipe-build-scripts.md": "a0a5afed4deef5e478ea6ea25d32b51bd2fadcee60f0ddb67fca0cfc557568d2"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-animation",
+   "upstream_name": "unity-animation",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-animation",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "ba4d4d1c165f46fb06b609c432e21cda8ed8b8316d047863a694e1b6fd3420dd",
+    "references/blend-trees-and-ik.md": "8f4a1c88ef4d40efc32de5584a11f80d378c64de16920b7ca0ed6b91a15d87d6"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-build-pipeline",
+   "upstream_name": "unity-build-pipeline",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-build-pipeline",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "a73673eec1803a22b2776697566832c639330835b40b83507ba9ce46a28a2f07",
+    "references/ci-build-script.md": "f3e14d7d17a695c9a25a2ad3b162de195899f56dbd9291dcd9cc592c37e69c83"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-csharp-scripting",
+   "upstream_name": "unity-csharp-scripting",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-csharp-scripting",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cb5b08995bc2df8152e3767aec375ebdd1bd3f625a9016958a5466edc942e56f",
+    "references/lifecycle-and-coroutines.md": "e3cf97c13031ab26b53c4cbec6f479a0d91725b22c397e30042591983c47af84"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-input-system",
+   "upstream_name": "unity-input-system",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-input-system",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "e24e667db00642b97e331193d43620df632d4461a7377f847678b1060267da9a",
+    "references/rebinding.md": "58670e9ec483f1f0b1dc7b0e77a8206950cc7fc58943123fa735b6ef584097ae"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-physics",
+   "upstream_name": "unity-physics",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-physics",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "93b3578753e097231f9932b5bfab99547d319dfee923f82954fef27ceb1fbc6f",
+    "references/raycasting-and-joints.md": "29b79da86d8afe75dc8ea88655dc9e2b6f20fffeeeeb51f4786ffcb10c852b8c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "gamedev-skills/unity-scriptableobjects",
+   "upstream_name": "unity-scriptableobjects",
+   "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+   "commit": "cf44d99a0315dabff6ac6f407c6ccc026190f16c",
+   "path": "skills/unity/unity-scriptableobjects",
+   "licence": "Apache-2.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "b23bd2057d67955b03e5b810eb0e08e749ace2d835d6731b5dc4f372ada614db",
+    "references/event-channels.md": "2964fa8e29670196ce4caa64e33a521be9db82259af7ef69e6c10937155a7cb8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6f82dcfeb95a1c0a0452180a3b16f21bf82111780018fed59d95a052b5b75f6c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "2dcb65b1c5be24e5ba11e937f3996100f4e980d8cf8ac5b30ba1d70dae6c40f8",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "garrettpetersen/review-game-trailer",
+   "upstream_name": "review-game-trailer",
+   "repo": "GarrettPetersen/indie-game-marketing-skills",
+   "commit": "e95d5428400ed6d9b8fe96fa5f0a24bd3c3ebdb6",
+   "path": "skills/review-game-trailer",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "e99986f8eb3bbef57b0d48a2d94f4573e88a86c806418c42632cc2afdc4dad4b",
+    "agents/openai.yaml": "59d9513ba53e55e258265cada103294973c6f905d1f24c2286ca98567d9b70e3",
+    "references/shot-audit.md": "7c81e6b53fc25f3217febb885251d67fc1c99f8f1d64a78cb64504e803099c76",
+    "references/trailer-first-development.md": "713b725bdadab8ddde1fecfe718b8841969842bb81a29ee8a918c414a93fb491"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a132d552197198033f08aa39a55ab2b75845510ce6e5eb94c173ccfe54f25407",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "gothicpixie/mix-qc-and-delivery",
+   "upstream_name": "mix-qc-and-delivery",
+   "repo": "gothicpixie/opendubstage",
+   "commit": "6fb8973a7485262fc17d00d2e3e9335c2f6d0948",
+   "path": "skills/mix-qc-and-delivery",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "28c7d610c5de81d01d232718263c56b65d52d2261fac8c527911a8d79f9d6c29",
+    "references/thresholds.md": "ec1457126fe62f7465ee706f7f2f99e16b08bbc4947e0d2b03bc6881f1737c74",
+    "references/transcription-check.md": "6f7246c49b8f120028cd95ce1a15c2ae81cd77a7fb3489e5d83d7f6c0e63a29c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+     "from": "LICENSE"
+    },
+    "NOTICE": {
+     "sha256": "f6503f821a7d98136614d69bb7515396c09eef4daedde78dd729da1f0411e3de",
+     "from": "NOTICE"
+    }
+   }
+  },
+  {
+   "id": "heygen-com/cut-the-curve",
+   "upstream_name": "cut-the-curve",
+   "repo": "heygen-com/hyperframes",
+   "commit": "f51650d8a72ed472effff89da087c7e1cf6b2c98",
+   "path": ".claude/skills/cut-the-curve",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "c97df202caea16949a54afdcbc7007c60063028f73bb56ffeaec630ccb0d5145",
+    "examples/gsap-implementation.md": "c5e523bf1404eff2ffe903bc756006fd21894e1f6c10e630485afc570a2ad72b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "hissal/unity-assemblies",
+   "upstream_name": "unity-assemblies",
+   "repo": "Hissal/mattpocock-skills-unity",
+   "commit": "4f30320d4ac1c5d747eea1c02b97017529ed578b",
+   "path": "skills/unity/unity-assemblies",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "ANALYZERS.md": "b0e3a8431f48d52eaa78ce93beb212669dcef7f1231ed06e438033531b8b556f",
+    "ASMDEF.md": "3542e382be9781b20d198552472986d264aa9ce1bed8aabbad5fa2f90ab216d5",
+    "SKILL.md": "1d0d71a3a0f1ef518bd020773590abee2200ff31500fa6ab852daa75d297ecef",
+    "agents/openai.yaml": "66adf58fa00b9d7942e0449c55b355621a256a1dd8c5c2e3f6f59e9842b4bcaf",
+    "scripts/asmdefs.sh": "dbc2af9f69162d0e83510ce5d4cda589149bd688cb1083046e7bdd04c56a11b0"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "f3235ce18f96947cc8452350539a0d55317d207607e5af3db0c708718e4472b5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "hissal/unity-code-lifecycle",
+   "upstream_name": "unity-code-lifecycle",
+   "repo": "Hissal/mattpocock-skills-unity",
+   "commit": "4f30320d4ac1c5d747eea1c02b97017529ed578b",
+   "path": "skills/unity/unity-code-lifecycle",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "LIFECYCLE.md": "a85c9286b9bd01b8a23f48e9b14abed460edd1d4ff4dcb426cdbe0242a05df1e",
+    "SKILL.md": "af565812bdd74f4ad29be5f858dfa72d1e035243f0feb5f16f86b512872c248a",
+    "agents/openai.yaml": "dfa5458d9ecba13d933e18eba4c37160c9dd7d64cb42e3c2c8aeaa663ac33f5a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "f3235ce18f96947cc8452350539a0d55317d207607e5af3db0c708718e4472b5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "hissal/unity-testing",
+   "upstream_name": "unity-testing",
+   "repo": "Hissal/mattpocock-skills-unity",
+   "commit": "4f30320d4ac1c5d747eea1c02b97017529ed578b",
+   "path": "skills/unity/unity-testing",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "ASSEMBLIES.md": "ccf5e90b5157f33c6ec5474db393b36d80a175342b0704876423464edbf9597f",
+    "EXAMPLES.md": "f8e0683251a3836573db651a022493594acff916b31c1603fe864729d54e917e",
+    "SKILL.md": "734bc6eb6ee956134d23df971b0fff664f8ccf18ce1c01faf47acd13ace61ffd",
+    "UNITYTEST.md": "e895a614296394d2b0a30319f8531119a446bfd656f22f8b8f5a40dbc5b172a2",
+    "agents/openai.yaml": "51a82dd2371000cf807a5c706c70501f1daba4f44dcdd83584b3cf0a19c72203"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "f3235ce18f96947cc8452350539a0d55317d207607e5af3db0c708718e4472b5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "hissal/unity-verification",
+   "upstream_name": "unity-verification",
+   "repo": "Hissal/mattpocock-skills-unity",
+   "commit": "4f30320d4ac1c5d747eea1c02b97017529ed578b",
+   "path": "skills/unity/unity-verification",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "ENVIRONMENTS.md": "cd58dc9ebac0726b05d13396980edad8ff9cdfb5d6278ab159d7fc4454c51997",
+    "ISSUE-CLASSIFICATION.md": "4de12b6920e6f1cb22d7c6c4c84e90cc4dac9af644b0442b75ff098e8b81f391",
+    "READING-RESULTS.md": "2a4226b1415f4827fe4732b08eed5d74c98505ce12a556259e976d2db51d19ee",
+    "RUNNING-CSHARP.md": "dab15784c1cdcca049f6de78f65ab7a33814db2864f6b3fb3c59f31111d2b054",
+    "SKILL.md": "07e7fe33e0ca031efd520501325d9f8b59c72879d0b0c5b1c760a7b5e163b770",
+    "agents/openai.yaml": "831f64b62a1674344d59de036742212ed68bb91f121e2673e2711ea85b3dd99b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "f3235ce18f96947cc8452350539a0d55317d207607e5af3db0c708718e4472b5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "huggingface/huggingface-local-models",
+   "upstream_name": "huggingface-local-models",
+   "repo": "huggingface/skills",
+   "commit": "f4ddab46b9847c7005d7979fdfec36da1aec4e26",
+   "path": "skills/huggingface-local-models",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "814640db1d5f2f274aec09d66b3589ed5a0fdcfaf536afd508b1d757dcae1534",
+    "references/hardware.md": "c708d7436bb654edf18b1f4cdc577d6c9c4edcf76896c97d510d35bbb7fb7f52",
+    "references/hub-discovery.md": "fb7d1d19dcf428d07b6fc8643d58396c180b2921eb0a9496955cfe9743da6b47",
+    "references/quantization.md": "8c388a37ba947023070c03b54b97d918166530d4cd0b26ede460b2435402fc55"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "iart-ai/javascript-animation",
+   "upstream_name": "javascript-animation",
+   "repo": "iart-ai/javascript-animation-skills",
+   "commit": "f7d0882a313249cbd43f0e4e9e209b1622870253",
+   "path": "skills/javascript-animation",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "e793b8c561de063356ca1e206113b7de1c1cd6b9bbbbcf2a80d7faeaaa6d4da9",
+    "references/character.md": "104b192db67fe290d33c30ab06066907f10068dace3cf49ee6461c1d3ac188e4",
+    "references/forms.md": "6a5c2e0cbc0eff6f93227dfb3a6f0a42f6f1d1afd737e5b3c896697c41dc40d0",
+    "references/qc.md": "8e4fdd8938e65a0f1af6cc71c21db893cc67cd731a20347767f22f3085130768",
+    "references/storyboard.md": "284f415577ca6b77886e33f8515445e52b16b851cb9411870bca6c0cd10355d0",
+    "references/techniques.md": "1238fb0036ebe6d6269654507b474b5e13f60e3d0003bcda7bc4f11a90d4cbd5",
+    "scripts/asset-audit.mjs": "f57ed9080be1b524f2884b7614aa5bc88aed26d0b09b7cccaa1a6afd05d83735",
+    "scripts/layout-check.mjs": "15f75673fa929a42a8c1b836ba29abb48c9e7fefbcdf13d3baeaf7ca6638eb90",
+    "scripts/render.mjs": "92fb9ca8094ba997dd5049cd8cac8f8370e4ea38d3a5e9e28ef8549b82d197e0",
+    "templates/starter.html": "efe35c48e61b2097a4ee4c167d64479aa374edc131ae6edf33116d9f42ad16e8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "33d6cd35a20903b5e968a76a1e584a7aeae2c83e3e58ea58ecc50b889b83e668",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "iart-ai/kinetic-typography",
+   "upstream_name": "kinetic-typography",
+   "repo": "iart-ai/kinetic-typography-skills",
+   "commit": "fccc94bd325d824235ee9e715e65abde57b6513a",
+   "path": "skills/kinetic-typography",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "README.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "SKILL.md": "0e45dfdf8393137b61fcccf5c681c05dcde053076c5dd61f7b6ca0765290f77e",
+    "references/reveal-recipes.md": "7681788d8b11be94a195b732d0cc4be25ee745b88c421211a0848b268c9eb493"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "33d6cd35a20903b5e968a76a1e584a7aeae2c83e3e58ea58ecc50b889b83e668",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-animation-workflow",
+   "upstream_name": "blender-animation-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-animation-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "0dcc50b0d1d47b362ae8221bb4636e3cd64f8347fd171bfbbe72e4f1460ef85f",
+    "agents/openai.yaml": "f50adf3c07dbe712fbb9d055d643bfe6def6ec069497f348343c62f4b02e3add",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2",
+    "references/mechanical-animation.md": "c571c015298d3ba0fc521256b9995e0b048387636b0be56e3784be87c5eb043f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-asset-validation",
+   "upstream_name": "blender-asset-validation",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-asset-validation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "6fcbe5a357f9613ba40dd8a0cbfd3c3c520bc810298429fd3798f325407d5dcb",
+    "agents/openai.yaml": "eb122392b3463a83c5db082e138f64f8894ace4ba5dd4304fde0d71da4c65513",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2",
+    "references/quality-gates.md": "2abcf35fd8a83de1105353793ff7f01bcd45e170f94ed9d41fc4d094c9b4f189",
+    "scripts/_blender_evidence_smoke.py": "a22441e63dd620a396da586245766a3ba539e8e0a2f4d0ed86564005bf7618dc",
+    "scripts/evidence_settings.py": "c233853745cc9b8d8d1b1e265357f897489d0d04fc96ac96192ae824b09f3bef",
+    "scripts/inspect_asset.py": "0bc7a5d85b5d5fdd4ddea66184242814a6785e25958c3ba7440e17d159fbbd17",
+    "scripts/render_evidence.py": "92931abe90fdf1e19028cb3b89145f4e4035fe34eff1ac425425e4051dad1825",
+    "scripts/test_evidence_blender.py": "23434f9b131e3c617f05bfcb6e8495290319ffc989b1ebd6d56443ecaa6e8ef2",
+    "scripts/test_evidence_settings.py": "008d460c9649dfc871fdf920263358edb3b19accbff4e19c8859b919043ed753"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-character-workflow",
+   "upstream_name": "blender-character-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-character-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "fa8a1ce1908a796b441b536ca27124bf885dfeacc5dcc2de9ab7ceba9d0a3097",
+    "agents/openai.yaml": "b7b8e0f1fa69675cbb593dbc3fdf0a157a4c079b50b131edc4e16f1890da58a7",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2",
+    "references/character-form-review.md": "2a67f9dedd42c36aef64f80fb9d14722da9865e1901801f349e84505e706d6d6",
+    "scripts/fit_vrchat_hair.py": "9cd51909070c35a8d7e1de96582b89a56a52677231e91899c2a2e4fc82e91929"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-iterative-refinement",
+   "upstream_name": "blender-iterative-refinement",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-iterative-refinement",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "911ca8983deefc10acb7f033eb0447d89359b3ecf29b0c027c6dc513752cf67c",
+    "agents/openai.yaml": "bf9c1fb915837ad3527e3920530eefcdf26f79fc3b3cfffa95b919d19ade49db",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-modeling-workflow",
+   "upstream_name": "blender-modeling-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-modeling-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "af27d305ad8c655840b0bb4cb0a3d5bed11fa2b64f9ff0a7a3921a080e2ba826",
+    "agents/openai.yaml": "bea2a94bbb3aafdf6d1a50e76ad801c3f559dea3b279dc34cf99ec1915e32886",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2",
+    "references/modeling-contract.md": "c8f8964802091de878cb26568ff945363e322d06f16347ab333f95a4193e2748",
+    "references/procedural-patterns.md": "db8796eff01f70cfc0162027bed08e46fbca06c5e061659a3d35ab6fe41c004d",
+    "references/staged-quality-workflow.md": "d772f4c122c28de847ecc70b7e8784ae849ceb0535ddfae30c7666926fa8a747"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-procedural-workflow",
+   "upstream_name": "blender-procedural-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-procedural-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "f78919e2e9a9c71aa05341e35432627ac03a50a8dbe7f45348d7f1476be9db36",
+    "agents/openai.yaml": "88d7c2a37922ca94ce78e4875b8e3fbaa5506cd5ebfc44ac5ceb4397fb48cdfc",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-rendering-workflow",
+   "upstream_name": "blender-rendering-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-rendering-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "3bb72ad9bc303d323ad5b8eb91c65fb5c685275e75f7dec33d619f037ab87428",
+    "agents/openai.yaml": "bfbe52dbc14155d3627c674c4a8df436d58a2d4e27f52656b10ffabd7b9f627f",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2",
+    "references/interiors-and-atmosphere.md": "dd1b9f5fb9e42d665845a2ce70ea7e2bc59506e18b849d0c52ac7cb07306ce62",
+    "references/poly-haven-materials.md": "2bbddf1bad3619fcbf94cae7e435c597e43fd5553125fa4167540d1f38772f75",
+    "scripts/poly-haven-cli.ts": "d288beae266dfbe623133f64aa3fb2d890a0f0ad8e194bf9c2002948964bc9d7",
+    "scripts/poly-haven.ts": "94b5cc60dd1dfd9508d1c8010f7b1872393b3f5beece683fcfe7dc2deb5fbb5f",
+    "scripts/render_scene.py": "0985ac1f7936da989d5f404da6abb9eacfdc7e1cb5020bb33fb1a3b720303fad",
+    "scripts/test_render_scene.py": "0c74f42e82a9ba8181b75358e1b40f6d16dab55e50d1524dbef667263c90ec47"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "ifbars/blender-simulation-workflow",
+   "upstream_name": "blender-simulation-workflow",
+   "repo": "ifBars/blender-agent-studio",
+   "commit": "1f9e050b17ecbb9174c93a001bece7fdbe73f436",
+   "path": "plugins/blender-agent-studio/skills/blender-simulation-workflow",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "3566e296d884e819c32a110d31d377b8fe862466075716308bb0f3d65f09e5e4",
+    "agents/openai.yaml": "73a9f7a73e4c7c5a044f26e4ced93772f70872a89318a71bd64277efba7e1ff7",
+    "references/astra-workflow.md": "adca6ac2546eab0495aa251340d4c992b2602285a1eba6149d91d75f537cb9b2"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "dc25474bd47c86e86e36f1a5b4cd42000c2ab5a2c5bfb09ec335787a8356e77b",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-agents-code-validator",
+   "upstream_name": "blender-agents-code-validator",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/agents/blender-agents-code-validator",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "f4aded45322b49bf38f905f77ffb862ac22d2c2477c8984bf89e9e5cba2049a0",
+    "references/anti-patterns.md": "bae9ceac2096469a44e84f8e59e9164359ac7ff32b382bbd1f82966ac4f8d788",
+    "references/examples.md": "69786093301b2723e6b424b8cf7a17bd412715482ba85bc45edac8f5df2b8e52",
+    "references/methods.md": "0a59a70a0b2e9e3a53c684ba6c44bc7c7cca6b0a9b905fc402b13aab86b956f1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-agents-version-migrator",
+   "upstream_name": "blender-agents-version-migrator",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/agents/blender-agents-version-migrator",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "1fee6eabb52d4f7d1f8645c243815c2be9c8b1fc7264b938cd95f0e89d007086",
+    "references/anti-patterns.md": "4d36b63b7babb9124993b821928215604efd904269b8f9b865a6aad0138cab73",
+    "references/examples.md": "ebd47bbe1d1c8bafcd1228edd2d464a7e761fb9542cea441b64e3c7297e3b8ab",
+    "references/methods.md": "1029d422e290e39b0cd8d255e048353a5143e74684a7b20ea63f971cef7e9688"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-core-api",
+   "upstream_name": "blender-core-api",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/core/blender-core-api",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "378ca451abe8caf261c4a0d95efe5e86d5cda043eda4d63916707b4636de3957",
+    "references/anti-patterns.md": "7ac15fbf4347e70ca54a41de8049fa48130af696792990b0f75ea45f9b8998df",
+    "references/examples.md": "122b38ed69cd96868501d3c805df53791076a85788b7a26963da0b695d239d35",
+    "references/methods.md": "ba42c70104b8096fe87fb25a4691235d1df0c34854d42955e2e953aab966416f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-core-gpu",
+   "upstream_name": "blender-core-gpu",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/core/blender-core-gpu",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cf957d4d5c242499b33d5fa7e5c06a1bf315bed08b3fff91299cee2935038f2e",
+    "references/anti-patterns.md": "2999084b86fab68b4d4887d88228efa6f57e69a538f0328d848c0ea44f989b4b",
+    "references/examples.md": "41fc44fdc7bf0f4030c6ef4e1d8c96524c63f5f8f0ae34aad52a88eaa5c10a83",
+    "references/methods.md": "fc6d9ffe26d1d880cc5ce066605aca0cdf4db9e6f8f9ddac1ff0d551a739a342"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-core-runtime",
+   "upstream_name": "blender-core-runtime",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/core/blender-core-runtime",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "e24c99efbf76294c8c423c554da91187dc70841750a2fe7a28e964796b19b330",
+    "references/anti-patterns.md": "615f54938010dc2e5745df0bf553f858f11e7f7f3238676fc72b48ed4393be64",
+    "references/examples.md": "2b71214c7e6a28c4b4baea7611dc5c3c9cb503153e6c1f10804a5d857d40267d",
+    "references/methods.md": "3e4f0da4fc69c7a17ac8f63adaae82b76e75e473c9a372df76acf9b73ec587f8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-core-versions",
+   "upstream_name": "blender-core-versions",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/core/blender-core-versions",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cdceb0409f99aea684445b2df3c9f5f70c7f32175a7e61b68931853965dfa4d1",
+    "references/anti-patterns.md": "eac7b6eb413f92c5cd314cfe6cb2dc83f14dcaaf3271a2939a84df708cb5382a",
+    "references/examples.md": "73a70ea43e682f5a410fa17d06bbe7bc6a75c92679d7748d97d20a78a1f77b50",
+    "references/methods.md": "d5aadcb1771f4b2bcc6cea948c9ea474bf152d96c791413729def81c7d44479b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-errors-context",
+   "upstream_name": "blender-errors-context",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/errors/blender-errors-context",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "10e01ade9355c0d1f4ce30f6a1103a563268d056bb4359d56bd8b669ac6b166e",
+    "references/anti-patterns.md": "c34834adaef7d1e4ebd091a41eba62ed4a2616e898a65a91f949422709a41fe1",
+    "references/examples.md": "5cefa5b23742191f1d50998038855f4c8c47b1816c5754ffd996fed5d8d341b2",
+    "references/methods.md": "f1b000df5fe025f94d887adfe94312e5faede883add620f1db2bad8e26a2ea3b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-errors-data",
+   "upstream_name": "blender-errors-data",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/errors/blender-errors-data",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "0f1caf82dfabc86f60e0e6263bf5f9af6cb9075f3b48809c169e20585afca452",
+    "references/anti-patterns.md": "55b9fa099d688b6ae50723bda50a7882b02eeae2b7141010a451eb1ba8f77891",
+    "references/examples.md": "b6e12c06cb0457f1913d9e6d9f2883cd78d4591835822d77660e53fc3eeb501a",
+    "references/methods.md": "e24cfce8faca7f5486148ad31189588f33ff8067efffdb7ccde25cd2be75eed0"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-errors-version",
+   "upstream_name": "blender-errors-version",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/errors/blender-errors-version",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "6b4ec2e9bcf1d3eb92889692e41e7b33bedf2bfe49981f2547cb4a27cac8f241",
+    "references/anti-patterns.md": "86b165fab28f24069e2118486fb86f61a39c29e5e982ba66db2c5f439caa44bc",
+    "references/examples.md": "7e1efd78c515111b145c20beaf3477968e8998d1d98014b66590d651460b936c",
+    "references/methods.md": "68309a16856dcdbb5e32dca31256b84720452d1b62f87f4f0113f375bc194916"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-addons",
+   "upstream_name": "blender-impl-addons",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-addons",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cd81a37f25349722f7c13e8b0623a49562ee107f2fff2f4d2f8303d0aead9b29",
+    "references/anti-patterns.md": "b70ffcd9f2c832bb75cc19f1ed13891b655f216ed2dddef29af9d4cdf72286cc",
+    "references/examples.md": "e9385921db28fed88be9b88176ea7c0753b5f613dcd0f85f9c0b58c2babf48f6",
+    "references/methods.md": "1e5339de6c4cb1a8e7e8f2979d826aba027f8aa44b686bec14ff373e5fd3116b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-animation",
+   "upstream_name": "blender-impl-animation",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-animation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "c6b3aaae8ce42d0a2224c03cac4247e49fcf5ba9b7e37f40e33de591b22e9c6b",
+    "references/anti-patterns.md": "e9b0af841ca5fd582b53da8d0361bb50b99d3f03b5fd918385d1f095b1e8568a",
+    "references/examples.md": "66ebe2e8379301bc982927a5c46834584b04fb616ed3bf72f9005572ddabacca",
+    "references/methods.md": "201962ebeae1c13159ae520a835dc5bfe493cba92a00d712d62d1e99b6eeaa7a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-automation",
+   "upstream_name": "blender-impl-automation",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-automation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "d0c7e70c11306a8af1245e550564adf4eb0c114192381905c59cc59a0d03cf81",
+    "references/anti-patterns.md": "b3c349cee2818958b0de1389b741d866a77de945c99eb0611129eea32a21ce5e",
+    "references/examples.md": "cfd282746f469c4cacb25fedcea54f7143469b44e55887cc19122fc100b8c074",
+    "references/methods.md": "7b25ee852299a6e259bc3d495bf976e9f473e564b259e2d034da0661b2464553"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-mesh",
+   "upstream_name": "blender-impl-mesh",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-mesh",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "5e0ebf733da578e9e5d9da299a1d83c4182272ec3baf7d4bc281c20477b6f8c3",
+    "references/anti-patterns.md": "85777d5cfe18b95bb50f009fe72a43095b10992239ad38d7d3df14da25896990",
+    "references/examples.md": "6a5c30f8f1788403dfa4e1f8c1ac0ea6863ba661dad243e219eaba2bfbcc09d2",
+    "references/methods.md": "847916d2bd1b62d193571636700ec48518fa24a62a0f2683fe21ca4dd4ddeb88"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-nodes",
+   "upstream_name": "blender-impl-nodes",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-nodes",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "ab69ba931f8ec80c64b818997f8a0831e96a8488c9038339b464121b927a2309",
+    "references/anti-patterns.md": "847a2aa26a5dab143d162fea8964ce8eaf501f5c76c0faeeefd36730755d0c63",
+    "references/examples.md": "a711976a1f4dad8fe14ac64f372b29778e71a0794924736de9fe9a67bed98f53",
+    "references/methods.md": "4f479a9900921bc9a945d249f2d1cfa01301d4c00ebcdb3f67e8b895ea4c05b1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-impl-operators",
+   "upstream_name": "blender-impl-operators",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/impl/blender-impl-operators",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "b30747104f3ddb66a36a264a39a94973983e66b76556a9f6a3ed6ca06c8106e4",
+    "references/anti-patterns.md": "114af5f4f1d3ed3293545771c1051333393bf84455bd3615a29a2fdcaad67929",
+    "references/examples.md": "9b35ec5e7b5dc88cd1135e2f3571b8e7e4a66323f3b708f9a91bd0078c1a9132",
+    "references/methods.md": "9bf2033b021d8b5f90019772ea53defab9408e5c8ebd200bcad871941f471527"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-addons",
+   "upstream_name": "blender-syntax-addons",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-addons",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "bb63532cae47a4b4fd384eddd916a1a0be2f7f9b9f94ea2ac31f012db201a9f1",
+    "references/anti-patterns.md": "1908f53d3a89b12b99b6462abd0d6f7aae6178bd650ec5dc314d1b83b90bafb9",
+    "references/examples.md": "98f315a764ca54f16770e67b8ebe38e01349c9a537e4503f83072c928ba64979",
+    "references/methods.md": "ba708fbcc026b8ebd544f9c3867d7511d4dc64bceb6af6f469b1609bc8ddd79d"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-animation",
+   "upstream_name": "blender-syntax-animation",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-animation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "99a558e85148afbf0002fa2e784938bb64fd27a814837c878a3a3119cbfbff15",
+    "references/anti-patterns.md": "d39f855281395029f42ce74d1f9e9b372cc391bf2cd62cbe002ba3b2b43c45bc",
+    "references/examples.md": "0b56bf0338a3ada47863d7fb0888cbf52c55299a2e14fb5d1897858f62900d2d",
+    "references/methods.md": "8f963ab91460a01ffdb99a99e6ddea31dc821d88622de8ec23bf36ecbf4c2aa0"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-data",
+   "upstream_name": "blender-syntax-data",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-data",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "94285b3907e859f33b71161e77be0562c8c49612a644b346061ac8132ab18ce5",
+    "references/anti-patterns.md": "b737c5d415a478ab4b9eaab3a81da5c7637fdeb180659cf69bfc86a8ac591304",
+    "references/examples.md": "4634234e679a3fd312d1d300b4eb062d6376418efe05218cfd409539ac73de8d",
+    "references/methods.md": "a47acdd1d5ed56135e5f207ff9db7e43e84ae70e898a1ac4fc7f95d97add7cb4"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-materials",
+   "upstream_name": "blender-syntax-materials",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-materials",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "cf2d5d517c09976706592178bfefc48cd2fad242e7b278ab846928de49a0f9d2",
+    "references/anti-patterns.md": "f93d130c640e383794fdf64b11dd64a79c5065efa545562fd27d0da81fe46675",
+    "references/examples.md": "e246928fbefd849de96b8908bc0ce778883e784701fd9df417ecc643b57f09ed",
+    "references/methods.md": "07abc64f8eb6b4d37355f4b3cb33c2a7332966a2d53772f1aa6362cdcf84a28a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-mesh",
+   "upstream_name": "blender-syntax-mesh",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-mesh",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "1c4602c2b6bc97f86ff151a7d3e8facab3c6b234a2fa648943b33bcf1474a549",
+    "references/anti-patterns.md": "21d158d735c2a298d66db271e2260d75320817534abbe4f8c315b4080c28e04a",
+    "references/examples.md": "cb518e9c88aba092b08684688b0f1d4cbcfcfb9d767303b047de96bf39ab96ae",
+    "references/methods.md": "1220ce07ae157ce689bab81506eea4ca8ee67afac601e429b69e852816ef4928"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-modifiers",
+   "upstream_name": "blender-syntax-modifiers",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-modifiers",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "c9a6a516651650096e521ac7f5c55297a30783e610bb4ee0e0cbc8f92322ae32",
+    "references/anti-patterns.md": "9178e17c0e789a088909117316943cb9a62408f7bde1ec9266d5023a005f078f",
+    "references/examples.md": "f116e1a36485fba22f37b7f4d688a28ccab0901c21ccf4cb7b4534864ab78310",
+    "references/methods.md": "a38c3e064632a1be657fc13b2fa59c6341b4fd5db2c076db08a340357d3f389c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-nodes",
+   "upstream_name": "blender-syntax-nodes",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-nodes",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "a0a2b9679dc148be969c571cd71407537ce38b93b845c75811018f48290b1259",
+    "references/anti-patterns.md": "dceec359107e4b1fe6d2a8c576a63ac5e7a0a93f4f1101a40f6e9d8906e83fe3",
+    "references/examples.md": "ef9d6ebc96a3b23b49280f405e4ab8fb198681359601194d8cc69ba478a3c78d",
+    "references/methods.md": "627f99d6a3728b9b8763755347a89c75fe6613f2bfc75107c9ed045cc1fe140d"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-operators",
+   "upstream_name": "blender-syntax-operators",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-operators",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "588c2e93a75b53562ca031f98ea42895a8cdae451c6789959691ee21cc1c0443",
+    "references/anti-patterns.md": "2307e6cce410713d74c47cd89e763716f1462afec70bd1cd031afc94c7d01b53",
+    "references/examples.md": "d9ae6900bc47164a062e3ed2719ab7b2da3a318e4dd61aa3fb2fb40f1b55faf4",
+    "references/methods.md": "89cbad02b945c3b4229e4128a8356b52ad682b41f4713d3d1e79e1938dc97dc6"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-panels",
+   "upstream_name": "blender-syntax-panels",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-panels",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "53ae197ae8c983e375a09b44f33ea4ed57c530467d02af3ea675ffe5d10619a9",
+    "references/anti-patterns.md": "04c2d7ad3ec9d3d11ad45f3aada079805ea9302c7ab7a579744bbd8f947e8fdb",
+    "references/examples.md": "ae1cd3cd93cb515caa10accab11a374c778032153d3cf16d89b0a02471190c40",
+    "references/methods.md": "d33c3a8aa3306962af4bde17ff1b041113d4ec8ea720689221a1b107f3ef3cc7"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-properties",
+   "upstream_name": "blender-syntax-properties",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-properties",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "fbb05d780424e8ad2b00d00ed74576c28aa1d3d3539922149a3b246ae97f7c18",
+    "references/anti-patterns.md": "8c831982547d345cae0eaf51436a1944400bd209c9d560bea11802f4bb2381ac",
+    "references/examples.md": "8c9c80ad46929077e90881be140886e8ae261da6da063d1a03e688b52dbf3973",
+    "references/methods.md": "ed461c23cf5b4cfe88a373da7dcb51e71446b928e2e0a5de5273d885791c934a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "impertio-studio/blender-syntax-rendering",
+   "upstream_name": "blender-syntax-rendering",
+   "repo": "Impertio-Studio/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package",
+   "commit": "dc56112d81b25b64d3e1c7b765673a035981543f",
+   "path": "skills/blender/syntax/blender-syntax-rendering",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "25ff2b3c26bdc8d05e76a822d9f82023e47799aac18716304a854626b3307b03",
+    "references/anti-patterns.md": "a4f963752cefae5d42c106a363b21d6cc8cd376173d36a431ce32ba01e70b180",
+    "references/examples.md": "1a63f867bcb028c75d263a4abde15fba7cd65d2ff8dcd4420fbab1efd6240f25",
+    "references/methods.md": "d831ee2b00ae24a95bf2763b869d3c0f9082b3de0a7c95a06a1ba1690f81d672"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "200f2d85a78cf27244dc1f0301a583336c3f39ed53bfe7c1691b283be0c48d83",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "jakeschincariol/yt-retention",
+   "upstream_name": "yt-retention",
+   "repo": "Jakeschincariol/youtube-agent-skill",
+   "commit": "a2feb2104981a375ffd4f87ee04f4f5344ac43c6",
+   "path": "skills/yt-retention",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "2777dd1f8f9ea04174bf13c9dc0132be907fb3852380376db359bcf786ba4f8e",
+    "retention.py": "2ed29f0bc24e7b65e9661a879692fe954b4f29e486ebf19f3c2c672e21b0a906"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "857c8d5276809c8196b3cd7cb3300324768bfc562b2b6281b06d6865058e186c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "laguagu/postgres-semantic-search",
+   "upstream_name": "postgres-semantic-search",
+   "repo": "laguagu/claude-code-nextjs-skills",
+   "commit": "665fbd7375b03e4c25e10f6214204309445593f7",
+   "path": "skills/postgres-semantic-search",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "185e7b2f6591acee488c3a04435cb203b491996669ada2e660b70a7a4b4de02d",
+    "references/evaluation.md": "691115ad8c78649d1b334b05819f4f9f993f9cbb8ed065dfeacb2d81132cf6b1",
+    "references/hybrid-search.md": "b2a37623dae8f6bd4f641faa4d37d26ec87fd30fb19629eeb1824425b609f028",
+    "references/keyword-search.md": "2d5d24966418d91a03c3989772783b4241f59853bf8bd34bd2f7a706ab266f10",
+    "references/pgvector.md": "f47d8a552502941fd729140fd582a805bd6d06dcd348578d94bfd2bbb52a7488",
+    "references/reranking.md": "481d019bc7ee91397d3da45659457fa5d8ae03375fc6de80a4a3629f7bf4f60b",
+    "scripts/fuzzy_search.sql": "df01cb1604a6e4a34252089ef0c86f81d958ff7bb70f621cb6e3526e0b364b5c",
+    "scripts/hybrid_search_bm25.sql": "6a13d096fe91de69602b85911b4e7e30452d189559515dc2611d7fbdfe0a7b9e",
+    "scripts/hybrid_search_fts.sql": "afd9a0347b2ba439a6da95db6088d7674db333934365f71a1e4de0c410c36e6c",
+    "scripts/indexes.sql": "361170bfb6539900168bfaf31c8fb52ecc3219cb8cfa90be671f2083a1a5c70e",
+    "scripts/prefix_tsquery.sql": "4c0732a2cbda0870af5965140a73b2328d906583ada98949e8395a031bb44b99",
+    "scripts/semantic_search.sql": "6b4832106ab3f2a4825bc00855d8e7e265a59863a715c5b935e0deeaaac1a316",
+    "scripts/setup.sql": "342533dc639802c46a1bf593984f1b867392d704edfc552a66cf49bb6c8035e4"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "eea07774b0805c0e59f01dc741ddbe2f4b6051e6e9cfb025df581cf9d9716ec1",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/code-review",
+   "upstream_name": "code-review",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/code-review",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "09eb147f793e4647949edd32dbad278f0554dfb56e0d46b699cd4c2c55bf0357",
+    "agents/openai.yaml": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/codebase-design",
+   "upstream_name": "codebase-design",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/codebase-design",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "DEEPENING.md": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+    "DESIGN-IT-TWICE.md": "52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010",
+    "SKILL.md": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+    "agents/openai.yaml": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/diagnosing-bugs",
+   "upstream_name": "diagnosing-bugs",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/diagnosing-bugs",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d",
+    "agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+    "scripts/hitl-loop.template.sh": "35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/domain-modeling",
+   "upstream_name": "domain-modeling",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/domain-modeling",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "ADR-FORMAT.md": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0",
+    "GLOSSARY-FORMAT.md": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
+    "SKILL.md": "7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3",
+    "agents/openai.yaml": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/grill-me",
+   "upstream_name": "grill-me",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/productivity/grill-me",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637",
+    "agents/openai.yaml": "c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/grilling",
+   "upstream_name": "grilling",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/productivity/grilling",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15",
+    "agents/openai.yaml": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/improve-codebase-architecture",
+   "upstream_name": "improve-codebase-architecture",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/improve-codebase-architecture",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "HTML-REPORT.md": "581e8bb5a521e46bbda8ca7e19b15948bed882187108092ebb90c62513b77528",
+    "SKILL.md": "552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392",
+    "agents/openai.yaml": "c8cb20f68ebf0edb4e497bc11ae5fcaa196004e661cd189015b04f4109ced7f1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/prototype",
+   "upstream_name": "prototype",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/prototype",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "LOGIC.md": "f61c7d249e786a79ef289018901c348271e1798dd0b0bc5607b5c6f4d4a01ab9",
+    "SKILL.md": "714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3",
+    "UI.md": "723211e878acbc7b6ff09755263f3295cde724ba902ff0064da41eed51d45ad3",
+    "agents/openai.yaml": "5af65e43ab41a350436697b81e27b7f848d36782043b73c322bb2c9fa9cc55dc"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/retro",
+   "upstream_name": "retro",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/retro",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "33fbc28568e3146f20fd908b12998bc0ab30aa4f4c87288199a40793efa94696",
+    "agents/openai.yaml": "cb6fb9d7e6b4be5975f41f6def1dd00a1255bad5d9b02696b124c924a8b8745c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/wait-what",
+   "upstream_name": "wait-what",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/productivity/wait-what",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "d961bb37defd975c539427edb8f450cdbccdcdd552e213c1ece46676a7970905",
+    "agents/openai.yaml": "b41faadf741d51e4ea184148b2d1854d93f947aaf754c7844f70a00f04194999"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/wizard",
+   "upstream_name": "wizard",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/engineering/wizard",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "bdf31d48211ea559878f95a4f344aeabf8d85897488ba564382bab0b000daac1",
+    "agents/openai.yaml": "98f44d682d58e262f160dc59a8befc365e0aa65820dd0261864af26aa8e59d83",
+    "template.sh": "6566f147299bc6f1d941e64591ed04385416d543e11f96f564c7228f5018d0ed"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/writing-for-agents",
+   "upstream_name": "writing-for-agents",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/productivity/writing-for-agents",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL-MECHANICS.md": "c768e6307c7c10728c401c213f2c4ba71c542127eeb7ad2956aabd15a0fa0059",
+    "SKILL.md": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a",
+    "agents/openai.yaml": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mattpocock/writing-shape",
+   "upstream_name": "writing-shape",
+   "repo": "mattpocock/skills",
+   "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+   "path": "skills/in-progress/writing-shape",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "f5e6c57bdd85178ace4a260c92f46da6b64ddee18215b461d875739c68976f72",
+    "agents/openai.yaml": "56de45430e23104ff178415f5ecf7821d51a9cfabd8814b1607ebf39da2ef5cd"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mbfinotti/ad-hook-analyzer",
+   "upstream_name": "ad-hook-analyzer",
+   "repo": "mbfinotti/advertising-skills",
+   "commit": "7ede9c641c67d03fed5df54613f14e3d999a8716",
+   "path": "skills/ad-hook-analyzer",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "5e4e450f849f24b0a05e7e94a4f764bf8a679a5d34309a193b435a3678c87411",
+    "evals/evals.json": "df9976d6a912e616edc31979e89f7d25dd4bf195fc45d215f503839424cba228",
+    "references/examples.md": "b6381dd2b822ada21323c4f81dc6b808f0694f37c6ecb362f4fa83871e77a875",
+    "references/hook-patterns.md": "c8fbb6b7ef24c14472e315b305e7fbeea1123a509820315ff9db89045b01d82a",
+    "references/platform-notes.md": "53d0a2a5f2a9c4de7bfa225462d9a877cee7d918aadbb4d43507cfbf21cfe4f5",
+    "references/scoring-rubric.md": "7776d708ea5fe31e2a62c293fdc24c51b8e347f7448eabd58bf5a59fff74842f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "eb868999f440605d013cf45656ecdfd6f8b7138a118c456a25f408e07462d54d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mbfinotti/influencer-outreach",
+   "upstream_name": "influencer-outreach",
+   "repo": "mbfinotti/partnerships-skills",
+   "commit": "ba2db8acbec9f1d3c7b5c4c5f7e18e68217620dc",
+   "path": "skills/influencer-outreach",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "3e3f0177adedc8ae67ba63f8797b206d9fae97757eae320afb2950a942de09c8",
+    "evals/evals.json": "9319d2df3e366f53fe6d13c52962a8b6ff6afdfb93eead39212870fffba18d27",
+    "references/channel-and-manager.md": "813ad0ae3bd6ac3d3355b56062f3ddba9a3eebd5207c70991808a3aac64be36a",
+    "references/examples.md": "07cc03c71a50805389ccda091d456e64b6ad6e161707ac02b838065aed28e2d5",
+    "references/follow-up-cadence.md": "fef84e4fd0e1ab53209aa142bcb98d560784ae6307fff5b262784367e1e326e0",
+    "references/pitch-anatomy.md": "705b617d546448b016a5d6ab1ba2088a799eafb1e49bf37cf2c992a06584b7a5"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "eb868999f440605d013cf45656ecdfd6f8b7138a118c456a25f408e07462d54d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/build-game-inventory",
+   "upstream_name": "build-game-inventory",
+   "repo": "MengTo/Skills",
+   "commit": "a45892d2fdadab75b31fb16abecc02f101b31c43",
+   "path": "agent-skills/game-development/build-game-inventory",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "361fed9d464173899301651ea3e1313ce17f28472a236edcb0e022763bb945ee",
+    "agents/openai.yaml": "4ac696ac2931fbd4eae50f25b5574d1f001d2294c9d12173a11db6e0b608ef67"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/build-threejs-enemy-systems",
+   "upstream_name": "build-threejs-enemy-systems",
+   "repo": "MengTo/Skills",
+   "commit": "a45892d2fdadab75b31fb16abecc02f101b31c43",
+   "path": "agent-skills/game-development/build-threejs-enemy-systems",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "b33c08b3296ea1a39d37705be29d773db428ef8a337a92f3640eb2cb6792bbb8",
+    "agents/openai.yaml": "c5a103983a47b51e926102f46fac77f17c65f7fff97e4535959e5b9794c38bd5"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/create-game-vfx",
+   "upstream_name": "create-game-vfx",
+   "repo": "MengTo/Skills",
+   "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+   "path": "agent-skills/game-development/create-game-vfx",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "14579867468da3b065d1b8c9644f4e9a8cea552526936c2518f3c150e049b9b0",
+    "agents/openai.yaml": "51a990d9fcd4165f65f33f72c6308e64ccb1c35717eed396198b3e50b58b1f1a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/design-action-combat",
+   "upstream_name": "design-action-combat",
+   "repo": "MengTo/Skills",
+   "commit": "a45892d2fdadab75b31fb16abecc02f101b31c43",
+   "path": "agent-skills/game-development/design-action-combat",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "0b6289f0c651987554e2c82dda45e18582eb2a21412672778ed76cd1a214df17",
+    "agents/openai.yaml": "d20e19f81acefc43fba2fc62602381465b44077ce68bd8aa9b9b0ee05701c3b5"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/threejs-landscape",
+   "upstream_name": "threejs-landscape",
+   "repo": "MengTo/Skills",
+   "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+   "path": "agent-skills/web-design/threejs-landscape",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "fa361bdf1008be41e9447ebe1e9e195a6d0ecc9a781a8e8c63ac25cdc7aedc86",
+    "agents/openai.yaml": "92bc56e5b93243293b261ab56f562ef244604c965884aa6efd0df21cf11697ec",
+    "demo/PROMPT.md": "aa23559b8f4c502e1dc05ea6fb10a77e40f3c30d849edb27106455b584a8c685",
+    "demo/assets/three.min.js": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+    "demo/index.html": "8529d56b5308cdf7bcc8b32ecd78d9c2a490bf14647e06e0587331849d134f52",
+    "demo/preview.jpg": "096034baed0bbb9424757a9fe6049602216f86b00c7f9d094e5f1ebd52e4292c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "mengto/threejs-towers",
+   "upstream_name": "threejs-towers",
+   "repo": "MengTo/Skills",
+   "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+   "path": "agent-skills/web-design/threejs-towers",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "f184ccfbad0ce6ed6e00731decf2fa044109c2bcd40fc9793e4e2de3ee4bb0a7",
+    "agents/openai.yaml": "2d6123d7f8df5d0f0a477b27163f8e51a628b8fae24d8629205924148301a96c",
+    "demo/PROMPT.md": "5a85d11d8110d6c69f0cfdab785c3be16548dcf1f7f399644ce631856a15b322",
+    "demo/assets/three.min.js": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271",
+    "demo/index.html": "9c1f83cc6535b5cadf58439de3f07abaa7262bb26ddd722e36265b3e3d00d852",
+    "demo/preview.jpg": "ebd2842cf716377ea5ae8ae0ab755aaad26eb20cfa9e582beae6d3b7fa16aa01"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "minimax-ai/shader-dev",
+   "upstream_name": "shader-dev",
+   "repo": "MiniMax-AI/skills",
+   "commit": "60aaae52bb2af8162732751a4332f62a5fef518b",
+   "path": "skills/shader-dev",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "7d3cc9d69da2b598e423da5ec927ff61371edab669e2b9a2f4bcf3ec0f29db4d",
+    "reference/ambient-occlusion.md": "026d1a8cf85799e525964101b523378f3d10dfeaa78c4554c0bcf39f80346d2e",
+    "reference/analytic-ray-tracing.md": "7b5be6a7949055cbe8a627b246d26176fa0645db2e732b31740489936c4e6fd3",
+    "reference/anti-aliasing.md": "7ae0fd4969f036bc52f713ee23af325f9a1f6eaa4ebc1ffc1b301ce528748876",
+    "reference/atmospheric-scattering.md": "699c461a18c3426aeb4137a408378257b3429a49143dabcc4351e6859102d212",
+    "reference/camera-effects.md": "b9a066ce73f8f08e29f39c6863d22eff75644fd44db1db979b094ec26d32d659",
+    "reference/cellular-automata.md": "a5741e109dd489af193bfb44560eb1973270495a09ba2e927127766c4a037de9",
+    "reference/color-palette.md": "19529d6b10f1ad09e29f5453e69377da1f5152e5bd31f1f02f2c55c5c7b570c7",
+    "reference/csg-boolean-operations.md": "5465eb980c80d8f4869e883cdb7b75f603c44cbd578f926a105eb77e83194ca4",
+    "reference/domain-repetition.md": "5ca346f470492a1168d0128f1b9f966eee5177218eaba9cfe8136cefacc8acda",
+    "reference/domain-warping.md": "2cb44b9d46883f2fa26928f878be19fb7fa31cf345212e621454ec462f287dc1",
+    "reference/fluid-simulation.md": "601da19ad79b438ed09e510cd906b770b1564571482872b4f9eabac4be913048",
+    "reference/fractal-rendering.md": "381b0379f018ab428a9ed5a7330511da91bf9091b257d6c1c5d6c10b3b2173bd",
+    "reference/lighting-model.md": "071e8f42c4b79f468b17685c536f72a892f25867492368e37365c4b84eb9c8b1",
+    "reference/matrix-transform.md": "d69d0ac03abfc2f94cd467d78ffef57f072ee7bf571106ad3745b77409bdc824",
+    "reference/multipass-buffer.md": "4ec6f91059e6289aa68e1c8bbebd7f323a9ef4d6423e10609922a8b0ed2cca8c",
+    "reference/normal-estimation.md": "c3ff7482db60f67cf31faa260848722ea44752d07919826b8c8a0e28b0c40aa2",
+    "reference/particle-system.md": "fc10bbe781ccfcf6df8dffa5e87955b6d10afc7735d86d9c1b0a8269132a7c2b",
+    "reference/path-tracing-gi.md": "639e9da7586b2c374fcbb5db8aaa6e561feb6ee50db70b8fc733ba36fed2f8d6",
+    "reference/polar-uv-manipulation.md": "f88ed9571429ecad18e611a5ae891a59301f07e5a03603ae1827833667788a04",
+    "reference/post-processing.md": "c91a3c254aaf4a2c6b9a4eeace8f7ce7736d63f47ebbaad973056f235abe59ec",
+    "reference/procedural-2d-pattern.md": "c3b59cc31d98251ae2154e3ef3bfc8f6f9661576f46d4fd8bf63910873016287",
+    "reference/procedural-noise.md": "b3c1a23cf0c68d7c9341958a87a0fc24ed6886ec7ca54283ea67547ac7cf8523",
+    "reference/ray-marching.md": "d904a84f3c4acdcc6a9674fe77dc9db0f5139176bb500ac9b0a88a4cb695279e",
+    "reference/sdf-2d.md": "6609e4b6a58ac085ce316336feb462510a04ae97cc3485fa3264e6edfb04ab06",
+    "reference/sdf-3d.md": "76fe2536f068b10aa911f5b8f36da53978622595ffdd6077770cb6ae33d4c7c8",
+    "reference/sdf-tricks.md": "d318fe207f076a70bc3fc6dfef752139ae75e6140dcca74fdc063b1ae500103f",
+    "reference/shadow-techniques.md": "0a11fa7a1716044b7fb9d450001b6c67299aa1d56b4e9b2ffdf8838621cdfde1",
+    "reference/simulation-physics.md": "05bd388f759a90d28467c5db6bf298a4ccef208d11fdecedace874dcb1e5ba6e",
+    "reference/sound-synthesis.md": "994245b4232568b0567cac03fc0154a8a62abf545fee7ea3246e8edfb2957a44",
+    "reference/terrain-rendering.md": "7a017d1fd230c23682840ec41cd5fb44aeecca905840c06afd76fc75e7b22c43",
+    "reference/texture-mapping-advanced.md": "6e95500d391ac4df2e55c1dc9792e0ff4857730800b1d72835eace5f1f851050",
+    "reference/texture-sampling.md": "13eae848d63271419b738611bb0fc63f1f8c4d09153e6bbc16109584c4fb4783",
+    "reference/volumetric-rendering.md": "b34181665c3e356aac2168eea0a096bc4d6b93341f95eb7ac7edb3cf7cb48243",
+    "reference/voronoi-cellular-noise.md": "e0ff61e059d56b9d0219ca001ff02e560f34533df3749f0ebc9cba8aea549b7c",
+    "reference/voxel-rendering.md": "41137bb01b5fa8635dd64b910680f0f818a198a2fff567e0b01854211e2e1c55",
+    "reference/water-ocean.md": "11a43fa7b9d81dbd1242a9c684dbacfd8c45fd2077e2e13a65b44f881781aaff",
+    "reference/webgl-pitfalls.md": "a5be3d362ec43d63cc1db2dfc4858b963e2ba2d4d0f118f90b94fb06de6e3184",
+    "techniques/ambient-occlusion.md": "ece48ac8bf9d3705ec75b221f6137e383194c6dee542d1ca5391bbb918406f1d",
+    "techniques/analytic-ray-tracing.md": "d8abf6653cdd0a49dc7d3fbaf4c4c0c1fa098d060bdd452c3a4a0f9ebc773b46",
+    "techniques/anti-aliasing.md": "a86b6645cae7d0e41d6d13d4332cfbb0d0bf198cae37bd1831dce58469c285e7",
+    "techniques/atmospheric-scattering.md": "535dcecb25de1ef3bd3087588b82cba09edf20346f6806b812b56abc4df534a8",
+    "techniques/camera-effects.md": "9c9c2aeee72e11ce8df0bd5bd7940277051d2d58527ad4ae04741b2d604131d6",
+    "techniques/cellular-automata.md": "7ac24ef6da0e1801ef70dc9400602e3019937ea8942329b2e0c7544c7b23f886",
+    "techniques/color-palette.md": "96b0b417da68ca96f1aa8a84cb5c2af850c48d0870bf652d6a5cfde40c1f14b4",
+    "techniques/csg-boolean-operations.md": "2fc7f36823ff5fa75bd60e72a33962b91639416479e4f82a84c11211a42cc549",
+    "techniques/domain-repetition.md": "8f40caa37e71b6bcd75603cb54fe4883f8d8551d47a39e255008ffffcd82b676",
+    "techniques/domain-warping.md": "cd0838d6fc8d770f087ae33e56588db0e8ece205a16ee0f6170498ca0666ab17",
+    "techniques/fluid-simulation.md": "85c6314b4b71ce13d01a713de6f2ff5c8a3870f9eacc4c45b7465a82424426b1",
+    "techniques/fractal-rendering.md": "694a3e87cd47670e21ef1af294fb18cdf23b9b76a4e6946ff011bfe75428e694",
+    "techniques/lighting-model.md": "1c85240cf8650d320bbc8996e36333623e4d916b05f4baa2a54a06b1c22f1bcd",
+    "techniques/matrix-transform.md": "46b5ef46f93c143537627e1d29799657e32bc9f8ca973dc6501b75431d2fc9d3",
+    "techniques/multipass-buffer.md": "50d54c06a55ae5b75b36eedcd074ad40c6c2b233b675da6cba7738d5f9f50147",
+    "techniques/normal-estimation.md": "1f07cadacc05ed9cd9acc150796549519efd1419df714714314e40222f5a0891",
+    "techniques/particle-system.md": "a5d49ac5d828d37fcc8e053e63f00c93c87ca43ff01707af83c140016dcc6b92",
+    "techniques/path-tracing-gi.md": "8dc0d709e1b6c51aaab79c08d034881764a54873c2a19bc5f4c1ebc2cacaf03f",
+    "techniques/polar-uv-manipulation.md": "a2f3e7838271d021f7072353f2542c9e41c6b4779823ff03bd9efa3393c6252f",
+    "techniques/post-processing.md": "617e8608e76af3491d2e79fd7a9f56b9bccc821608d3c61ef1bc05c62e2cbf99",
+    "techniques/procedural-2d-pattern.md": "3ad1d15fed160066d9b78f46a284a4e444a9965fbf2e7ec8fa4d8d7dbbbeb8e2",
+    "techniques/procedural-noise.md": "3f3ace3f7f346fb4eb6a7d77e7cb8d8339c3db089f1eeacfaf9a101ff6b3dc25",
+    "techniques/ray-marching.md": "bc9519c1f8d36d611f48d80decb0155da5d2aa6de25eac2d22713510f05e7819",
+    "techniques/sdf-2d.md": "e65e1fc945d16531a7f505b68db920cfab9d518226fb0a327b267475743ffd43",
+    "techniques/sdf-3d.md": "61255ef5f36afec009ee041eab88904730fb57b9d13db0d5435795a7f6fc34e5",
+    "techniques/sdf-tricks.md": "d6b40ee14035b0da219c68a563da85114a4243b2d32ed8a7dfe2bae8f4247af9",
+    "techniques/shadow-techniques.md": "d9aa1eb66df922760380fc22079f6b373be854f699702862f7abf079242f4c3f",
+    "techniques/simulation-physics.md": "29fa7d8535ec39684d30d29b8f7bc561119aec8a576bc75a51acbbc1aea1eab7",
+    "techniques/sound-synthesis.md": "098b075a08cb816885ddab78da6a39b5dd5ce3839c2ab49edac9204d30c897ed",
+    "techniques/terrain-rendering.md": "d7525e73245c5f3ed8e0326bcd4024b510fd3197578898a34159041467cd6c78",
+    "techniques/texture-mapping-advanced.md": "d54da86c06a4fba5843bc100d61e464d0ce5d4e7b42babe4783a349ee9794e0a",
+    "techniques/texture-sampling.md": "17f890578f622f3417e3a9d3060a6ae28a1147181a8f72bdc48be662a7b165ef",
+    "techniques/volumetric-rendering.md": "5b35c76ed78930227c38017d34e6af03a91994be125b3fb0b300c3813b711567",
+    "techniques/voronoi-cellular-noise.md": "3751fe0cd87ad7dc049fe59a247971bed73861eb951acae71a24c89195871a14",
+    "techniques/voxel-rendering.md": "4ebebd4380c4243c4e704349d5696ea42a17e69ffb98b2a29bb77a7d02313350",
+    "techniques/water-ocean.md": "52d0a5638561e4a935dbce6d8ac5612aef07ba7e03602f7080a1e39c9c08eda8",
+    "techniques/webgl-pitfalls.md": "a4639b1286662ee0be49e1acd324591d8a65da97c26f11160ed53744e3da76d7"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "eed4ccce37c2d24822da3bd9d5bee7bc12d494741de56ada513d0b97f537fcd0",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "miqdadbadjuber/antislop",
+   "upstream_name": "antislop",
+   "repo": "miqdadbadjuber/anti-slop",
+   "commit": "b1cdf87d49b1653293d58424516fd80394008345",
+   "path": "skills/antislop",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "64a1ff70bafbfb7a105083cdff0026a6f09baf7e19d3aa1bc3e880cf7233f90c",
+    "VERSION": "ce6ddda39d58fbf68b3810aa75fe22894936f20c1e62c901ae455e0bab5138df"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "9fd83fb1fda52ca0094b96e2ed5a3d6c42a81b95a6c6326553f5bbe570f443de",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "miqdadbadjuber/antislop-copywriting",
+   "upstream_name": "antislop-copywriting",
+   "repo": "miqdadbadjuber/anti-slop",
+   "commit": "b1cdf87d49b1653293d58424516fd80394008345",
+   "path": "skills/antislop-copywriting",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "2434a6fb0603dea1e62d4c1968382def47af779bd0e43b2130edd49df41ba444"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "9fd83fb1fda52ca0094b96e2ed5a3d6c42a81b95a6c6326553f5bbe570f443de",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "momsesimspcl/csharp-zero-gc",
+   "upstream_name": "csharp-zero-gc",
+   "repo": "MomSesImSpcl/Unity-Performance",
+   "commit": "6ceee6d0edf989d67f1a2171e7015f3e80757542",
+   "path": "skills/csharp-zero-gc",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "588ef3c1911a1b2dfe8eb2e1769539ef2feda9fc8c52cc0efbe277e994bff9e8",
+    "references/allocation-inventory.md": "89ec854ef63d907b5dcb767636bfb725573c6b296ea4d3004ce6e788db241719",
+    "references/core-rules.md": "c7656e48cb09acee85ebb075adc13a9776dfb46b528219e7c003d82162a03a43",
+    "references/execution.md": "41579237675d36d51be9cdd437f5c4b7345b328da3960849bd8807c5c2a88270",
+    "references/guardrails.md": "5655c65ff985a273cbfeb170f214f0d913647079ec8e6824daefe6f413d42496",
+    "references/independent-review.md": "8825e0d2b47a1a20da2d30cf004eae8aeb3cead0cbfed0bbb8328c4d7eee3eb4",
+    "references/reporting.md": "ad0dd538756164a581ea5ea1d963d0872980f2872ccc53e5236244ea2fd8539a",
+    "references/zero-alloc-libraries.md": "d6d9e97bdefde934d6309fdc164c72473ce22f54e1f598c671a5470c13b43c7c",
+    "references/zero-alloc-patterns.md": "64ba8297e0dfd419bb02517d128b1ca5294b9e21ccc790ba294d85d359270c27"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "e260c1d63e0691ca9c507919f1d6584a8b2e88c2c09509cb3929f04692fa4abf",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "momsesimspcl/unity-performance",
+   "upstream_name": "unity-performance",
+   "repo": "MomSesImSpcl/Unity-Performance",
+   "commit": "6ceee6d0edf989d67f1a2171e7015f3e80757542",
+   "path": "skills/unity-performance",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "1881313c160e391290f189fcbfe4324125dae401f6d4aac330d20bb2ffb305b7",
+    "references/baseline-antipatterns.md": "08d5b3ae7b7b7f7de73f6c02b8db94cb47b42c93ca7c20063a9806f4698ae28d",
+    "references/benchmarking.md": "e5c8a562c0b65a814bb9e144ac58f1d9d2fb17645414e042cacbb6f2cff2fb0b",
+    "references/core-rules.md": "99f9f9641c8cfe7defade22e5b6ce779e5ec3180b64a8bcb15d4bb575c647ef2",
+    "references/csharp-hotpath.md": "d765a8e86c6a6ae1cc08cd445ea5044b6f5b61bf55706e536e821a4525fd5f08",
+    "references/device-acceptance.md": "da085687c23f7133d5679d0045317ff185473725ee49459071534a9f6f3e51fa",
+    "references/diagnosis.md": "ddf1b83e4e2d5b17c29bf25293490752268c2a8f050b4fbea934b340839baeed",
+    "references/engine-rendering.md": "b426655acc35878bd8ac929f0ea07fde113dbd618f85d6ddd37729fef128ec41",
+    "references/execution.md": "7e24b43b83e1681b27a92a2ffcd95bc19e663535c011abb331e993a9b921d972",
+    "references/finding-validation.md": "4407ace11559989d274ca5f9a834745678b9fd9a17f6a1ce225151535ef64bef",
+    "references/jit-il2cpp-tricks.md": "09afd7815f42c98f90b0d374dd8430422c106646e79a322ab97901642991074a",
+    "references/jobs-burst-dots.md": "9b71c5e209bd506fe77ddbc4124d5ef04b635dbcf994056b8b5d9adcfacbe112",
+    "references/memory-gc-internals.md": "9f0ea8f9a503fec3a6a1174c5cc22b5179ba97b9f37dd95747a597f1906a2729",
+    "references/profiling.md": "8b5895b6346d0104f9b719ede4adf6ade18c5a3546d0dafa321697ef0c5fda90",
+    "references/reporting.md": "7d681062f75e95992120beb32bcb49bc627e7116123206e535136251a8e982ae",
+    "references/review-method.md": "92674584809fde64f9dacf8b6b7cd4b62b6c5339669ff300037ddfd1afcc59fd",
+    "references/runtime-ladder.md": "eeadfade38dc5d5264239cfc73688aa31301e6bfd51c24235d32dff8b11c52a9",
+    "references/span-collections-simd.md": "3f3217889f5bdd3a3d186294f1a6133cff8e96fd73f25676dcf85cd79a8f59e3",
+    "references/tencent-optimization-playbook.md": "b15d2e25d853db2be000788b2894ec3acb722215e3a499a08398f070c129ce51",
+    "references/ui-ugui-tmp.md": "19662a88c19d469680bccd1d62978a58acbb1dade72f5fad471b86d05cf8c4f1",
+    "references/wetest-bugly-fieldops.md": "a4459407e5f8435e021a85468e57b604f7af6554c68377132c6043c9d73705d1"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "e260c1d63e0691ca9c507919f1d6584a8b2e88c2c09509cb3929f04692fa4abf",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "motion-team/hook-writing",
+   "upstream_name": "hook-writing",
+   "repo": "motion-team/creative-strategy-skills",
+   "commit": "8e467a3547dcd2118e4d08fa58099553677d52ff",
+   "path": "hook-writing",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "b32ea86624c7aaf4eaa0f9e73a3037dcb728384127b3d9add21b6bc2b27851be"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7bda66c4d43e7cb344a41f5cfa8c5d4755e8f3aa04536d10cafdece59658606c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "muratcankoylan/context-compression",
+   "upstream_name": "context-compression",
+   "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+   "commit": "7638f30c4b59b09fcebe915fda4b5bd1e3999d35",
+   "path": "skills/context-compression",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ab4fd1e1046db339d83ead5089d4cb9d9c487232945d4ff6be90e08a03f6cfea",
+    "references/evaluation-framework.md": "2584d5ab6c1322c0df7a581a6f5354be052bae077e16f76ef7c772f750ef81d2",
+    "scripts/compression_evaluator.py": "425d07d73420073304ce58c078c561cddd61420816efdb080b40778f5c1ed350",
+    "tests/test_compression_evaluator.py": "8d0d4a83ac0b0eae25b2c270b54f0982e16be56a6dc935b73cd1411aa21ef829"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "65bc33b0759a48b980962833b12bcb820404da9f5256bff39c00e89471bcf209",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "muratcankoylan/harness-engineering",
+   "upstream_name": "harness-engineering",
+   "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+   "commit": "9ff0c99108b36d3b886defd825d8ac1f47dba374",
+   "path": "skills/harness-engineering",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "dde3d8f46d4d09dbab41358baa3e8310d7fdfcd2fbefa127153ac4f6b5ef7b16"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "65bc33b0759a48b980962833b12bcb820404da9f5256bff39c00e89471bcf209",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "muratcankoylan/long-horizon-prompting",
+   "upstream_name": "long-horizon-prompting",
+   "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+   "commit": "9ff0c99108b36d3b886defd825d8ac1f47dba374",
+   "path": "skills/long-horizon-prompting",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "63c5a2a26b007399a0c83916e228bd0b5596db978da1211c0270dfd811e08b59",
+    "references/cdc-prompt-annotated.md": "8bf5b451baa0b7cc971f305f9e3351f38cc2bc5429412770c89346129f8a0cb8",
+    "references/mass-handoff-contracts.md": "47bc160cd1939c18089fa6aba3326156810b4ba2804291d7bbd650d963dee899",
+    "references/research-evidence.md": "900f4f01d142e5e815658b9ba71c7e094dc928e9463bb222cca34c69ab4e938a",
+    "references/task-brief-template.md": "32f75f655394b5bae744b2dea4f4a6c18fb8de9851f983f5b01a20ec76ca1353",
+    "references/vendor-guidance.md": "6f24080ad7be4ab64bcbd59d07096ee43a5826f5ac6934a48be84f70ffe2eaa6"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "65bc33b0759a48b980962833b12bcb820404da9f5256bff39c00e89471bcf209",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "muratcankoylan/memory-systems",
+   "upstream_name": "memory-systems",
+   "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+   "commit": "8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278",
+   "path": "skills/memory-systems",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "9e2b38ffe9474ba19c93b3d75c80e683705d82e8a4b59af16d603d133bab8d2f",
+    "references/implementation.md": "3bd3fa6464a42624f09a31ee262e2e76a4b1c4d10a8e677f398fd08f7b3fccc8",
+    "scripts/memory_store.py": "42fc44b2d7545de833b6c70f0ed711285dd3009e631f0711ffe48150ad2c795e"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "65bc33b0759a48b980962833b12bcb820404da9f5256bff39c00e89471bcf209",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "muratcankoylan/multi-agent-patterns",
+   "upstream_name": "multi-agent-patterns",
+   "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+   "commit": "8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278",
+   "path": "skills/multi-agent-patterns",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "786ff9345eb49f1d8e1bc5183e437a6d882f15b50bdb2ce0055a9d54390a3ce2",
+    "references/frameworks.md": "9bdfc21927dba6390c8ca38b13b32601c2936a30e6821beff8466ad95e3beb76",
+    "scripts/coordination.py": "703848c18c1be4e1c2bb1d9eb30a267593c2523957b0e3e852912a0f61f2edf2"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "65bc33b0759a48b980962833b12bcb820404da9f5256bff39c00e89471bcf209",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "nice-wolf-studio/unity-async-patterns",
+   "upstream_name": "unity-async-patterns",
+   "repo": "Nice-Wolf-Studio/unity-claude-skills",
+   "commit": "ad7de73384f7e55b26a9149a482a5b8bf18e06b6",
+   "path": "skills/unity-async-patterns",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "3e9b7f850e7ee9bc6c00d2e75134a1def8d880b5b6d672c657a03a0d40d713b6",
+    "references/async-cancellation-patterns.md": "f0fb84c5df17b950451e2b2a5405ee8687b05a76b0381332ba5dd738d6c91c62"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "8b56b08eb33751e1676dcd7e17e2d884df389bd2b1c52dcef302ce983e7bf04e",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "nice-wolf-studio/unity-editor-tools",
+   "upstream_name": "unity-editor-tools",
+   "repo": "Nice-Wolf-Studio/unity-claude-skills",
+   "commit": "ed8e729a9e5b0f41278a367a6d6871cfe370c0bd",
+   "path": "skills/unity-editor-tools",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ea836546b71e19625631b357f514cdaa53a542350aff87c497ce43af58364e5c",
+    "references/custom-inspectors.md": "a99f741210f3172fae26a38e1fb54331d5608650700b6a803366788c961d4c3d",
+    "references/editor-windows.md": "d0c0487af9c8fc1ecaa30ee0b814686ab8f06ac1d2ca27e926c758ab694ae7d6",
+    "references/property-drawers.md": "8b6fccd71f8228c8b066bf73b25420af30528fd5100cf87ee92f8d15b4d49dbf"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "8b56b08eb33751e1676dcd7e17e2d884df389bd2b1c52dcef302ce983e7bf04e",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "nice-wolf-studio/unity-lighting-vfx",
+   "upstream_name": "unity-lighting-vfx",
+   "repo": "Nice-Wolf-Studio/unity-claude-skills",
+   "commit": "a149d3e995420432f52b0899092daa4b069f441f",
+   "path": "skills/unity-lighting-vfx",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "883993faab33e327ca6d5d3e0e7427de15718c38a857c72e8fc31fd45781a7a9",
+    "references/lighting-guide.md": "833aa26419d19504f9b2749e74e9c1caf78e891d1134b5026c3b8bef187546af",
+    "references/particle-system.md": "9980027961c4a80d98bbda7c1c9244fd3a025c95498f06f9df3fbbf6638ee75c",
+    "references/vfx-graph.md": "3a59233439de6ab404322fd23266f3fccff6de5f32ae1771dfbce1a0c1698441"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "8b56b08eb33751e1676dcd7e17e2d884df389bd2b1c52dcef302ce983e7bf04e",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "nowsprinting/test-designing-guide",
+   "upstream_name": "test-designing-guide",
+   "repo": "nowsprinting/unity-coding-skills",
+   "commit": "941f57ff74a7542a4db8cbb1c7d52df38a9a94b0",
+   "path": "skills/test-designing-guide",
+   "licence": "Unlicense",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ef2775a0c477d99248edc066ec2b687a14788c4e75fcaeac658300fbdbfdca46",
+    "assets/output-format-ja.md": "d04364737555c093ffe716df13681bd92b4e0f2248f75c0340affed757e19ff0",
+    "assets/output-format.md": "32077298075a884bcfa93d764f22eaf29d5aabb0a244cf011999d65ff4de2b5b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/dispatching-parallel-agents",
+   "upstream_name": "dispatching-parallel-agents",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/dispatching-parallel-agents",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "1968923066f3b707eb01d1992cdf4c42284c3855f70253b9cd5000ff45fca13c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/executing-plans",
+   "upstream_name": "executing-plans",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/executing-plans",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "e4649e59880ef2643d1da128e3d607e87e3f969410d72095a5bf65811b6036dc",
+    "scripts/task-done": "d0d4f2397c85a4426443ea955e699ef12568b41b408ec6122d4ec2433ee3a5f6",
+    "scripts/task-start": "f833693c8fce3700fc9f841562d80f8015cd40f652c168a3405ac3e46947a1fe"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/receiving-code-review",
+   "upstream_name": "receiving-code-review",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/receiving-code-review",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "091df1629510af1b92fc4abd6f96732ebedb4cb2c0f3457e8f2740b0504a2438"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/requesting-code-review",
+   "upstream_name": "requesting-code-review",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/requesting-code-review",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "2180e14a448e9410bec88e6646a2d1f0ce7fdd58de27388c1e052e929679d2bc",
+    "code-reviewer.md": "82e370be6b3447523816286195571e4216ba56ba1ad6ad0e87862294c4c78dcb"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/subagent-driven-development",
+   "upstream_name": "subagent-driven-development",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/subagent-driven-development",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "ba41f697136cba88a7962d60c8e2f97488ba04a8688b1d0fbeb27f6953808e75",
+    "implementer-prompt.md": "81dd9d5a3fb0b09b96b5829f03b9796842f3199ef7591d1ba1c2db2a515f64d0",
+    "re-review-prompt.md": "0828a5e9cbb12ba49f14621dd8c3953c48c0fc383e75bb5494f055ed0d6d824f",
+    "references/batching.md": "b54dc7e23dbfb90db89bcb2fb3af591aabf6a271a165fbc0da4c6f9439980eac",
+    "references/cannot-verify.md": "e698713a15e0eabf1a2ab26ffe1bb04bf70c9d6d2e2060d44a0f9a1bdd4408bf",
+    "references/final-review.md": "2fd999d86e5dd0b9b32aaf93f2a41663ef30b3e3cb78fb2fd5cb450eb59eb9de",
+    "references/fix-loop.md": "eafff1f801af2ced86e8761f3eeef04b701860d986ba5d0a8b20d506a75104bb",
+    "references/handling-reports.md": "8f759cdd4936220c38aab05b6d6c48c6df8ac8f146b0f37a6d2facbf87133c67",
+    "references/preflight.md": "3ea21c5fc1af1a190ac8a9d19ceb0849b47bf2ffe27b87dffcc21b6a0539776c",
+    "references/resuming.md": "ff6e38bde2276faa2a7e93513086caded0ea10edbf2ec7f349a7e3b0d7c668c4",
+    "scripts/review-package": "f9275175b2276b1d5fdb1bae0bedaadd2a950659b7c6f311ea37ff85e1861b1f",
+    "scripts/sdd-workspace": "4fd9770e7a49b6bde488c0e92bac1b3bd01fcbdaf8f06b6c4efbe3a1abd99f86",
+    "scripts/task-brief": "cc563538e09abf719b34ddf4b2fa7a65cf3b301729039dbfa923cb060f729146",
+    "task-reviewer-prompt.md": "bfed55c8f19d0ff6ed57b0fe09127c92890e9311c6c73917129598826bf9ebe8"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/systematic-debugging",
+   "upstream_name": "systematic-debugging",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/systematic-debugging",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "CREATION-LOG.md": "c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789",
+    "SKILL.md": "51c6435d98c83c42c96ba7c35725a0b2c376cd487fb1a4e6bd0ddbe7e33ef202",
+    "condition-based-waiting-example.ts": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+    "condition-based-waiting.md": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+    "defense-in-depth.md": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+    "find-polluter.sh": "dd7b8f13c4cc2a24b33ff87b18da9248f3e1c80a085c3316224f69ff0fa5c43c",
+    "root-cause-tracing.md": "75b933b6a8c40bdb2031b10f21654395b56ec6ab6bc7b018c18d3fe57aeb7fb8",
+    "test-academic.md": "fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486",
+    "test-pressure-1.md": "0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a",
+    "test-pressure-2.md": "b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016",
+    "test-pressure-3.md": "96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/verification-before-completion",
+   "upstream_name": "verification-before-completion",
+   "repo": "obra/superpowers",
+   "commit": "3be5aad3dd2400ef23b15680969f4bcd3b6d7b8b",
+   "path": "skills/verification-before-completion",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "obra/writing-plans",
+   "upstream_name": "writing-plans",
+   "repo": "obra/superpowers",
+   "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+   "path": "skills/writing-plans",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "okokelly/unity-texturegen",
+   "upstream_name": "unity-texturegen",
+   "repo": "okokelly/unity-texturegen",
+   "commit": "2f8bb9d21e6d291da1ee7c901d222e168a2602f3",
+   "path": "skills/unity-texturegen",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "d2b131626102cc6949916ee6cdefa63adc36aaa1b241edf07d12d4ce4a9a8476",
+    "agents/openai.yaml": "fc8b68e72134e2a3afdcb198903740b3a55d81bef016c864b3dd9efa7a08d2a7",
+    "references/prompt-recipes.md": "47d2aee6c3e76b9c6c506e4feccd30fe7b7c36564b32e48138844fa6d330adee",
+    "references/quest-texture-specs.md": "dee19b6a2b40a794210adeeef5d7867c8b092e19d0f719d8c7dbe42d784e1971",
+    "scripts/make_tile_preview.py": "960bad4beb1b2be3f0f6b1d8d1fb6253f600daaf49f3d6cfec1ffa3436043c6f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "299ccfe65a705bdb6018a3cc8d6d340f52c6e3135e760d41c64634a6f54a3f56",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "omer-metin/vfx-realtime",
+   "upstream_name": "vfx-realtime",
+   "repo": "omer-metin/skills-for-antigravity",
+   "commit": "e8dcf4e8737921a10088bd5c9eb65e81f74c051f",
+   "path": "skills/vfx-realtime",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "3c258c8f88affd4815ce721da2a1b59ba76bf5e028aed2a4266395688b0f68a9",
+    "references/patterns.md": "530ce65d887e1eb6ad6417ed7f4cb90f6b07044163b8175cc84e87e8433502e1",
+    "references/sharp_edges.md": "0d0d5e39dbb4b5372471b0c5d2164da596725c11e374618fbed2e3ba3591acd8",
+    "references/validations.md": "cfd070aebb293a364fadc2958ba7bdde3c03cfae99d5eded822af476c0906a59"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "9b19b4bf2d7c6df1974e35c761c84f10f258d9fcab64a60c292b2752e81a9ec2",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "openai/playwright",
+   "upstream_name": "playwright",
+   "repo": "openai/skills",
+   "commit": "a5119697b819090e00e5d11ee1d86834d7c1043a",
+   "path": "skills/.curated/playwright",
+   "licence": "Apache-2.0",
+   "review": "recorded",
+   "files": {
+    "LICENSE.txt": "9a7110fc2d2f964038e5dc49128f908f29f47a574c961cba16085914e879cbda",
+    "NOTICE.txt": "417d5d3372914ecfd9fe102ac1d7dc2119253209f9718d6c222f616876c1904b",
+    "SKILL.md": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8",
+    "agents/openai.yaml": "ddda43720fc566fffa45264be8f17f7745a3cee28d5245d41d3b963bc9967230",
+    "assets/playwright-small.svg": "f1d213c0f76735d8272c3d3e9fbf71fe7b894e2d1588907044c780f2c33a9732",
+    "assets/playwright.png": "521669f088c838196c6c852ccc9abdd7234d8f37fc9a8a7a9af7db2d50193381",
+    "references/cli.md": "7c069a8206ba20b9ddbdc42436b04de30bb3aa4a825ba98680757ee62e954900",
+    "references/workflows.md": "a2b5835a00ebee3906c146adf7f764f7718ea3f89a8702d86eaa135dfe0fc8c2",
+    "scripts/playwright_cli.sh": "aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5"
+   },
+   "added": {}
+  },
+  {
+   "id": "parallelsucc/style-anchor",
+   "upstream_name": "style-anchor",
+   "repo": "parallelsucc/style-anchor",
+   "commit": "a228c92f7cf371976697d376370b9ef2c99593c3",
+   "path": "",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    ".gitignore": "d655fc4c472b5c75dcc74ef6b840405358f1969a89d0d71f80f6ef5ab5eb5a66",
+    "LICENSE": "4d38f67d8a1a5248a03afc18aba2684b9507d132558a990f323cb5eda050a26d",
+    "README.md": "8f61f5f58e2d45516e056ac4e63be279e79b1edbddc9a6a0e15efc2de3ff7253",
+    "README_zh.md": "ce8884f727ed7d22eb528c9e912ebf9656880dbfb9f42989cbcf84379eede927",
+    "SKILL.md": "640267d0465245278c9e2ce134ac8eee39f79c7597993042dd25a62141c9b54c",
+    "agents/openai.yaml": "2faf3ed632a98cbc2f853ec3ba359b9cc48f8cf5c27f7292c39c484e46dde9cf",
+    "media/style-anchor-intro-poster.png": "299ba99766d2401935ad4747c2a050a40b4b149cb9f9a5b766e3e43befd96d53",
+    "media/style-anchor-intro.gif": "71b55003526345492262077aedcbf360bc78253b2dbb20880f1e2b77421a37d2",
+    "references/media-recipes.md": "bd2f4797e57e89beba30108b71ade99957c17d37cc2d2b3922eb8337b563845f",
+    "references/style-contract.md": "f5d9affc8a5818ce6354c29de5d3de38f7653dccb02ba06ec3256e58b9b111d1",
+    "references/texture-imagegen.md": "2e7d58950b9ba5390b0f8351cb7576e5cba5a8337036840960fe81399b97ecb2",
+    "scripts/render_readme_intro.py": "139a3c7db6bc1c938ebba7c8eb7d1d28dd9c99a15b22c36fe3ecd7f96ad59515"
+   },
+   "added": {}
+  },
+  {
+   "id": "roble3/animation-quality-gate",
+   "upstream_name": "animation-quality-gate",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/animation-quality-gate",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "55d7a0bf7b70957c9d4ba44ac526cac04da0fbec2474f69771742e8d859c7468",
+    "scripts/animation_contact_sheet.py": "32186d126dc4981569eb1e67c017c65f765d0d8664f7e6ebf794234b9cb50d69"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-animation",
+   "upstream_name": "blender-animation",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-animation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "09f1207eef74df2db7956f55029e6f511e78f2592e9230adf2dcf2533cce9084",
+    "evals/evals.json": "0fee82ace8565c84815f1e30886d86dc3beefd941d1b601d889e2273fdb06d6d",
+    "references/overview.md": "be8ee1ed97f4ca332770a16ba1208051a9f07c4e160af536c895fb6901f38f6a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-cameras",
+   "upstream_name": "blender-cameras",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-cameras",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "935637b49c75e0aac3e2707a390028aef59261a9ae1c1176a5268454a440dbb3",
+    "evals/evals.json": "2df124e2e8205c70cf1c1ee209938c9a94402573e03180e62c093cc3da7721ac",
+    "references/overview.md": "80ea9935fe27484cbd3c71ee319eb8ec6541ebac0e118e783bdf3e7a176584ca"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-export",
+   "upstream_name": "blender-export",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-export",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "d226627b03df9dae00c5e3581e4ec081d5076a34bf420d1a01792e08a3636b22",
+    "evals/evals.json": "b13c97e31650e586e387c335b0345a335288ff174a062353d5c39b87a470b306",
+    "references/overview.md": "e35ce955a25b704cd3eb72ae024ffbf7416e1fdbf47dbeaa1d90da39e54b2337"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-lighting",
+   "upstream_name": "blender-lighting",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-lighting",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "62e7c2ce61f97c0aa9e760e6b31492e4a9af542b99b26ddb8aef3064db3f3ef7",
+    "evals/evals.json": "f45e6edb903f08e1ee0d8fe4d8b952b120d928efc4bc3d6f0ff24dfd162d0822",
+    "references/overview.md": "8f88c9123929fc6b3207ce2016729652971656c54250a094bf4cbffeea989eba"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-materials",
+   "upstream_name": "blender-materials",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "d3a0269317245b5a819fc9044c581b919b914c88",
+   "path": "plugin/skills/blender-materials",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "25839f9707b2239e9d45a9e3c8b2d38fddd88515ea81464306062e5524bed1b5",
+    "evals/evals.json": "6b3de9334707ff07a2959e5340cc7608b03d14f4cfb547416876c110700163f0",
+    "references/overview.md": "ed71e8b6d6d19603b42cacd5f7db60e5f18480bd2cd38b1d030ab8cb9724c361"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-modeling",
+   "upstream_name": "blender-modeling",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-modeling",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "787b50ca5ce131eb6cefec7e92985ddee522ea19e9f194e14b756322c902d232",
+    "evals/evals.json": "78e483e5198e31d9cbbf46e7d8dc1d66147e71fe36cbbf748ce59bae34b1faf2",
+    "references/overview.md": "1026110415e27f325cc653dfdc71ee4d8f84ba0563e95478621caabb3084ec60"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-rendering",
+   "upstream_name": "blender-rendering",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-rendering",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "2c5fc68dd34f795149290cabb6dcb5735138dbd99023798cc41ba2b0e882d875",
+    "evals/evals.json": "a140f3e1df999f85993d91d624c39c260dc11165d32ba7dee9ae8671004ed0ae",
+    "references/overview.md": "5f467b6507e1e6f094d008e2d0533e1216714d2468abf0a4dcaea02157a3446f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/blender-uv-texturing",
+   "upstream_name": "blender-uv-texturing",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/blender-uv-texturing",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "54cf8d10bba75a11546b18c407b2c76a4c94eca932ea54ea5c08f97f8c8117e8",
+    "evals/evals.json": "3e994f9897c424a19d96c0d45430243391fe1228da85bf2ac32799264c4e9676",
+    "references/overview.md": "7ab3bc3e680122a6b2d9eaafdf3436634f676b9994eb0f240eb15e49f2b59ead"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "roble3/source-part-segmentation",
+   "upstream_name": "source-part-segmentation",
+   "repo": "RobLe3/cc-blender-skill",
+   "commit": "11016c9a5847897491dde935c346571bd7548e3d",
+   "path": "plugin/skills/source-part-segmentation",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "190f635882edbd260c8798d5c81db0c00fa6470a052c3c6cef8f4215de8a3a97",
+    "scripts/seeded_part_masks.py": "92f4ebfd17bb8fb2486a6fff0973fae83ebf16b86fe6ee03ccec3de1bf2b1f5c",
+    "scripts/segment_source_parts.py": "4b1332880aeed3eadbc799d345638c463a8a56890914514f251694872e516e3c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "53551803e298669de282d339c7e85ae64e6fbf370d07ca08105d8e0a2d2fbf3d",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "samber/copywriting-hooks",
+   "upstream_name": "copywriting-hooks",
+   "repo": "samber/cc-skills",
+   "commit": "123cb155f5ab5751fc13c8027fbfa5eb0d3773c6",
+   "path": "skills/copywriting-hooks",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "53d2d421e168d491b87409c2304cfde052366266f6c33aa24f401b8179edb17b",
+    "references/anglophone-vs-francophone.md": "ffd69a034e6fbc6fd844428fa0230977c39e276e99c5466550b7428103b94461",
+    "references/anti-patterns.md": "492e9cab5ede31c1bc065a19c9407fc636873564bedf9c9d830acd932b39f6fc",
+    "references/formulas.md": "b7743909be4dd42909a54e4fb7b8384845334bfd74ef51a82dfb0a1ff439cfff",
+    "references/title-formulas.md": "6e4b575b1883a1a60c0b729b01ccc255be9b5925ff31c161ed60172daf4bf738"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "a6735e3815503be2fc1ae4813758cb3d0c24a5309df508309ce180cf5a4ead58",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "scenario-labs/scenario-unity-performance",
+   "upstream_name": "scenario-unity-performance",
+   "repo": "scenario-labs/skills",
+   "commit": "5429dea302ccc7edbce8ace9d5c1fb6852499540",
+   "path": "skills/game-engines/unity/scenario-unity-performance",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "4418554c69a330d369880cb2e0c5665a030abcb35e540d53aa1173a1ccef0f8d",
+    "references/critique.md": "d579d9def322941d00b8425ee0e239bcbdf9b1ac29e4561ed414875ca4e16a35",
+    "references/expert-notes.md": "6d274be14906874213ed79f4f7bad0aefa4cf54c12e4c84536f0477dac0e0f9f",
+    "references/gui-paths.md": "8f50b1cc637ccc83f407647ddb80e2ac091984d3e7093ace852ef2b985f50501",
+    "references/procedures.md": "d01839222764ccf55b7b11f32e1ce88bd8fba6ca24f8e4c079dfc226401c39b5",
+    "references/sources.md": "05016806436d70212d4488dc811cc4fa7a38a0954d739f168e218d8d30a0584f",
+    "scripts/AgentKit/Performance/PerfAudit.cs": "1f04553de72dbcfcee20ae496d5e80f256b4376dc7a849558c4586b6101e165b",
+    "scripts/AgentKit/Performance/PerfBuild.cs": "a89fa1b4532123a5816f97394ecd35ce12a5e45072764dc1abebdcf267f50d0e",
+    "scripts/AgentKit/Performance/PerfCapture.cs": "0a1788e09d50c2fe1d97fe749bf884b0e887f5ecc7514b86823e1c508d51c743",
+    "scripts/AgentKit/Performance/PerfFrameDebug.cs": "19e69f94b6aced6358a15edd8c8d78ec992677b25372b55b4fa09383469fd879",
+    "scripts/AgentKit/Performance/PerfLod.cs": "cc9bf20740a9d5bbaaa7410c75a0003660f0d556737012a067bb02e8dcf4bd70",
+    "scripts/AgentKit/Performance/PerfRendering.cs": "af7ba69beeb6d74d17de949a81e13ab2112d6d45a47156c3653f4ecae15c1b1b",
+    "scripts/AgentKit/Performance/PerfShaders.cs": "6aa5cae1262e930c9a4fa07e18555f9b95dcce3391c8da33f82ae266f5cef9cd",
+    "scripts/Runtime/Performance/AgentKit.Performance.Runtime.asmdef": "eb71145c132486c46bfecc868a63b51c196a4437043c422d61e01de40e30d184",
+    "scripts/Runtime/Performance/AllocScope.cs": "f469ee9f659dbda3d387817854999d141b1fd56889b8a3209f0f4fc63159da8e",
+    "scripts/Runtime/Performance/PerfProbe.cs": "2a42c3dc9a416d8655bb9f43335ff81535133d25ae04f206ad3ff24a4680c80f",
+    "scripts/ut_perf.py": "1d6111f7d243f0ec7642a7db709a3dd2b5279d8c1f984ee94f4631b1158540ec"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "26f54ae8c2f3d1fb0e3f810a599e6fb51852d1f176b97578961826be3bb98cef",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "solohic/tracing-requirements-to-verification",
+   "upstream_name": "tracing-requirements-to-verification",
+   "repo": "SoLoHiC/rvtf-skills",
+   "commit": "6a959384dd089c2f558482d7d70f869dbcaf3673",
+   "path": "skills/tracing-requirements-to-verification",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "3268ed3a3b80e51a7641cff3b988a0146f6862ede625620c617a93236846089f",
+    "agents/openai.yaml": "8ceb7dddb8c543c031fd1554dbb930cf75ebfcadac2940e2d52d432b0951a67d",
+    "references/gates.md": "78c85d9f92fe8803ca496df500d6c0af6b5098974c8df14229edc3ebbc90a7fc",
+    "references/pressure-scenarios.md": "2b47715ba070cd0ddb0c0b4ba72c26007b19bfa8dda4210889d33e0462eb3b09",
+    "references/review-governance.md": "0d4ac4eabbb5f821533e57cb528509606b469bd05edbeaddbd3bf6a41244d0de",
+    "references/schema.md": "a355e80f0e49a99ae43c1f5edfeb361a656cb7174ac4c5a24a0046e7c7750d02",
+    "references/visualization.md": "d0ae77da36cca51a5747e75527e7d42c1d93f822bdc9237ffe254c24cc1b3dd9"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "c8b534cc23c71c6e4b4819825c70e678bcb95f07e52961170a1d04e2af45b0a9",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "supabase/supabase-postgres-best-practices",
+   "upstream_name": "supabase-postgres-best-practices",
+   "repo": "supabase/agent-skills",
+   "commit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+   "path": "skills/supabase-postgres-best-practices",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "CHANGELOG.md": "751ad110037c85d400018c9894716a04fa46357ff55c22b1169b280752e19e88",
+    "SKILL.md": "ad65e776f45e761bafc609d3f506c77c1032225aa65e0c4c02f241b8071e5855",
+    "references/_contributing.md": "191e039e7d94764e6073410b513b559f9a594e0fdf0252a30c2a2986df2ab3bc",
+    "references/_sections.md": "c9e992612b422c7122de0b7542ebc2450db283edaab08cfe86c6d657fcccccd5",
+    "references/_template.md": "6299954250f212caabe339d752c3e5313a8e07d1a182a4e4b425baee91df1bd2",
+    "references/advanced-full-text-search.md": "40c2606bbb4c4dce31308f201b24cc7f58c7df05b1d9c6856fe2b888d3b7cf28",
+    "references/advanced-jsonb-indexing.md": "24cacf6a8bc35901dd566d24502ce8e57f810a5c196b897e61d52726e521d106",
+    "references/conn-idle-timeout.md": "630588902c00fcec59a5988cc5d042f76dcf2c923a535abfd8c47dca205eaed5",
+    "references/conn-limits.md": "11b2a67a7c7679cbbc5d807bbb17e69c98484a581d0c8b929c03408f412b81b2",
+    "references/conn-pooling.md": "88cf086bf98ba865d2e9d0579974e1366b14157619d6a93e7da77be91084e4a5",
+    "references/conn-prepared-statements.md": "174e9332fe3dda5c99b2b00159fb1915ae36c00bab3a7882c14e73e4344e946e",
+    "references/data-batch-inserts.md": "531933b82d6a622d0fae29e0ea80be6fe5d78655adf2804c271ea84a1930de37",
+    "references/data-n-plus-one.md": "21a44905e5b16a42741892ec34bb1bfef124d049b140a76934a9acd0f46f5fc2",
+    "references/data-pagination.md": "73c9fa10a3d439bedea0e11b640bd25bf30dd50f0d9006cf85baf7c3151543fa",
+    "references/data-upsert.md": "2612af83b20a2701dde30ef1f8d7efd26b7e9eef84717226b8f038a2d2150ff7",
+    "references/lock-advisory.md": "c88d259dbf81c3771438f59a165f7eab8acd09999dd370bdf807521c73f35aab",
+    "references/lock-deadlock-prevention.md": "09aee46f51d7178c8e55fe056cd5a94a64ba2c122fe418e6900cd99f297b2347",
+    "references/lock-short-transactions.md": "5aa7f61095916986d39644b446cdbcd2bacca7ef698a3bb50b3f82dd60207602",
+    "references/lock-skip-locked.md": "6c45077f430f29cd9cd8f448c94d578e827e7bd023fcdaf717a756acb116fa4b",
+    "references/monitor-explain-analyze.md": "4cb67ffbf8e57f2e5b380b0beb4242528b513723ce314a2c2ffcf083bd4203d7",
+    "references/monitor-pg-stat-statements.md": "89dca99d4e894fcbdcac136be7ad9fbc03d1342904f065c1b198dc9cf495f098",
+    "references/monitor-vacuum-analyze.md": "2892272011710eb49b3f185ec12f15ce9ce4c365792c672f6e2a9c90da426a1a",
+    "references/query-composite-indexes.md": "73e42424e671f0266e74fdb220db3196790f69fb43e2b19c7b9483eb4971b554",
+    "references/query-covering-indexes.md": "daf2a7f0477fb7357b62b5fb5b185b1995a77a186347e45cb780e25e7a7589b6",
+    "references/query-index-types.md": "472a74f22c2df203bd0154999b3a5a0187cca2ab3d9a3978e305bb7c32f1a282",
+    "references/query-missing-indexes.md": "91ad8b0ff4365704b4830a7f077c6f140f7140fd5d3ce5cd0b92b160cf9e25f1",
+    "references/query-partial-indexes.md": "6448982bc8558c6555284958edc331b29239c6a0130e6b4501dd6d4da607a6dd",
+    "references/schema-constraints.md": "90e8efda3e9e81095e642911ad4aae2809d160f29414338fa997253238f510f8",
+    "references/schema-data-types.md": "e01b58c14c7f3f65d8ead580b9a4fcf70b83baaab0f9a5f83c569c9fd113e8c8",
+    "references/schema-foreign-key-indexes.md": "7587713d12a65a212365459b3d39e4717d8a79e4073b10bd62f1054d8192c0dd",
+    "references/schema-lowercase-identifiers.md": "4bc80f70865f2390872591f326c8a6be6456a0aeb5a7e5a2475d7cd9d43059ab",
+    "references/schema-partitioning.md": "541e13fbeaf4bb1485c9059d4c9417dbdb766cf16f4237cd63a04ada7ec45b90",
+    "references/schema-primary-keys.md": "3c8beabef82066f9a0838b926da0885117fd2d9a263aaf84cb5ca9e5f0d400e9",
+    "references/security-privileges.md": "095909274a4fb43df785d7144cf674eeb40284d2d45628f14af4108737b93663",
+    "references/security-rls-basics.md": "e04dd1a3a382aafdaaa73fe9f7976352acdde6e90c2a2470d281b94d4f44b096",
+    "references/security-rls-performance.md": "2e1faeca7d5746e246b1c78f9492fe2a9cfa41c4d7fa1e23c402d58fa18ea014"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b65e575eb4f04a13c187d64e958321298e2ab84d67aa8428819f362056ba292c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "tjboudreaux/thinking-reversibility",
+   "upstream_name": "thinking-reversibility",
+   "repo": "tjboudreaux/cc-thinking-skills",
+   "commit": "7b8fece345dfaa11773be7152ccd194589cb5437",
+   "path": "skills/thinking-reversibility",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "674f597cbc2f5e3cb154fba82400b841cf573f16049c8f0dc43f76b65522946b"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "41f47abf7be896c870173738e108e902b49497807a2c8b040c8144bf7128f01c",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/audit-context-building",
+   "upstream_name": "audit-context-building",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/audit-context-building/skills/audit-context-building",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "33fa693dc6e166cfa4919e4373cb6578c009d296234c2ae7cb3cd4e79b443765",
+    "agents/openai.yaml": "1d66ff830ff41ce751286d588a0ffeb95ed56d1b42e279fa2c8eebff10f4e59e",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "resources/ANALYSIS_FORMAT.md": "029532945776fb0fcbc866f19cd6114fe4152cd3dea1c0f44b266ec13a2cc6e8",
+    "resources/DOMAIN_NOTES.md": "ca3090f7f8d18f7145b253b283f5d33c36b314cea231aae8466bf23f122e2ed1",
+    "resources/FUNCTION_MICRO_ANALYSIS_EXAMPLE.md": "3351010d83b61bfb34a0359498f153817fdfa6528cead54536b06e035ff2399c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/dimensional-analysis",
+   "upstream_name": "dimensional-analysis",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/dimensional-analysis/skills/dimensional-analysis",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "e3a091ca6acd079a00044a74929153bd569731b08c24b4bbaba59203c734a67c",
+    "agents/openai.yaml": "8eb086b9bef1931846cbd85a14f2803bc7597dcef78c7c03d7fe98756a82f412",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "references/annotate.md": "c7d1a0987d4da875067ee8523c1a0f40984eae4c6e6b344df59d2bbf3b7f0cd9",
+    "references/bug-patterns.md": "36818df67fc45815ce288412fac6d0bdd93da5e856d7cf8dcbe56b1d255dd526",
+    "references/common-dimensions.md": "5743496a380719fc601b592abbe357c0d2d95273ae38b019ff6da28cac77ee2d",
+    "references/dimension-algebra.md": "e60adc2108c89cb698626a8c62fe3ed65480e434c00b44a2bc9f2e43deb2bfd7",
+    "references/step1.md": "a8efef39c615993eb99f3d8739f640f283ef05ef9c092ef235b5082a455736d6",
+    "references/step2.md": "4b56acee23259c5528b28c035e61ce5d2db7720003a49d4c1bf0a84d18da8460",
+    "references/step3.md": "e6a43d2fc5f7a7adf0df560627add775d2b3f3b3da6044d31212fc4d8948ff77",
+    "references/step4.md": "5512f35bc4c458e0ea311b29397a92dc5ec4b788f9ddd4adbe7ef31c14a30f09"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/mutation-testing",
+   "upstream_name": "mutation-testing",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/mutation-testing/skills/mutation-testing",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "20e6ee2b6cec91bad7572dea966b5fce1e50f9ef8d4bf2e4ba69ac9b679792ff",
+    "agents/openai.yaml": "8e1026b33d8154171e7653b206f382caf2b3ae655890fe290a16a28eca4b9fba",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "references/blockchain-patterns.md": "8e556f661dfaa88792eee7c0593bef586b02ce7502f2167cc104e83dfcf967c0",
+    "references/equivalent-mutants.md": "ff4e959ec429133b61010892b213c2fd2a2a2b1b4e7d5424e52fc51f909c3e26",
+    "references/input-formats.md": "59107dd286158a4bfbb486f60640053cc8b249948cb6b8bf5bbf19e59270c06c",
+    "references/optimization-strategies.md": "3dda9d912cee153b7340b243cf8823a28b66c03aa34f5516790232075e276614",
+    "references/report-template.md": "6cf4e3b89d5cc3e5be380a4429d68f6796c8d57387a080f5c67f76bfff2c086e",
+    "references/severity-classification.md": "7fe0c245c4599c25fed53f29e5c7048f24e00cba5e5e62eff9ae92728b163b5c",
+    "workflows/analyzing-results.md": "e3e17d2e66cf0dbaa359c051a00540dcdca86a4c5a18147b8268aed03fccd3f7",
+    "workflows/bug-hunter.md": "db4274ed9634cbe7aadef295d594ad15d163f57e6c66a896a20d80827f791a47",
+    "workflows/configuration.md": "f5651cd506c9eb843d25a5e468549c3f417370d9b635b779461549e4083224b0"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/property-based-testing",
+   "upstream_name": "property-based-testing",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/property-based-testing/skills/property-based-testing",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "README.md": "ffbe30eec09cc64fb1eae836b07ca1d82939bda3f1e6f0dceadcdd78793a3112",
+    "SKILL.md": "9448cacb65c6237a7c22dc59602667177ecae405524079ae9ff92240590b995a",
+    "agents/openai.yaml": "51d635deefa254d8cdf6dc56450851b6ec9545cd37f88a4eb4035cf3f2262fff",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "references/generating.md": "c0e72dfc89babe3c32de718b81b94044362c85e776d7475e950dfeaab78bb58e",
+    "references/interpreting-failures.md": "dbae7db8773712ba03268a3d56ea5aa6720af0650a5189580bfd88aa2edc3f9a",
+    "references/libraries.md": "f7218acf8e668130ef3048983472579d04e12030c5401926f666363e5f69c686",
+    "references/refactoring.md": "6eb5c206f575704791f089608bb06e41d6eed91b9d3c7fb27912f969aed07a18",
+    "references/reviewing.md": "110b08118a1e7b1a2566def6e9d2a0bf43fc2deefce857d2ce3b4382b07bc774"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/spec-to-code-compliance",
+   "upstream_name": "spec-to-code-compliance",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/spec-to-code-compliance/skills/spec-to-code-compliance",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "eb0d91b50a9c06f50baf8763d1e23566897b9fa3e7ffcf13134eee4e1ccaefe5",
+    "agents/openai.yaml": "419472a4c1f12fc061081e3ea1cb2f525776d17d0dc05e7a3c4a26d6a98099f0",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "resources/ANALYSIS_FORMAT.md": "802674d5a0622fba7c32d1e480fd236f4bddcd2435841fcf48b17044d5d4d273",
+    "resources/DIVERGENCE_RUBRIC.md": "c7192803ae5c489501788ae5be56a5dd36b3f0b64f88982bf41f69a4245303f1",
+    "resources/DOMAIN_NOTES.md": "435459c75d21208ea73a6cda7dfc6910efc468a903f62e20f4837d5bd8b92c4a",
+    "resources/WORKED_EXAMPLE.md": "7b9ff43b20ba83e1ce934bc9161b14ce58617b65a9ae9c4583026dbf0299e927"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "trailofbits/variant-analysis",
+   "upstream_name": "variant-analysis",
+   "repo": "trailofbits/skills",
+   "commit": "196a9073ab10d35bacf111f945e02c00b2c6883a",
+   "path": "plugins/variant-analysis/skills/variant-analysis",
+   "licence": "CC-BY-SA-4.0",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "7b6b78e499bcb88d05c68254ffc91ebc28edabf4e9808adcc40e2628ebb9407e",
+    "agents/openai.yaml": "6d6b67250ba8300e79491ac12e73262f54f2bf50776276fd04607ae4e3006fde",
+    "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+    "references/reporting.md": "07a1d8f25537ec3da44b7c6e484bf922ab2eeaee733ced6df423df7bea517906",
+    "references/root-cause.md": "b4556f22adadc894b22c8df01d98bb94596d4e035386c780fbca73594014660c",
+    "references/searching.md": "22834e63e7412220feec9bd1d4cfd9298c17679489ad66d13be450928bf5d158",
+    "references/triage.md": "f1f0277096ae41641be311c783f2f7a1c677c2c6b6e8a485986d8d5ed7fa3653",
+    "resources/codeql/cpp.ql": "efd574081969d2bdd19e1756302d843fdbf936968a72de62eb24d66db43efc0c",
+    "resources/codeql/go.ql": "d3fa419af29bb15bf81510c54bc1ce0cf55f5b7adbdbf79cc2c8cd922d2365fb",
+    "resources/codeql/java.ql": "ee4a92a5cbde67304d17a2c5fb739fe9acf1d39ebac9406e3d3a2c1cbbbb19c1",
+    "resources/codeql/javascript.ql": "b6ceaa3acb6ba6fa89903c14c8fd3aa7cf48316e6b2588dcacae51bb423b3526",
+    "resources/codeql/python.ql": "135ec55760e1e827065e34b002c6d954b4c4293d07233a93d7ff31d9d97528a9",
+    "resources/semgrep/cpp.yaml": "41f034c9a5967cc3b87bf5880243ed21f633017111489ee843dd5d002271b10a",
+    "resources/semgrep/go.yaml": "8a8257eb8e0a7150cb7dffa2b64813691fd560de24b0f85fa6640ec2bfc6595f",
+    "resources/semgrep/java.yaml": "5be3990b052bc9ce5e1aa203d1f3c93cb3cde7d46eba463c24c661fc6b342902",
+    "resources/semgrep/javascript.yaml": "2f97e3545fcac449820c2d058bcb9cc36822e238b6249efa3a5dcb4f5f576912",
+    "resources/semgrep/python.yaml": "c1ce15574569d45555d582707db030b226763d81b2d521d9e61d6067440948f2",
+    "resources/variant-report-template.md": "03333c762318a89dd819784a62695f7660713479a5009a15189314400836202f"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "vuthelong/level-geometry-authoring",
+   "upstream_name": "level-geometry-authoring",
+   "repo": "vuthelong/unity-csharp-skills",
+   "commit": "555bc1b64e7dde395d3938a9d4769e9e64253ee3",
+   "path": "plugins/gameplay-systems/skills/level-geometry-authoring",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "9c248d632b96c9e94693da96f31dd0991aee2465a45c5f264211a4fd225f9d36",
+    "references/probuilder-and-lod.md": "b60a9d23050aa2ec67c2130ebadce8aa63cd71134b2cd696915c644ae3e32988",
+    "references/terrain-api.md": "19ad1da05f5f0e6cbf98d3b82456779f0bfb36d043e5b5c32bd8181bd3d6152e",
+    "references/world-building.md": "de052aec7dbb91cde49e19339b5fd4d0251204e80092f1ab48be22468f348bfb"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "44bdc1e8d09b6cc13a2af72bfe8502ca89b3ed9086071e8c59969a77ef5b5f10",
+     "from": "LICENSE"
+    },
+    "NOTICE.md": {
+     "sha256": "ecca641b6816c248e4aeca031787629979cf07bd887eb7acece8814845742248",
+     "from": "NOTICE.md"
+    },
+    "licenses/SCENARIO-SKILLS-MIT.txt": {
+     "sha256": "26f54ae8c2f3d1fb0e3f810a599e6fb51852d1f176b97578961826be3bb98cef",
+     "from": "licenses/SCENARIO-SKILLS-MIT.txt"
+    },
+    "licenses/UNITY-OPEN-MCP-MIT.txt": {
+     "sha256": "9268a0bd4c7eb68b90b2b91999094fc7761653aec4e104eab8eb8594acd2d893",
+     "from": "licenses/UNITY-OPEN-MCP-MIT.txt"
+    }
+   }
+  },
+  {
+   "id": "warpdotdev/merge-risk",
+   "upstream_name": "merge-risk",
+   "repo": "warpdotdev/common-skills",
+   "commit": "8792394ff1b655e0af451b8fabb68ef0cfcbd208",
+   "path": ".agents/skills/merge-risk",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "1a11fcb7503eeb92a901755c0f729216cfdb8674a4ac2b0890e019d594e1ae17"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "9a10f320256635c6a2b58f9894b1f453e404142d07a6125ad788a3afbd7a7379",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "winrey/review-loop",
+   "upstream_name": "review-loop",
+   "repo": "winrey/claude-code-toolkit",
+   "commit": "668aea21899d154aef89a06380ee0496951cab6c",
+   "path": "plugins/winrey-toolkit/skills/review-loop",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "b455e640b263f73b287ed1376758b9d7dbdaf0e803a2c760cf574090ec48a674",
+    "fix-reviewer-prompt.md": "81bc1cd7907f2347b4c9c8598ff27045dc993a52bc54719ab073f496457b4c10",
+    "reviewer-prompt.md": "3378e8ca9325e329fdadcb306ac7aa4dbe85bf63bab65441b66486900096f14a",
+    "verifier-prompt.md": "a16167e67a3464fc9d87dff6beda4c675a846d3fc1940dfcfefb9692b7b2abeb"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "b59864fe1927305664299e60e948c9da39b00a238f849ee5fd4c62d0f7b849c3",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "wondelai/refactoring-patterns",
+   "upstream_name": "refactoring-patterns",
+   "repo": "wondelai/skills",
+   "commit": "c172996495bed0fcd26896a9416b2093fd7073f0",
+   "path": "refactoring-patterns",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "e09d21bcca98b575df0014b3288df75afb556f2dd1d05135e6714d4c413d55d4",
+    "references/composing-methods.md": "2c34688d34b759016d1a6bb9366c42213558d6ef0523191eeac39b360fa11369",
+    "references/moving-features.md": "42eb3c8d3cdc1a8b94009fb06490973dfd217e45d19c4d95097415bf45e6cd77",
+    "references/organizing-data.md": "56679857a095cce1026d9d684bf1c9ed33769d758935b583b2e65fc45762217f",
+    "references/refactoring-workflow.md": "e5e9060808dea4e29b551609b230c29adc7286ab6c1fff008d542029de306be8",
+    "references/simplifying-conditionals.md": "67168e1a6327180c6f1c0becebc372ac6a4d3398c9434bdf74f17208e998f677",
+    "references/smell-catalog.md": "2a0136cb2e8b263d1fc2dbba912688e415e32809c7140b51cf6f1f10f3fe8ff4"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "87c3c90f9e673a76b8ca81049b8fe30996b910a7a80140c3ed57a2ee922d2579",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "wondelai/working-with-legacy-code",
+   "upstream_name": "working-with-legacy-code",
+   "repo": "wondelai/skills",
+   "commit": "c172996495bed0fcd26896a9416b2093fd7073f0",
+   "path": "working-with-legacy-code",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "4a621798f9a51ad1438f5b25b168615b7caeb540378c8f4d70ab733523135e21",
+    "references/case-studies.md": "28985d94ec1876cbd7600408ac7a9416a9af58b6e956301bcbf203f617b7135e",
+    "references/change-algorithm.md": "8bf7a8490fcf2029ff340a4bfdd838f1550247f5eb4fd9fab7b865b7f8bffb3e",
+    "references/characterization-tests.md": "7be76db2629625d5073c189f90ff116a4cb733f901097338dce3239710e46fc0",
+    "references/dependency-breaking.md": "e4c8a93cfc509ceb62c29141bc7004d2625d3f29e42ba2daa0807370061e396b",
+    "references/seams.md": "cf9c39a2ffc8c63307b63693b9caa54f02ca45b77ed0cb24ccb16b4c8f0db77a"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "87c3c90f9e673a76b8ca81049b8fe30996b910a7a80140c3ed57a2ee922d2579",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "wshobson/unity-ecs-patterns",
+   "upstream_name": "unity-ecs-patterns",
+   "repo": "wshobson/agents",
+   "commit": "be57c0b2e3c05c528ca6132b87410b385718775f",
+   "path": "plugins/game-development/skills/unity-ecs-patterns",
+   "licence": "MIT",
+   "review": "recorded",
+   "files": {
+    "SKILL.md": "18c3305e118e330e352b3e85011640385bb2bed1602e88d7447f55ae3447c973",
+    "references/details.md": "031cc2f576b3e03803a356469d8bd3da15a216649208a3460d055042b1c2300c"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "zaggino/validating-json-data",
+   "upstream_name": "validating-json-data",
+   "repo": "zaggino/z-schema",
+   "commit": "5e4300924ca324b4ec59ef0f4e6da3532ae6c390",
+   "path": "skills/validating-json-data",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "079c7b5d2da1918dd4cb32655beb342212c7fbf3ebc9452e39bed811f83f7fac",
+    "references/draft-comparison.md": "503067e1e40ef1e782bae9a2fc35efba53bc5bc58ff32ac89a3f5e633a29cb3d",
+    "references/error-codes.md": "5eadf1ba8265fc54ead086faf1403fec9d7e951be35c3db72995c134be893a96",
+    "references/options.md": "9759af60145653e7193706764395bbdee43128111bdef93737be9a686e620321"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "5b489ea86cd97056a31a5b51c6ab0dce5faeac8a8d161ad08e6060663518f1d1",
+     "from": "LICENSE"
+    }
+   }
+  },
+  {
+   "id": "zaggino/writing-json-schemas",
+   "upstream_name": "writing-json-schemas",
+   "repo": "zaggino/z-schema",
+   "commit": "5e4300924ca324b4ec59ef0f4e6da3532ae6c390",
+   "path": "skills/writing-json-schemas",
+   "licence": "MIT",
+   "review": "in use",
+   "files": {
+    "SKILL.md": "acf268da76ea961a1d97b3308d384ec340b8c0a185df3763ff505ed71f26fe71"
+   },
+   "added": {
+    "LICENSE": {
+     "sha256": "5b489ea86cd97056a31a5b51c6ab0dce5faeac8a8d161ad08e6060663518f1d1",
+     "from": "LICENSE"
+    }
+   }
+  }
+ ]
+}

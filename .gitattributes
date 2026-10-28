@@ -1,0 +1,6 @@
+# Keep every file byte-for-byte as committed, so the sha256 hashes in catalogue/bundled.json match on any OS.
+* -text
+# The bundled skills are third-party; keep them out of the language bar and collapsed in diffs.
+skills/** linguist-vendored
+catalogue/bundled.json linguist-generated
+THIRD_PARTY_NOTICES.md linguist-generated

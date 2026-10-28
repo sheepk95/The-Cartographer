@@ -1,0 +1,18 @@
+# Python caches and build output (anchored to the repo root so nothing inside skills/ is ignored)
+__pycache__/
+*.py[cod]
+/*.egg-info/
+/build/
+/dist/
+/.venv/
+/venv/
+/.env
+/.env.*
+/.coverage
+/htmlcov/
+/*.log
+# editors and OS files
+/.vscode/
+/.idea/
+.DS_Store
+Thumbs.db

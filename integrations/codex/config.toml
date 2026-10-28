@@ -1,0 +1,6 @@
+# Add to ~/.codex/config.toml
+[mcp_servers.the-librarian]
+command = "librarian"
+args = ["mcp"]
+# An ask is one model call over the whole catalogue (about 28k tokens with the bundled skills), so give the tool room.
+tool_timeout_sec = 180

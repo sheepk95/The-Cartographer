@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unity code lifecycle"
+  short_description: "Keep statics safe across Play sessions and code reloads"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unity Texture Generator"
+  short_description: "Generate Quest-ready Unity textures with GPT Image"
+  default_prompt: "Use $unity-texturegen to create a seamless Quest-ready Unity building texture."

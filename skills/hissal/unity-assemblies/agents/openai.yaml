@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unity assemblies"
+  short_description: "Place Unity code in the right assembly"
