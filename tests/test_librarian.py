@@ -1,5 +1,5 @@
 """Offline tests: no model is called. Run with  python -m unittest discover -s tests"""
-import io, json, os, subprocess, sys, tempfile, textwrap, time, types, unittest
+import io, json, os, shutil, subprocess, sys, tempfile, textwrap, time, types, unittest
 from unittest import mock
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -7,6 +7,18 @@ sys.path.insert(0, ROOT)
 
 from the_librarian import answer, backends, catalogue, cli, frontmatter, mcp_server  # noqa: E402
 from the_librarian.prompt import END_MARKER  # noqa: E402
+
+
+def setUpModule():
+    # every temporary folder this module makes lands in one, removed when the module ends
+    global _old_tempdir, _tmp_root
+    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="librarian-tests-")
+    tempfile.tempdir = _tmp_root
+
+
+def tearDownModule():
+    tempfile.tempdir = _old_tempdir
+    shutil.rmtree(_tmp_root, ignore_errors=True)
 
 
 def make_skill(root, name, description, body="Body text.\n", pad=0):

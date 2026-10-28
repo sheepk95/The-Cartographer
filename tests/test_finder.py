@@ -60,13 +60,18 @@ def no_network(*a, **k):
 
 
 def setUpModule():
-    global _net
+    global _net, _old_tempdir, _tmp_root
     _net = mock.patch.object(web, "default_opener", no_network)
     _net.start()
+    # every temporary folder this module makes lands in one, removed when the module ends
+    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="librarian-tests-")
+    tempfile.tempdir = _tmp_root
 
 
 def tearDownModule():
     _net.stop()
+    tempfile.tempdir = _old_tempdir
+    shutil.rmtree(_tmp_root, ignore_errors=True)
 
 
 def skill_page(sid, desc, installs=5000, stars="1.2K", repo=None, audits=(("Gen Agent Trust Hub", "agent-trust-hub",
