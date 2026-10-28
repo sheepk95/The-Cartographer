@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "the-librarian"
 version = "0.1.0"
 description = "Ask which agent skills fit a task before you start it: one cached model call over the whole skill catalogue, with a checked answer. Find and vet the ones you lack on skills.sh."
-readme = "README.md"
+readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.9"
 # The code is MIT; the bundled skills keep their own licences (see THIRD_PARTY_NOTICES.md and catalogue/bundled.json).
 license = "MIT AND Apache-2.0 AND CC-BY-SA-4.0 AND Unlicense"
@@ -35,11 +35,15 @@ api = ["anthropic"]
 [project.urls]
 # The same URL is PROJECT_URL in the_librarian/__init__.py; keep the two in step.
 Homepage = "https://github.com/sheepk95/The-Librarian"
+Source = "https://github.com/sheepk95/The-Librarian"
 Issues = "https://github.com/sheepk95/The-Librarian/issues"
 Changelog = "https://github.com/sheepk95/The-Librarian/blob/main/CHANGELOG.md"
 
 [project.scripts]
 librarian = "the_librarian.cli:main"
+# The same entry point under the package's own name, so `uvx the-librarian ...` and `pipx run the-librarian ...` work
+# (both run the command named after the package) and MCP clients that launch PyPI servers that way find it.
+the-librarian = "the_librarian.cli:main"
 
 [tool.setuptools]
 # the_librarian.bundle is the repository root, so a regular install (pip install ., pipx, uv tool install) carries the

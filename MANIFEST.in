@@ -1,0 +1,9 @@
+# The sdist carries the whole project, so it can be checked and rebuilt on its own: the docs, the integrations,
+# the vendoring tool (python tools/vendor.py verify) and the release metadata. The wheel is set by pyproject.toml.
+include CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md server.json
+graft docs
+graft integrations
+graft tools
+graft .claude-plugin
+graft .github
+global-exclude __pycache__ *.py[cod]

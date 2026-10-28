@@ -1,0 +1,89 @@
+name: publish
+
+# Publishes to PyPI when a GitHub Release is published, through PyPI Trusted Publishing (OIDC): no token is stored.
+# One-time setup on PyPI (a "pending publisher" until the first upload): project the-librarian, owner sheepk95,
+# repository The-Librarian, workflow publish.yml, environment pypi.
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and check the distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: The release tag, the package, server.json and the plugin entry agree on the version
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python - <<'EOF'
+          import json, os, re, sys, tomllib
+          version = tomllib.load(open("pyproject.toml", "rb"))["project"]["version"]
+          server = json.load(open("server.json", encoding="utf-8"))
+          plugin = json.load(open(".claude-plugin/marketplace.json", encoding="utf-8"))["plugins"][0]
+          code = re.search(r'^__version__ = "([^"]+)"', open("the_librarian/__init__.py", encoding="utf-8").read(), re.M)
+          found = {"release tag": os.environ["TAG"].removeprefix("v"), "__version__": code and code.group(1),
+                   "server.json": server["version"],
+                   "server.json package": server["packages"][0]["version"], "plugin entry": plugin["version"]}
+          wrong = {k: v for k, v in found.items() if v != version}
+          if wrong:
+              sys.exit("pyproject.toml says %s, but %s" % (version, wrong))
+          print("all at version", version)
+          EOF
+      - name: Bundled skills match their recorded hashes
+        run: python tools/vendor.py verify
+      - name: Unit tests (offline, no model calls)
+        run: python -m unittest discover -s tests
+      - name: Install the build tools
+        run: python -m pip install build twine "readme_renderer[md]"
+      - name: The README renders as PyPI renders it, with no relative links
+        # twine check does not render a Markdown README (twine 1.13.0 removed that), so render it here with
+        # readme_renderer, the library PyPI uses. Without its [md] extra, render() returns None and this step fails.
+        run: |
+          python - <<'EOF'
+          import re, sys
+          import readme_renderer.markdown
+          html = readme_renderer.markdown.render(open("README.md", encoding="utf-8").read())
+          if html is None:
+              sys.exit("README.md did not render: readme_renderer[md] is missing")
+          relative = [u for u in re.findall(r'(?:href|src)="([^"]+)"', html) if not re.match(r"(https?:|mailto:|#)", u)]
+          if relative:
+              sys.exit("relative links do not work on PyPI: %s" % relative)
+          print("README.md renders: %d bytes, no relative links" % len(html))
+          EOF
+      - name: Build the sdist and the wheel
+        run: |
+          python -m build
+          python -m twine check --strict dist/*
+      - uses: actions/upload-artifact@v5
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
+  publish-to-pypi:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/the-librarian
+    permissions:
+      id-token: write  # mandatory for Trusted Publishing
+    steps:
+      - uses: actions/download-artifact@v6
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086  # v1.14.3

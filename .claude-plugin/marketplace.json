@@ -1,0 +1,33 @@
+{
+  "name": "the-librarian",
+  "description": "The Librarian: ask which agent skills fit a task before you start it.",
+  "owner": {
+    "name": "sheepk95",
+    "url": "https://github.com/sheepk95"
+  },
+  "plugins": [
+    {
+      "name": "the-librarian",
+      "displayName": "The Librarian",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Ask which agent skills fit a task before you start it. Adds The Librarian's MCP server (ask_librarian, read_skill, search_skills, find_skills) and a skill that asks it at the start of each task. Needs uv.",
+      "author": {
+        "name": "sheepk95",
+        "url": "https://github.com/sheepk95"
+      },
+      "homepage": "https://github.com/sheepk95/The-Librarian",
+      "repository": "https://github.com/sheepk95/The-Librarian",
+      "license": "MIT AND Apache-2.0 AND CC-BY-SA-4.0 AND Unlicense",
+      "keywords": ["skills", "agent skills", "skill.md", "mcp", "skills.sh"],
+      "category": "productivity",
+      "skills": ["./integrations/claude-code/plugin/skills/"],
+      "mcpServers": {
+        "the-librarian": {
+          "command": "uvx",
+          "args": ["--from", "${CLAUDE_PLUGIN_ROOT}", "librarian", "mcp"]
+        }
+      }
+    }
+  ]
+}

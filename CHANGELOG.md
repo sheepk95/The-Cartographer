@@ -4,6 +4,10 @@
 
 First public version.
 
+- Install: `pipx install the-librarian`, `pip install the-librarian` or `uvx the-librarian ...` (the package also
+  installs the command under its own name, `the-librarian`). Claude Code: the repository is a plugin marketplace
+  (`/plugin marketplace add sheepk95/The-Librarian`, then `/plugin install the-librarian@the-librarian`). MCP
+  Registry metadata in `server.json`; releases publish to PyPI through Trusted Publishing (`publish.yml`).
 - `librarian ask`: one model call reads a 2-10 line brief against the whole skill catalogue and answers with
   PICKS / MAYBE / ALSO GREP / NOTE, ending in `--- end of librarian answer ---`. Every name is checked against the
   catalogue; invented names are dropped and wrong paths corrected.

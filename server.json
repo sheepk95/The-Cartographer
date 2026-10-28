@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.sheepk95/the-librarian",
+  "title": "The Librarian",
+  "description": "Ask which agent skills fit a task before you start it: picks from a vetted skill catalogue.",
+  "version": "0.1.0",
+  "websiteUrl": "https://github.com/sheepk95/The-Librarian",
+  "repository": {
+    "url": "https://github.com/sheepk95/The-Librarian",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "the-librarian",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp"
+        }
+      ]
+    }
+  ]
+}

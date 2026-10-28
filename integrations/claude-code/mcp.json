@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "the-librarian": {
-      "command": "librarian",
-      "args": ["mcp"]
+      "command": "uvx",
+      "args": ["the-librarian", "mcp"]
     }
   }
 }

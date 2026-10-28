@@ -13,6 +13,8 @@ description sits in the context on every turn, or the agent guesses from names a
 is one model call instead: a model reads a 2-10 line brief of the task against the **whole** skill catalogue and names
 the few skills worth reading first. "None" is a valid answer.
 
+![librarian ask typing a task about property-based tests, then the answer: two picked skills with a reason each, one maybe, and a note](https://raw.githubusercontent.com/sheepk95/The-Librarian/main/docs/demo.svg)
+
 ```text
 $ librarian ask "Add property-based tests for our Python date-parsing module, and check the existing tests actually catch bugs."
 PICKS:
@@ -27,7 +29,8 @@ NOTE: No Python-specific mutation tool skill in catalogue; test-gap-analysis cov
 
 That is a real run: Claude Code backend, Sonnet, 8.4 seconds, the 193-skill bundled catalogue (paths shortened here).
 The second pick comes from a .NET skill set but is written for any language, and the NOTE says plainly what the
-catalogue lacks.
+catalogue lacks. The animation above is a separate real run of the same task with Haiku, which picked a different
+second skill: answers vary a little by model.
 
 When the catalogue lacks something, `librarian find` looks for it on [skills.sh](https://www.skills.sh/), and
 `librarian install` checks a find's licence and files before it goes into your skills folder
@@ -67,18 +70,32 @@ flowchart LR
 
 ## Quick start
 
-Needs Python 3.9+ and one way to reach a model: a Claude API key, Claude Code, Codex, or a local command.
+Needs Python 3.9+ and one way to reach a model: a Claude API key, Claude Code, Codex, or a local command. Install it
+one of these ways (the bundled skills come with the package):
 
 ```bash
-git clone https://github.com/sheepk95/The-Librarian
-cd The-Librarian
-pip install .               # to use a Claude API key: pip install ".[api]"
+pipx install the-librarian          # or: uv tool install the-librarian
+pip install the-librarian           # into the current environment; with a Claude API key: pip install "the-librarian[api]"
+uvx the-librarian doctor            # run it once without installing (uv); any command works: uvx the-librarian ask "..."
+```
+
+Then:
+
+```bash
 librarian doctor            # skills found, catalogue size, which backends are ready
 librarian ask "Build a Three.js scene with a rotating textured planet and bloom"
 ```
 
-The bundled skills install with the package, so `pipx install .` or `uv tool install .` work too. Use
-`pip install -e .` if you want to edit the code or the skills in place.
+The command is `librarian`; `the-librarian` is the same command under the package's name, which is what `uvx` and
+`pipx run` look for.
+
+From source, to edit the code or the skills in place:
+
+```bash
+git clone https://github.com/sheepk95/The-Librarian
+cd The-Librarian
+pip install -e .            # or pip install . for a regular install
+```
 
 `librarian doctor` on a fresh clone with only the bundled skills prints something like:
 
@@ -118,7 +135,7 @@ librarian catalogue                     # the exact text the model reads
 
 | backend | uses | needs |
 |---|---|---|
-| `anthropic` | Claude API through the official SDK; the catalogue is a cached system block (1 hour) | `pip install ".[api]"`, `ANTHROPIC_API_KEY` |
+| `anthropic` | Claude API through the official SDK; the catalogue is a cached system block (1 hour) | `pip install "the-librarian[api]"` (from a clone: `pip install ".[api]"`), `ANTHROPIC_API_KEY` |
 | `claude` | Claude Code in print mode (`claude -p`) with your existing login | the `claude` command |
 | `codex` | Codex CLI (`codex exec`), read-only sandbox, shell off, ephemeral | the `codex` command |
 | `command` | any command that reads the prompt on stdin and prints the answer (local models, other CLIs) | `--command "..."`, or `LIBRARIAN_BACKEND=command` with `LIBRARIAN_COMMAND` |
@@ -137,20 +154,52 @@ with the bundled skills; check yours with `librarian doctor`).
 
 ## Connect your agent
 
-**Claude Code**
+**Claude Code: the plugin** (MCP server and an "ask the librarian first" skill in one step; needs
+[uv](https://docs.astral.sh/uv/getting-started/installation/))
 
-```bash
-claude mcp add the-librarian -- librarian mcp
+```text
+/plugin marketplace add sheepk95/The-Librarian
+/plugin install the-librarian@the-librarian
 ```
 
-(or put `integrations/claude-code/mcp.json` in a project as `.mcp.json`). Then either copy
-`integrations/claude-code/ask-the-librarian/` into `~/.claude/skills/`, or paste
-`integrations/claude-code/CLAUDE.md-snippet.md` into your CLAUDE.md, so the agent asks at the start of each task.
+On Claude Code 2.1.275 or later, one line does both: `/plugin install the-librarian --marketplace sheepk95/The-Librarian`.
+The plugin runs the server from its own copy of this repository with `uvx --from ${CLAUDE_PLUGIN_ROOT} librarian mcp`,
+so it needs no separate install; the first start builds it once (about 15 seconds), later starts take under a second.
+Its skill tells the agent to call `ask_librarian` at the start of each non-trivial task.
+
+**Claude Code: the MCP server only**
+
+```bash
+claude mcp add the-librarian -- uvx the-librarian mcp      # or, after pipx/pip install: -- librarian mcp
+```
+
+(or put [`integrations/claude-code/mcp.json`](https://github.com/sheepk95/The-Librarian/blob/main/integrations/claude-code/mcp.json)
+in a project as `.mcp.json`). Then either copy
+[`integrations/claude-code/ask-the-librarian/`](https://github.com/sheepk95/The-Librarian/tree/main/integrations/claude-code/ask-the-librarian)
+into `~/.claude/skills/`, or paste
+[`integrations/claude-code/CLAUDE.md-snippet.md`](https://github.com/sheepk95/The-Librarian/blob/main/integrations/claude-code/CLAUDE.md-snippet.md)
+into your CLAUDE.md, so the agent asks at the start of each task.
 
 **Codex**
 
-Add `integrations/codex/config.toml` to `~/.codex/config.toml` and `integrations/codex/AGENTS.md-snippet.md` to your
-AGENTS.md. Codex sandboxes may not open files outside the workspace, so the MCP server also offers `read_skill`.
+```bash
+codex mcp add the-librarian -- uvx the-librarian mcp      # or, after pipx/pip install: -- librarian mcp
+```
+
+or add this to `~/.codex/config.toml` (the same as
+[`integrations/codex/config.toml`](https://github.com/sheepk95/The-Librarian/blob/main/integrations/codex/config.toml)):
+
+```toml
+[mcp_servers.the-librarian]
+command = "uvx"
+args = ["the-librarian", "mcp"]
+startup_timeout_sec = 60   # the first uvx start downloads the package
+tool_timeout_sec = 180     # an ask is one model call over the whole catalogue
+```
+
+Then add
+[`integrations/codex/AGENTS.md-snippet.md`](https://github.com/sheepk95/The-Librarian/blob/main/integrations/codex/AGENTS.md-snippet.md)
+to your AGENTS.md. Codex sandboxes may not open files outside the workspace, so the MCP server also offers `read_skill`.
 
 **Anything else**
 
@@ -174,6 +223,12 @@ the brief to read it from stdin.
 `--command`, `--skills-dir`, `--no-user-skills`, `--no-bundled`), plus `--lexicon` for `find_skills`. `find_skills`
 stops fetching pages after 45 seconds and says how many matches it did not check; a failure comes back as a tool
 error, not a protocol error. Installing is CLI only: it writes to disk, so a person runs `librarian install`.
+
+Any MCP client that launches stdio servers can run it with `uvx the-librarian mcp` (or `librarian mcp` after an
+install). Its MCP Registry name is `io.github.sheepk95/the-librarian` (the PyPI package `the-librarian`, stdio;
+see [`server.json`](https://github.com/sheepk95/The-Librarian/blob/main/server.json)).
+
+<!-- mcp-name: io.github.sheepk95/the-librarian -->
 
 ## Your own skills
 
@@ -528,11 +583,11 @@ python tools/vendor.py verify
 The tests call no model and use no network: they cover the front matter reader, the catalogue, answer checking, the
 command backend, the API request shape (with a stand-in SDK), an MCP stdio session, the bundle hashes, and the finder
 and installer against a fake skills.sh and fake GitHub tarballs (robots, the URL whitelist, rate limits, licence
-refusals, unsafe archives, never overwriting, never running a download). See [CONTRIBUTING.md](CONTRIBUTING.md)
-for how to propose a change or a skill for the bundle, [docs/DESIGN.md](docs/DESIGN.md) for why it works this way,
-and [SECURITY.md](SECURITY.md) for what it does and does not do with your files and the network.
+refusals, unsafe archives, never overwriting, never running a download). See [CONTRIBUTING.md](https://github.com/sheepk95/The-Librarian/blob/main/CONTRIBUTING.md)
+for how to propose a change or a skill for the bundle, [docs/DESIGN.md](https://github.com/sheepk95/The-Librarian/blob/main/docs/DESIGN.md) for why it works this way,
+and [SECURITY.md](https://github.com/sheepk95/The-Librarian/blob/main/SECURITY.md) for what it does and does not do with your files and the network.
 
 ## Licence
 
-The Librarian's code and docs: MIT ([LICENSE](LICENSE)). Each bundled skill: its own licence, in its folder
-([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) lists them all).
+The Librarian's code and docs: MIT ([LICENSE](https://github.com/sheepk95/The-Librarian/blob/main/LICENSE)). Each bundled skill: its own licence, in its folder
+([THIRD_PARTY_NOTICES.md](https://github.com/sheepk95/The-Librarian/blob/main/THIRD_PARTY_NOTICES.md) lists them all).

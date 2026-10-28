@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 468" width="860" height="468" role="img" aria-labelledby="t d">
+<title id="t">The Librarian: a librarian ask command and its answer</title>
+<desc id="d">A terminal types: librarian ask, with a task about property-based tests. The answer lists two picked skills with a reason each, one maybe, and a note, all from one real run.</desc>
+<defs><clipPath id="card"><rect x="1" y="1" width="858" height="466" rx="10"/></clipPath></defs>
+<style>
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","DejaVu Sans Mono",monospace;font-size:14px;white-space:pre}
+.fg{fill:#d6deeb}.dim{fill:#8b98a9}.green{fill:#7ee787}.blue{fill:#79c0ff}.gold{fill:#e3b341}.pink{fill:#f0a6d0}
+.b{font-weight:700}
+.cover{fill:#0f141b}.cursor{fill:#d6deeb}
+#content{animation:fade 12.0s linear infinite}
+@keyframes fade{0%,92.5%{opacity:1}98.333%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.cursor,.cover{display:none}}
+@keyframes ty1{0%,5.0%{transform:translateX(0)}5.0%{animation-timing-function:steps(89,end)}21.317%,100%{transform:translateX(747.6px)}}.ty1{transform:translateX(747.6px);animation:ty1 12.0s linear infinite}@keyframes ty1c{0%{opacity:0}5.0%{opacity:1}21.317%{opacity:1}21.4%,100%{opacity:0}}.ty1c{opacity:0;animation:ty1c 12.0s step-end infinite}@keyframes ty2{0%,22.567%{transform:translateX(0)}22.567%{animation-timing-function:steps(36,end)}29.167%,100%{transform:translateX(302.4px)}}.ty2{transform:translateX(302.4px);animation:ty2 12.0s linear infinite}@keyframes ty2c{0%{opacity:0}22.567%{opacity:1}29.167%{opacity:1}29.25%,100%{opacity:0}}.ty2c{opacity:0;animation:ty2c 12.0s step-end infinite}@keyframes o0{0%,41.667%{opacity:0}42.667%,100%{opacity:1}}.o0{animation:o0 12.0s linear infinite}@keyframes o1{0%,42.375%{opacity:0}43.375%,100%{opacity:1}}.o1{animation:o1 12.0s linear infinite}@keyframes o2{0%,43.083%{opacity:0}44.083%,100%{opacity:1}}.o2{animation:o2 12.0s linear infinite}@keyframes o3{0%,43.792%{opacity:0}44.792%,100%{opacity:1}}.o3{animation:o3 12.0s linear infinite}@keyframes o4{0%,44.5%{opacity:0}45.5%,100%{opacity:1}}.o4{animation:o4 12.0s linear infinite}@keyframes o5{0%,45.208%{opacity:0}46.208%,100%{opacity:1}}.o5{animation:o5 12.0s linear infinite}@keyframes o6{0%,45.917%{opacity:0}46.917%,100%{opacity:1}}.o6{animation:o6 12.0s linear infinite}@keyframes o7{0%,46.625%{opacity:0}47.625%,100%{opacity:1}}.o7{animation:o7 12.0s linear infinite}@keyframes o8{0%,47.333%{opacity:0}48.333%,100%{opacity:1}}.o8{animation:o8 12.0s linear infinite}@keyframes o9{0%,48.042%{opacity:0}49.042%,100%{opacity:1}}.o9{animation:o9 12.0s linear infinite}@keyframes o10{0%,48.75%{opacity:0}49.75%,100%{opacity:1}}.o10{animation:o10 12.0s linear infinite}@keyframes o11{0%,49.458%{opacity:0}50.458%,100%{opacity:1}}.o11{animation:o11 12.0s linear infinite}@keyframes o12{0%,50.167%{opacity:0}51.167%,100%{opacity:1}}.o12{animation:o12 12.0s linear infinite}@keyframes o13{0%,50.875%{opacity:0}51.875%,100%{opacity:1}}.o13{animation:o13 12.0s linear infinite}@keyframes o14{0%,51.583%{opacity:0}52.583%,100%{opacity:1}}.o14{animation:o14 12.0s linear infinite}@keyframes o15{0%,52.292%{opacity:0}53.292%,100%{opacity:1}}.o15{animation:o15 12.0s linear infinite}@keyframes wait{0%,29.583%{opacity:0}29.583%,41.667%{opacity:1}41.75%,100%{opacity:0}}.wait{opacity:0;animation:wait 12.0s step-end infinite}</style>
+<g clip-path="url(#card)">
+<rect x="0" y="0" width="860" height="468" fill="#0f141b"/>
+<rect x="0" y="0" width="860" height="40" fill="#1a212b"/>
+<circle cx="24" cy="20.0" r="6" fill="#ff5f56"/><circle cx="46" cy="20.0" r="6" fill="#ffbd2e"/><circle cx="68" cy="20.0" r="6" fill="#27c93f"/>
+<text class="mono dim" x="430.0" y="25.0" text-anchor="middle" style="font-size:13px">librarian ask (Claude Code backend, Haiku, bundled catalogue)</text>
+<g id="content">
+<text class="mono " x="28" y="70" textLength="16.8" lengthAdjust="spacing" xml:space="preserve"><tspan class="green">$ </tspan></text>
+<text class="mono " x="44.8" y="70" textLength="747.6" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">librarian ask "Add property-based tests for our Python date-parsing module, and check the</tspan></text>
+<g class="ty1"><rect class="cover" x="44.8" y="55" width="777.6" height="21"/></g>
+<g class="ty1"><rect class="cursor ty1c" x="44.8" y="57" width="8.4" height="17"/></g>
+<text class="mono " x="28" y="91" textLength="302.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">existing tests actually catch bugs."</tspan></text>
+<g class="ty2"><rect class="cover" x="28" y="76" width="332.4" height="21"/></g>
+<g class="ty2"><rect class="cursor ty2c" x="28" y="78" width="8.4" height="17"/></g>
+<text class="mono out o0" x="28" y="118" textLength="50.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="gold b">PICKS:</tspan></text>
+<text class="mono out o1" x="28" y="139" textLength="781.2" lengthAdjust="spacing" xml:space="preserve"><tspan class="dim">- </tspan><tspan class="blue">trailofbits/property-based-testing</tspan><tspan class="dim"> | .../skills/trailofbits/property-based-testing/SKILL.md</tspan></text>
+<text class="mono out o2" x="28" y="160" textLength="772.8" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    </tspan><tspan class="dim">| </tspan><tspan class="fg">Covers writing property-based tests with Hypothesis for Python parsers, round-trip and</tspan></text>
+<text class="mono out o3" x="28" y="181" textLength="781.2" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    validator properties, and judging whether existing property tests assert anything real.</tspan><tspan class="dim"> |</tspan></text>
+<text class="mono out o4" x="28" y="202" textLength="126.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    </tspan><tspan class="dim">read: whole</tspan></text>
+<text class="mono out o5" x="28" y="223" textLength="772.8" lengthAdjust="spacing" xml:space="preserve"><tspan class="dim">- </tspan><tspan class="blue">boshu2/test</tspan><tspan class="dim"> | .../skills/boshu2/test/SKILL.md | </tspan><tspan class="fg">Assesses whether existing tests would fail</tspan></text>
+<text class="mono out o6" x="28" y="244" textLength="764.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    without the fix, which covers checking that the current tests catch bugs.</tspan><tspan class="dim"> | read: whole</tspan></text>
+<text class="mono out o7" x="28" y="265" textLength="50.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="gold b">MAYBE:</tspan></text>
+<text class="mono out o8" x="28" y="286" textLength="789.6" lengthAdjust="spacing" xml:space="preserve"><tspan class="dim">- </tspan><tspan class="blue">trailofbits/mutation-testing</tspan><tspan class="dim"> | .../skills/trailofbits/mutation-testing/SKILL.md | </tspan><tspan class="fg">Could show</tspan></text>
+<text class="mono out o9" x="28" y="307" textLength="789.6" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    whether existing tests catch bugs by surviving-mutant analysis, but the brief does not ask</tspan></text>
+<text class="mono out o10" x="28" y="328" textLength="344.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">    for mutation campaigns.</tspan><tspan class="dim"> | read: whole</tspan></text>
+<text class="mono out o11" x="28" y="349" textLength="487.2" lengthAdjust="spacing" xml:space="preserve"><tspan class="gold b">ALSO GREP:</tspan><tspan class="fg"> hypothesis given strategies, date parsing tests</tspan></text>
+<text class="mono out o12" x="28" y="370" textLength="789.6" lengthAdjust="spacing" xml:space="preserve"><tspan class="pink b">NOTE:</tspan><tspan class="fg"> The brief's "check the existing tests actually catch bugs" is covered by boshu2/test and</tspan></text>
+<text class="mono out o13" x="28" y="391" textLength="789.6" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">      the property-based-testing judging guidance; no skill is needed to parse the Python date</tspan></text>
+<text class="mono out o14" x="28" y="412" textLength="168.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="fg">      module itself.</tspan></text>
+<text class="mono out o15" x="28" y="433" textLength="260.4" lengthAdjust="spacing" xml:space="preserve"><tspan class="dim">--- end of librarian answer ---</tspan></text>
+<rect class="cursor wait" x="28" y="105" width="8.4" height="17"/>
+</g>
+</g>
+<rect x="0.5" y="0.5" width="859" height="467" rx="10" fill="none" stroke="#3a4556"/>
+</svg>
