@@ -6,5 +6,6 @@ command = "uvx"
 args = ["the-cartographer", "mcp"]
 # The first uvx start downloads the package, so give the server longer than Codex's default 10 seconds to start.
 startup_timeout_sec = 60
-# An ask is one model call over the whole catalogue (about 30k tokens with the bundled skills), so give the tool room.
-tool_timeout_sec = 180
+# Provide headroom for normal default attempts and process cleanup; server-directed retry waits can exceed this.
+# Increase this if you raise the server's --timeout; API SDK timeouts apply per attempt, not as a total deadline.
+tool_timeout_sec = 600

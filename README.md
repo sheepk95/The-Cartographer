@@ -211,12 +211,15 @@ or add this to `~/.codex/config.toml` (the same as
 command = "uvx"
 args = ["the-cartographer", "mcp"]
 startup_timeout_sec = 60   # the first uvx start downloads the package
-tool_timeout_sec = 180     # an ask is one model call over the whole catalogue
+tool_timeout_sec = 600     # headroom for normal default attempts and process cleanup
 ```
 
 Then add
 [`integrations/codex/AGENTS.md-snippet.md`](https://github.com/sheepk95/The-Cartographer/blob/main/integrations/codex/AGENTS.md-snippet.md)
 to your AGENTS.md. Codex sandboxes may not open files outside the workspace, so the MCP server also offers `read_skill`.
+The client timeout provides headroom for normal default attempts and process cleanup. Increase it when raising
+the server's `--timeout`; the API SDK applies its timeout per attempt rather than to the whole ask, and
+server-directed retry waits can still exceed the client timeout.
 
 **Anything else**
 
@@ -240,6 +243,9 @@ the brief to read it from stdin.
 `--command`, `--skills-dir`, `--no-user-skills`, `--no-bundled`), plus `--lexicon` for `find_skills`. `find_skills`
 stops fetching pages after 45 seconds and says how many matches it did not check; a failure comes back as a tool
 error, not a protocol error. Installing is CLI only: it writes to disk, so a person runs `cartographer install`.
+Local skills are rescanned for each ask, search and read, so newly added, renamed or removed skills take effect
+without restarting the server. `read_skill` returns SKILL.md only; linked references and scripts still need
+filesystem access and are not served by this tool.
 
 Any MCP client that launches stdio servers can run it with `uvx the-cartographer mcp` (or `cartographer mcp` after an
 install). Its MCP Registry name is `io.github.sheepk95/the-cartographer` (the PyPI package `the-cartographer`, stdio;
@@ -355,6 +361,19 @@ pages. The finder never uses that API (`robots.txt` disallows `/api/`), and it:
   robots.txt; one request at a time, at least 1.3 s apart)`.
 
 The Cartographer is not affiliated with or endorsed by skills.sh or Vercel.
+
+**Upgrading the shared fetch lock.** Stop every old Cartographer instance **before upgrading**. Never mix old and
+new versions on the same cache: old binaries can delete the lock file and do not participate in the new OS lock.
+The new `finder/fetch.lock` is intentionally persistent; its OS lock is released automatically when a process
+exits, including after a crash. Do not delete a new lock file while processes or waiters may still use it.
+Markers identify the lock family: Windows byte-range locks and POSIX `flock` (including WSL) cannot share a cache.
+Windows and WSL locks do not reliably exclude each other on a shared filesystem, so an incompatible marker is
+refused even after its owner exits. An old PID/token marker, earlier generic marker, unknown marker or uninitialized
+empty file is also refused without modification. Only after every process and waiter using that cache has stopped,
+remove the incompatible or legacy marker manually and retry; the next startup creates the current platform's marker.
+An interrupted first initialization can also leave an empty file requiring this stopped-process recovery.
+For old/new or Windows/WSL coexistence, set different `CARTOGRAPHER_CACHE` paths; each cache has independent request
+caps, spacing and block state, so their combined traffic is not coordinated.
 
 **Optional bulk index.** `cartographer finder index --top 2000` fetches the pages of the most-installed skills in
 sitemap order, so `find --offline` and the name screen have descriptions to work with. It reads `robots.txt` live,

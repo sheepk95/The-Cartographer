@@ -67,6 +67,11 @@ def ask(skills, brief, requester="unknown", backend=None, model=None, effort=Non
         # the model named skills but none is in the catalogue: it did not say "none", so never print "PICKS: none"
         unknown = ", ".join(e["name"][:60] for e in parsed["picks"][:MAX_LISTED])
         return 3, UNAVAILABLE % ("%s: every pick was unknown: %s" % (name, unknown)), dict(info, raw=raw[-2000:])
+    by_name = {s.name: s for s in skills}
+    for entry in checked["picks"] + checked["maybe"]:
+        note = catalogue.skill_read_note(by_name[entry["name"]])
+        if note and note not in checked["notes"]:
+            checked["notes"].append(note)
     info["answer"] = checked
     return 0, answer.render(checked), info
 
@@ -155,6 +160,9 @@ def cmd_show(args):
         print("no skill named %r (try `cartographer search`)" % args.name)
         return 1
     print("# %s  (%s, %d bytes)\n# %s\n" % (s.name, s.origin, s.size, s.path.replace("\\", "/")))
+    note = catalogue.skill_read_note(s)
+    if note:
+        print(note + "\n")
     print(catalogue.read_skill_file(s.path))
     return 0
 

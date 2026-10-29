@@ -323,7 +323,10 @@ class PolitenessTests(unittest.TestCase):
         with self.assertRaises(web.Blocked):
             f2.get("https://www.skills.sh/a/b/c")
         self.assertEqual(fw2.calls, [])
-        self.assertFalse(os.path.exists(os.path.join(tmp, "fetch.lock")))
+        self.assertTrue(os.path.exists(os.path.join(tmp, "fetch.lock")))  # stable file; its OS lock was released
+        probe = web.NetState(tmp)
+        probe.lock(wait=0)
+        probe.unlock()
 
 
 # ---------------------------------------------------------------- parsing
@@ -1288,6 +1291,105 @@ class FinderCliTests(unittest.TestCase):
 # ---------------------------------------------------------------- the network door, hardened (works review)
 
 class NetworkDoorTests(unittest.TestCase):
+    def test_robots_escaped_unreserved_paths_and_patterns_cannot_bypass_requests_or_redirects(self):
+        for pattern in ("/acme/tools/private", "/acme/tools/%70rivate", "/acme/tools/priv%61te"):
+            with self.subTest(pattern=pattern):
+                f, fw, _ = fetcher({web.SKILLS_SH + "/robots.txt": "User-agent: *\nDisallow: " + pattern,
+                                    web.SKILLS_SH + "/acme/tools/public": "allowed control"})
+                f.load_robots()
+                h = web._NoBlindRedirects(f.redirect_check)
+                req = mock.Mock(full_url=web.SKILLS_SH + "/acme/tools/public")
+                for path in ("/acme/tools/private", "/acme/tools/%70rivate", "/acme/tools/priv%61te"):
+                    url = web.SKILLS_SH + path
+                    self.assertTrue(web.allowed_url(url))  # robots, rather than the whitelist, must refuse it
+                    with self.assertRaises(web.Refused, msg=url):
+                        f.get(url, kind="page")
+                    with self.assertRaises(web.Refused, msg="redirect " + url):
+                        h.redirect_request(req, None, 302, "Found", {}, url)
+                self.assertEqual(fw.calls, [web.SKILLS_SH + "/robots.txt"])
+                self.assertEqual(f.get(web.SKILLS_SH + "/acme/tools/public", kind="page")[2], b"allowed control")
+
+    def test_robots_octet_normalization_retains_reserved_characters_and_rule_precedence(self):
+        for plain, escaped in (("/~private", "/%7Eprivate"), ("/~private", "/%7eprivate"),
+                               ("/file.txt", "/file%2etxt"), ("/a_b-c", "/a%5Fb%2Dc"),
+                               ("/caf\u00e9", "/caf%C3%A9")):
+            with self.subTest(plain=plain, escaped=escaped):
+                self.assertFalse(web.robots_allows([(False, plain)], escaped))
+                self.assertFalse(web.robots_allows([(False, escaped)], plain))
+        self.assertFalse(web.robots_allows([(False, "/a%2Fb")], "/a%2fb"))
+        self.assertTrue(web.robots_allows([(False, "/a/b")], "/a%2Fb"))
+        self.assertTrue(web.robots_allows([(False, "/a%2Fb")], "/a/b"))
+        self.assertFalse(web.robots_allows([(False, "/a%2Ab")], "/a%2ab"))
+        self.assertTrue(web.robots_allows([(False, "/a%2Ab")], "/aZZb"))
+        self.assertFalse(web.robots_allows([(False, "/private"), (True, "/%70rivat")], "/private"))
+        self.assertTrue(web.robots_allows([(False, "/private"), (True, "/%70rivate")], "/private"))
+
+    def test_robots_escaped_redirect_refusal_precedes_origin_request_cap_and_gap(self):
+        f, fw, clock = fetcher({web.SKILLS_SH + "/robots.txt":
+                               "User-agent: *\nDisallow: /acme/tools/private\n"})
+        f.load_robots()
+        before, slept = f.state.read(), list(clock.slept)
+        handler = web._NoBlindRedirects(f.redirect_check)
+        req = web.urllib.request.Request(web.SKILLS_SH + "/acme/tools/public")
+        with self.assertRaises(web.Refused):
+            handler.redirect_request(req, None, 302, "Found", {}, web.SKILLS_SH + "/acme/tools/%70rivate")
+        self.assertEqual(fw.calls, [web.SKILLS_SH + "/robots.txt"])
+        self.assertEqual(f.state.read(), before)
+        self.assertEqual(clock.slept, slept)
+
+    def test_robots_metadata_merges_under_lock_with_concurrent_request_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            clock = Clock()
+            other = web.NetState(tmp, clock=clock, sleep=clock.sleep)
+
+            class InterleavedState(web.NetState):
+                after_fetch = False
+                raced = False
+
+                def race(self):
+                    if not self.after_fetch or self.raced:
+                        return
+                    self.raced = True
+                    other.lock()
+                    try:
+                        d = other.read()
+                        d["day"].update(page=7, list=4, bulk=2)
+                        d["last"] = {"www.skills.sh": clock.t + 1, "api.github.com": clock.t + 2}
+                        d["blocked"] = {"www.skills.sh": {"status": 429, "until": clock.t + 600}}
+                        other.write(d)
+                    finally:
+                        other.unlock()
+
+                def lock(self, wait=90.0):
+                    self.race()  # another writer completes just before the metadata lock is acquired
+                    return super().lock(wait)
+
+                def read(self):
+                    d = super().read()
+                    if not self._held:
+                        self.race()  # without the lock, it can instead complete after our stale snapshot
+                    return d
+
+            st = InterleavedState(tmp, clock=clock, sleep=clock.sleep)
+            f = web.Fetcher(state=st, opener=FakeWeb({web.SKILLS_SH + "/robots.txt": ROBOTS}),
+                            clock=clock, sleep=clock.sleep)
+            request = f._request
+
+            def finish_fetch(*args, **kwargs):
+                result = request(*args, **kwargs)
+                st.after_fetch = True
+                return result
+
+            with mock.patch.object(f, "_request", finish_fetch):
+                f.load_robots()
+            d = other.read()
+            self.assertTrue(st.raced)
+            self.assertEqual({k: d["day"].get(k) for k in ("page", "list", "bulk")},
+                             {"page": 7, "list": 4, "bulk": 2})
+            self.assertEqual(d["last"], {"www.skills.sh": clock.t + 1, "api.github.com": clock.t + 2})
+            self.assertEqual(d["blocked"], {"www.skills.sh": {"status": 429, "until": clock.t + 600}})
+            self.assertEqual(d["robots"]["rules"], [[a, p] for a, p in web.parse_robots(ROBOTS)])
+
     def test_robots_wildcards_end_anchor_and_joined_agent_lines(self):
         rules = web.parse_robots("User-agent: *\nDisallow: /*.json$\nDisallow: /x*y\n")
         self.assertFalse(web.robots_allows(rules, "/a/b.json"))
@@ -1307,20 +1409,197 @@ class NetworkDoorTests(unittest.TestCase):
         self.assertEqual(web.retry_after("soon"), 60)
         self.assertTrue(web.utc(1e13).startswith("2999-"))  # Windows' gmtime refuses later dates
 
-    def test_a_stale_lock_is_broken_and_only_our_own_is_removed(self):
-        tmp = tempfile.mkdtemp()
-        st = web.NetState(tmp)
-        p = os.path.join(tmp, "fetch.lock")
-        with open(p, "w") as fh:
-            fh.write("12345 a crashed process")
-        old = time.time() - web.LOCK_STALE_S - 60
-        os.utime(p, (old, old))
-        st.lock(wait=1.0)
-        with open(p, "w") as fh:  # we were too slow: another process broke our lock and holds its own
-            fh.write("999 another process")
-        st.unlock()
-        self.assertTrue(os.path.exists(p))
-        shutil.rmtree(tmp, ignore_errors=True)
+    def test_a_live_old_lock_excludes_another_instance_and_only_our_owner_can_release(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            first, second, third = (web.NetState(tmp) for _ in range(3))
+            p = os.path.join(tmp, "fetch.lock")
+            first.lock(wait=0)
+            try:
+                with self.assertRaises(web.WebError):
+                    first.lock(wait=0)  # accidental reentry must not replace the owner's descriptor
+                old = time.time() - 3600  # even a request older than the former expiry retains ownership
+                os.utime(p, (old, old))
+                with self.assertRaises(web.WebError):
+                    second.lock(wait=0.01)
+                second.unlock()  # a failed contender owns no descriptor and cannot release the first
+                with self.assertRaises(web.WebError):
+                    third.lock(wait=0)
+                self.assertTrue(first._held)
+            finally:
+                first.unlock()
+            second.lock(wait=0)
+            try:
+                first.unlock()  # a previous holder's repeated unlock cannot release the new holder
+                with self.assertRaises(web.WebError):
+                    third.lock(wait=0)
+            finally:
+                second.unlock()
+            third.lock(wait=0)
+            third.unlock()
+            self.assertTrue(os.path.isfile(p))
+
+    def test_lock_survives_a_live_child_and_recovers_after_abnormal_process_exit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ready = os.path.join(tmp, "ready")
+            code = ("import os, sys, time\nfrom the_cartographer.web import NetState\n"
+                    "state = NetState(sys.argv[1])\nstate.lock(wait=1)\n"
+                    "with open(sys.argv[2], 'w') as f: f.write('held')\ntime.sleep(30)\n")
+            child = subprocess.Popen([sys.executable, "-B", "-c", code, tmp, ready], cwd=ROOT,
+                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            st = web.NetState(tmp)
+            try:
+                deadline = time.monotonic() + 10
+                while not os.path.exists(ready) and child.poll() is None and time.monotonic() < deadline:
+                    time.sleep(0.02)
+                self.assertTrue(os.path.exists(ready), "child failed to acquire its lock")
+                old = time.time() - 3600
+                os.utime(os.path.join(tmp, "fetch.lock"), (old, old))
+                with self.assertRaises(web.WebError):
+                    st.lock(wait=0.01)
+                child.terminate()  # no unlock/finally in the child; the OS must release its descriptor lock
+                child.communicate(timeout=10)
+                st.lock(wait=1)
+                self.assertTrue(st._held)
+            finally:
+                st.unlock()
+                if child.poll() is None:
+                    child.terminate()
+                child.communicate(timeout=10)
+
+    def test_legacy_and_unknown_markers_require_manual_stopped_process_migration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, "fetch.lock")
+            for marker in (b"12345 abandoned legacy marker", b"\0", b"foreign lock format", b"",
+                           web.LOCK_MARKER + b"\x1aunexpected", web.LOCK_MARKER.replace(b"\n", b"\r\n"),
+                           web.LOCK_MARKER.replace(b"\n", b"\r\n") + b"\x1aunexpected"):
+                with self.subTest(marker=marker):
+                    with open(p, "wb") as f:
+                        f.write(marker)
+                    st = web.NetState(tmp)
+                    try:
+                        with self.assertRaisesRegex(web.WebError, "legacy or unrecognized"):
+                            st.lock(wait=0)
+                    finally:
+                        st.unlock()
+                    with open(p, "rb") as f:
+                        self.assertEqual(f.read(), marker)
+            # Only an operator who has stopped EVERY old process may remove an old marker.
+            os.unlink(p)
+            st = web.NetState(tmp)
+            st.lock(wait=0)
+            st.unlock()
+            with open(p, "rb") as f:
+                self.assertEqual(f.read(), web.LOCK_MARKER)  # CRT text translation must not change the protocol
+            st.lock(wait=0)  # the persistent new marker is reusable, and must not be unlinked
+            st.unlock()
+
+    def test_lock_marker_refuses_the_other_platform_without_changing_its_bytes(self):
+        windows = b"the-cartographer/os-lock-2/windows\n"
+        posix = b"the-cartographer/os-lock-2/posix\n"
+        expected, foreign = (windows, posix) if os.name == "nt" else (posix, windows)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, "fetch.lock")
+            st = web.NetState(tmp)
+            st.lock(wait=0)
+            st.unlock()
+            with open(p, "rb") as f:
+                self.assertEqual(f.read(), expected)  # protocol expectation is independent of the production constant
+            with open(p, "wb") as f:
+                f.write(foreign)
+            with self.assertRaisesRegex(web.WebError, "Windows/POSIX"):
+                st.lock(wait=0)
+            self.assertFalse(st._held)
+            self.assertIsNone(st._lock_fd)
+            st.unlock()
+            with open(p, "rb") as f:
+                self.assertEqual(f.read(), foreign)
+
+    def test_legacy_child_marker_is_refused_even_before_its_pid_token_is_written(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ready, write_token, written = (os.path.join(tmp, n) for n in ("ready", "write", "written"))
+            code = ("import os, sys, time\n"
+                    "p, ready, go, written = sys.argv[1:]\n"
+                    "fd = os.open(p, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)\n"
+                    "open(ready, 'w').close()\n"
+                    "while not os.path.exists(go): time.sleep(0.01)\n"
+                    "os.write(fd, ('%d legacy-token' % os.getpid()).encode())\nos.close(fd)\n"
+                    "open(written, 'w').close()\ntime.sleep(30)\n")
+            p = os.path.join(tmp, "fetch.lock")
+            child = subprocess.Popen([sys.executable, "-B", "-c", code, p, ready, write_token, written], cwd=ROOT,
+                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            try:
+                for signal in (ready, written):
+                    deadline = time.monotonic() + 10
+                    while not os.path.exists(signal) and child.poll() is None and time.monotonic() < deadline:
+                        time.sleep(0.02)
+                    self.assertTrue(os.path.exists(signal), "legacy child failed to publish " + signal)
+                    with open(p, "rb") as f:
+                        marker = f.read()
+                    st = web.NetState(tmp)
+                    try:
+                        with self.assertRaisesRegex(web.WebError, "legacy or unrecognized"):
+                            st.lock(wait=0.02)
+                    finally:
+                        st.unlock()
+                    with open(p, "rb") as f:
+                        self.assertEqual(f.read(), marker)
+                    if signal == ready:
+                        open(write_token, "w").close()
+            finally:
+                if child.poll() is None:
+                    child.terminate()
+                child.communicate(timeout=10)
+
+    def test_new_startups_wait_for_the_creators_marker_and_then_contend(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created, initialize, held, release = (os.path.join(tmp, n) for n in ("created", "initialize", "held", "release"))
+            code = ("import os, sys, time\nfrom the_cartographer import web\n"
+                    "folder, created, initialize, held, release = sys.argv[1:]\n"
+                    "real_open = web.os.open\n"
+                    "def delayed_open(path, flags, *args):\n"
+                    "    fd = real_open(path, flags, *args)\n"
+                    "    if flags & os.O_EXCL:\n"
+                    "        open(created, 'w').close()\n"
+                    "        while not os.path.exists(initialize): time.sleep(0.01)\n"
+                    "    return fd\n"
+                    "web.os.open = delayed_open\nstate = web.NetState(folder)\nstate.lock(wait=5)\n"
+                    "open(held, 'w').close()\n"
+                    "while not os.path.exists(release): time.sleep(0.01)\nstate.unlock()\n")
+            creator = subprocess.Popen([sys.executable, "-B", "-c", code, tmp, created, initialize, held, release],
+                                       cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            contender = None
+            try:
+                deadline = time.monotonic() + 10
+                while not os.path.exists(created) and creator.poll() is None and time.monotonic() < deadline:
+                    time.sleep(0.02)
+                self.assertTrue(os.path.exists(created), "creator did not use exclusive file creation")
+                contender_code = ("import sys\nfrom the_cartographer.web import NetState\n"
+                                  "s = NetState(sys.argv[1])\ns.lock(wait=5)\nprint('acquired', flush=True)\ns.unlock()\n")
+                contender = subprocess.Popen([sys.executable, "-B", "-c", contender_code, tmp], cwd=ROOT,
+                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                time.sleep(0.1)
+                self.assertIsNone(contender.poll())
+                open(initialize, "w").close()
+                deadline = time.monotonic() + 10
+                while not os.path.exists(held) and creator.poll() is None and time.monotonic() < deadline:
+                    time.sleep(0.02)
+                self.assertTrue(os.path.exists(held), "creator did not acquire the OS lock")
+                self.assertIsNone(contender.poll())
+                open(release, "w").close()
+                out, err = contender.communicate(timeout=10)
+                self.assertEqual(contender.returncode, 0, err.decode())
+                self.assertEqual(out.strip(), b"acquired")
+                creator.communicate(timeout=10)
+                self.assertEqual(creator.returncode, 0)
+                st = web.NetState(tmp)
+                st.lock(wait=0)
+                st.unlock()
+            finally:
+                for process in (creator, contender):
+                    if process is not None:
+                        if process.poll() is None:
+                            process.terminate()
+                        process.communicate(timeout=10)
 
     def test_the_daily_cap_resets_at_utc_midnight(self):
         routes = {"https://www.skills.sh/robots.txt": ROBOTS, "https://www.skills.sh/a/b/p0": "x",
