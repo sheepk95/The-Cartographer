@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "the-cartographer"
-version = "0.1.0"
+version = "0.1.1"
 description = "Ask which agent skills fit a task before you start it: one cached model call over the whole skill catalogue, with a checked answer. Find and vet the ones you lack on skills.sh."
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.9"

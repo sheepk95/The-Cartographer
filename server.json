@@ -3,7 +3,7 @@
   "name": "io.github.sheepk95/the-cartographer",
   "title": "The Cartographer",
   "description": "Ask which agent skills fit a task before you start it: picks from a vetted skill catalogue.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://github.com/sheepk95/The-Cartographer",
   "repository": {
     "url": "https://github.com/sheepk95/The-Cartographer",
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "the-cartographer",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

@@ -10,7 +10,7 @@
       "name": "the-cartographer",
       "displayName": "The Cartographer",
       "source": "./",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "Ask which agent skills fit a task before you start it. Adds The Cartographer's MCP server (ask_cartographer, read_skill, search_skills, find_skills) and a skill that asks it at the start of each task. Needs uv.",
       "author": {
         "name": "sheepk95",

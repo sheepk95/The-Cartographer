@@ -117,7 +117,7 @@ pip install -e .            # or pip install . for a regular install
 `cartographer doctor` on a fresh clone with only the bundled skills prints something like:
 
 ```text
-the-cartographer 0.1.0
+the-cartographer 0.1.1
 bundled home: /path/to/The-Cartographer
 skills: 193 (193 bundled, 0 local)
 catalogue: 101163 bytes, about 28k tokens, id 3726e799ee4a

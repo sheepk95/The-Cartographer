@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.1 (2026-10-29)
+
+- Reject output from failed Codex runs before reading answer files; report malformed custom commands through the
+  normal CLI/MCP unavailable response.
+- Refuse unknown licence exceptions and prevent pointer-looking SPDX clauses from bypassing licence checks.
+- Keep fetch ownership for slow live processes with persistent OS locks, merge robots metadata under the shared
+  lock, and normalize escaped unreserved and UTF-8 paths before robots matching.
+- Refuse legacy, unknown and incompatible Windows/POSIX cache-lock markers without modifying them.
+- Refresh local skills on each MCP search and read, so additions, removals and renames take effect immediately.
+- Resolve the bundled Playwright wrapper from its installed location, invoke it explicitly with Bash, and convert
+  Windows-hosted paths inside WSL while preserving the pinned upstream skill files.
+- Increase the Codex MCP client timeout example to 600 seconds for normal-attempt headroom; document that API
+  timeouts apply per attempt and server-directed retry waits can exceed the client timeout.
+
+**Upgrading:** stop every Cartographer process and waiter using a cache before upgrading or manually removing a
+legacy lock marker. Follow the README's shared-fetch-lock migration instructions. Windows and WSL must use separate
+`CARTOGRAPHER_CACHE` folders; their request caps, spacing and block state are independent.
+
 ## 0.1.0 (2026-10-29)
 
 First public version.
