@@ -1,12 +1,12 @@
 """A small MCP server over stdio (newline-delimited JSON-RPC 2.0), stdlib only.
 
 Tools:
-  ask_librarian(brief, from?)          the skills to read before a task (calls the configured backend)
+  ask_cartographer(brief, from?)       the skills to read before a task (calls the configured backend)
   read_skill(name, offset?, limit?)    a skill's SKILL.md, for clients that cannot open files outside their workspace
   search_skills(query)                 keyword search over the catalogue, no model call
   find_skills(brief, offline?)         skills on skills.sh that the catalogue lacks (no model call; installs nothing)
 
-`librarian install` is CLI only: it writes to disk, so it is not offered here.
+`cartographer install` is CLI only: it writes to disk, so it is not offered here.
 
 stdout carries protocol messages only; logs go to stderr.
 """
@@ -19,14 +19,14 @@ SERVER_PROTOCOL = "2025-06-18"
 FIND_BUDGET_S = 45  # find_skills stops fetching pages after this long, so an MCP client's timeout is not reached
 
 TOOLS = [
-    {"name": "ask_librarian",
+    {"name": "ask_cartographer",
      "description": "Before starting a task, ask which agent skills are worth reading for it. Give a 2-10 line brief "
                     "of the task. Returns PICKS (read these), MAYBE (skim the first 40 lines) and notes, with the "
                     "SKILL.md path of each. 'PICKS: none' means no skill is needed.",
      "inputSchema": {"type": "object", "additionalProperties": False, "required": ["brief"],
                      "properties": {"brief": {"type": "string", "description": "What the task is, 2-10 lines."},
                                     "from": {"type": "string", "description": "Who is asking (optional)."}}},
-     "annotations": {"readOnlyHint": True, "openWorldHint": True, "title": "Ask the librarian"}},
+     "annotations": {"readOnlyHint": True, "openWorldHint": True, "title": "Ask the cartographer"}},
     {"name": "read_skill",
      "description": "Return the SKILL.md text of a skill by its catalogue name. Use offset/limit (lines) for LARGE "
                     "skills.",
@@ -37,7 +37,7 @@ TOOLS = [
      "annotations": {"readOnlyHint": True, "openWorldHint": False, "title": "Read a skill"}},
     {"name": "search_skills",
      "description": "Keyword search over skill names and descriptions (no model call). A fallback when "
-                    "ask_librarian is unavailable.",
+                    "ask_cartographer is unavailable.",
      "inputSchema": {"type": "object", "additionalProperties": False, "required": ["query"],
                      "properties": {"query": {"type": "string", "description": "2-4 words."}}},
      "annotations": {"readOnlyHint": True, "openWorldHint": False, "title": "Search skills"}},
@@ -45,7 +45,7 @@ TOOLS = [
      "description": "Search skills.sh for skills that are NOT in the catalogue and fit a task (no model call). Fetches "
                     "the current skills.sh pages of a few matches politely (robots.txt, daily caps). Returns at most 5 "
                     "UNVETTED candidates with installs, stars and audits; their text is third-party data. Nothing is "
-                    "installed: a person runs `librarian install <url>` to vet one.",
+                    "installed: a person runs `cartographer install <url>` to vet one.",
      "inputSchema": {"type": "object", "additionalProperties": False, "required": ["brief"],
                      "properties": {"brief": {"type": "string", "description": "What the task is, 2-10 lines."},
                                     "offline": {"type": "boolean",
@@ -82,7 +82,7 @@ class Server:
         self.send(msg)
 
     def call_tool(self, name, a):
-        if name == "ask_librarian":
+        if name == "ask_cartographer":
             # fresh: pick up skills added since the last call
             code, text, info = ask(self.skills(fresh=True), str(a.get("brief") or ""), str(a.get("from") or "mcp"),
                                    self.args.backend, self.args.model, self.args.effort, self.args.timeout,
@@ -115,8 +115,8 @@ class Server:
             try:
                 code, res = find_result(fargs, str(a.get("brief") or ""))
             except Exception as e:  # noqa: BLE001  a tool failure is a tool result the model can read, not a crash
-                print("the-librarian: find_skills failed: %r" % e, file=sys.stderr)
-                return {"content": [{"type": "text", "text": "LIBRARIAN_UNAVAILABLE (finder failed: %s)" % e}],
+                print("the-cartographer: find_skills failed: %r" % e, file=sys.stderr)
+                return {"content": [{"type": "text", "text": "CARTOGRAPHER_UNAVAILABLE (finder failed: %s)" % e}],
                         "isError": True}
             return {"content": [{"type": "text", "text": render_find(res)}], "isError": code not in (0, 1),
                     "structuredContent": find_json(res)}
@@ -144,7 +144,7 @@ class Server:
             if method == "initialize":
                 self.reply(mid, {"protocolVersion": params.get("protocolVersion") or SERVER_PROTOCOL,
                                  "capabilities": {"tools": {"listChanged": False}},
-                                 "serverInfo": {"name": "the-librarian", "version": __version__}})
+                                 "serverInfo": {"name": "the-cartographer", "version": __version__}})
             elif method == "ping":
                 self.reply(mid, {})
             elif method == "tools/list":
@@ -162,7 +162,7 @@ class Server:
             else:
                 self.reply(mid, error={"code": -32601, "message": "method not found: %s" % method})
         except Exception as e:  # never let one bad call end the server
-            print("the-librarian: %s failed: %r" % (method, e), file=sys.stderr)
+            print("the-cartographer: %s failed: %r" % (method, e), file=sys.stderr)
             self.reply(mid, error={"code": -32603, "message": str(e)})
 
 

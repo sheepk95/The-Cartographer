@@ -5,14 +5,14 @@ from unittest import mock
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from the_librarian import answer, backends, catalogue, cli, frontmatter, mcp_server  # noqa: E402
-from the_librarian.prompt import END_MARKER  # noqa: E402
+from the_cartographer import answer, backends, catalogue, cli, frontmatter, mcp_server  # noqa: E402
+from the_cartographer.prompt import END_MARKER  # noqa: E402
 
 
 def setUpModule():
     # every temporary folder this module makes lands in one, removed when the module ends
     global _old_tempdir, _tmp_root
-    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="librarian-tests-")
+    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="cartographer-tests-")
     tempfile.tempdir = _tmp_root
 
 
@@ -107,6 +107,49 @@ class AnswerTests(unittest.TestCase):
         with self.assertRaises(answer.AnswerError):
             answer.parse("PICKS: none\n")
 
+    def test_a_malformed_answer_is_an_error_not_none(self):
+        # prose, an empty or unreadable PICKS section: each must fail (exit 3, fallback), never render "PICKS: none"
+        for raw in ("I think you should read the testing skills.\n",
+                    "MAYBE:\n- beta | b/SKILL.md | might fit | read: whole\n",
+                    "PICKS:\nalpha would fit, and so would beta.\n",
+                    "PICKS:\n- alpha, because it fits\n",
+                    "PICKS: alpha and beta\n",
+                    "PICKS:\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)
+        for raw in ("PICKS: none\n", "**PICKS:** None.\n",
+                    "PICKS:\n- alpha | a/SKILL.md | fits | read: whole\nprose\n"):
+            with self.subTest(raw=raw):
+                answer.parse(raw + END_MARKER)  # an explicit none, or readable picks with a stray line, still parse
+
+    def test_an_explicit_none_with_a_reason_is_still_none(self):
+        # the prompt asks for "PICKS: none"; a model that adds a reason, brackets it or puts it on the next line has
+        # still said none, and must not be sent to the fallback as if its answer were unreadable
+        for raw in ("PICKS: none (the task is mechanical)\n", "PICKS: None \u2014 copying files needs no skill.\n",
+                    "PICKS: (none)\n", "PICKS:\nnone\n", "PICKS:\n- none\n"):
+            with self.subTest(raw=raw):
+                self.assertEqual(answer.parse(raw + END_MARKER)["picks"], [])
+        for raw in ("PICKS: none-such\n", "PICKS: nonexistent\n", "PICKS:\n- none-such\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)  # a word that only starts with "none" is not a none
+
+    def test_a_path_that_starts_with_none_is_not_none(self):
+        # "none/testing" is a path or a name, not "no skill fits": it must fail like any unreadable PICKS section
+        for raw in ("PICKS: none/testing\n", "PICKS:\n- none/testing\n", "PICKS: none\\testing\n",
+                    "PICKS: none|x\n", "PICKS: none_x\n", "PICKS: none2\n", "PICKS: none.md\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)
+        for raw in ("PICKS: none, nothing fits\n", "PICKS: none; mechanical\n", "PICKS: none: mechanical\n",
+                    "PICKS: none - mechanical\n", "PICKS: none- mechanical\n", "PICKS: none\u2014 mechanical\n",
+                    "PICKS: none(mechanical)\n", "PICKS: none.\n"):
+            with self.subTest(raw=raw):
+                self.assertEqual(answer.parse(raw + END_MARKER)["picks"], [])
+
+    def test_an_unreadable_line_beside_readable_picks_is_noted(self):
+        p = answer.parse("PICKS:\n- alpha | a/SKILL.md | fits | read: whole\n- beta, because it fits\n" + END_MARKER)
+        self.assertEqual([e["name"] for e in p["picks"]], ["alpha"])
+        self.assertTrue(any("beta, because it fits" in n for n in p["notes"]), p["notes"])
+
 
 FAKE_MODEL = textwrap.dedent("""\
     import sys
@@ -138,7 +181,34 @@ class CommandBackendTests(unittest.TestCase):
         code, text, _ = cli.ask(skills, "task", backend="command", command='"%s" -c "import sys; sys.exit(4)"'
                                 % sys.executable)
         self.assertEqual(code, 3)
-        self.assertTrue(text.startswith("LIBRARIAN_UNAVAILABLE"))
+        self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE"))
+
+    def test_a_malformed_answer_exits_3_not_none(self):
+        # the whole path, not only the parser: prose with the end marker comes back as exit 3, never "PICKS: none"
+        prose = os.path.join(self.tmp, "prose_model.py")
+        with open(prose, "w", encoding="utf-8") as f:
+            f.write("import sys\nsys.stdin.read()\nprint(%r)\n" % ("I would read alpha.\n" + END_MARKER))
+        skills = catalogue.build(extra_dirs=[self.tmp], user_skills=False, bundled=False)
+        code, text, _ = cli.ask(skills, "Write the alpha report", backend="command",
+                                command='"%s" "%s"' % (sys.executable, prose))
+        self.assertEqual(code, 3, text)
+        self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE") and "malformed" in text, text)
+        self.assertNotIn("PICKS: none", text)
+
+    def test_a_none_path_exits_3_not_none(self):
+        # "none/testing" under PICKS is unreadable, not an explicit none: the CLI must exit 3, never print "PICKS: none"
+        skills = catalogue.build(extra_dirs=[self.tmp], user_skills=False, bundled=False)
+        for i, body in enumerate(("PICKS: none/testing\n", "PICKS:\n- none/testing\n")):
+            model = os.path.join(self.tmp, "none_path_model_%d.py" % i)
+            with open(model, "w", encoding="utf-8") as f:
+                f.write("import sys\nsys.stdin.read()\nprint(%r)\n" % (body + END_MARKER))
+            with self.subTest(body=body):
+                code, text, _ = cli.ask(skills, "Write the alpha report", backend="command",
+                                        command='"%s" "%s"' % (sys.executable, model))
+                self.assertEqual(code, 3, text)
+                self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE") and "malformed" in text, text)
+                self.assertNotIn("PICKS: none", text.splitlines())  # the error quotes the line; no answer is printed
+                self.assertNotIn(END_MARKER, text)
 
 
 class AnthropicRequestShapeTests(unittest.TestCase):
@@ -188,18 +258,18 @@ class McpTests(unittest.TestCase):
                                                                            "arguments": {"query": "alpha"}}},
             {"jsonrpc": "2.0", "id": 4, "method": "tools/call", "params": {"name": "read_skill",
                                                                            "arguments": {"name": "alpha", "limit": 3}}},
-            {"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": "ask_librarian",
+            {"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": "ask_cartographer",
                                                                            "arguments": {"brief": "alpha report"}}},
             {"jsonrpc": "2.0", "id": 6, "method": "nope"},
         ]
         inp = "".join(json.dumps(m) + "\n" for m in msgs).encode("utf-8")
-        cmd = [sys.executable, "-m", "the_librarian", "mcp", "--no-user-skills", "--no-bundled", "--skills-dir", tmp,
+        cmd = [sys.executable, "-m", "the_cartographer", "mcp", "--no-user-skills", "--no-bundled", "--skills-dir", tmp,
                "--backend", "command", "--command", '"%s" "%s"' % (sys.executable, fake)]
         r = subprocess.run(cmd, input=inp, capture_output=True, cwd=ROOT, timeout=60)
         out = {m["id"]: m for m in (json.loads(l) for l in r.stdout.decode("utf-8").splitlines() if l.strip())}
-        self.assertEqual(out[1]["result"]["serverInfo"]["name"], "the-librarian")
+        self.assertEqual(out[1]["result"]["serverInfo"]["name"], "the-cartographer")
         self.assertEqual({t["name"] for t in out[2]["result"]["tools"]},
-                         {"ask_librarian", "read_skill", "search_skills", "find_skills"})
+                         {"ask_cartographer", "read_skill", "search_skills", "find_skills"})
         self.assertIn("alpha", out[3]["result"]["content"][0]["text"])
         self.assertIn("lines 1-3", out[4]["result"]["content"][0]["text"])
         self.assertFalse(out[5]["result"]["isError"], out[5])
@@ -261,7 +331,7 @@ class RunTests(unittest.TestCase):
 
     def test_timeout_stops_the_program_and_what_it_started(self):
         # a shim's real program keeps the output pipes open; killing only the shim left the read hanging (Windows)
-        # or the program running after the librarian gave up (POSIX)
+        # or the program running after the cartographer gave up (POSIX)
         pid_file = os.path.join(self.tmp, "grandchild.pid")
         child = self.script("child.py", textwrap.dedent("""\
             import subprocess, sys, time
@@ -320,21 +390,21 @@ class ChoiceTests(unittest.TestCase):
 
     def run_cli(self, argv, env):
         base = ["--no-user-skills", "--no-bundled", "--skills-dir", self.tmp]
-        clean = {k: v for k, v in os.environ.items() if not k.startswith("LIBRARIAN_")}
+        clean = {k: v for k, v in os.environ.items() if not k.startswith("CARTOGRAPHER_")}
         clean.update(env)
         with mock.patch.dict(os.environ, clean, clear=True), mock.patch("sys.stdout", io.StringIO()):
             return cli.main(["ask"] + base + argv + ["the task"])
 
     def test_effort_flag_beats_environment(self):
-        self.run_cli(["--backend", "claude", "--effort", "high"], {"LIBRARIAN_EFFORT": "low"})
+        self.run_cli(["--backend", "claude", "--effort", "high"], {"CARTOGRAPHER_EFFORT": "low"})
         self.assertEqual(self.used["effort"], "high")
-        self.run_cli(["--backend", "claude"], {"LIBRARIAN_EFFORT": "low"})
+        self.run_cli(["--backend", "claude"], {"CARTOGRAPHER_EFFORT": "low"})
         self.assertEqual(self.used["effort"], "low")
         self.run_cli(["--backend", "claude"], {})
         self.assertEqual(self.used["effort"], "medium")
 
     def test_command_flag_means_command_backend(self):
-        self.assertEqual(self.run_cli(["--command", "my-model"], {"LIBRARIAN_BACKEND": "claude"}), 0)
+        self.assertEqual(self.run_cli(["--command", "my-model"], {"CARTOGRAPHER_BACKEND": "claude"}), 0)
         self.assertEqual(self.used["name"], "command")
         self.run_cli(["--command", "my-model", "--backend", "claude"], {})
         self.assertEqual(self.used["name"], "claude")  # an explicit --backend still wins
@@ -378,7 +448,7 @@ class MoreCatalogueTests(unittest.TestCase):
         os.makedirs(os.path.join(packaged, "catalogue"))
         with open(os.path.join(packaged, "catalogue", "bundled.json"), "w", encoding="utf-8") as f:
             f.write('{"skills": []}')
-        env = {k: v for k, v in os.environ.items() if k != "LIBRARIAN_HOME"}
+        env = {k: v for k, v in os.environ.items() if k != "CARTOGRAPHER_HOME"}
         with mock.patch.dict(os.environ, env, clear=True), mock.patch.object(catalogue, "REPO_ROOT", empty), \
                 mock.patch.object(catalogue, "PACKAGE_BUNDLE", packaged, create=True):
             self.assertEqual(catalogue.bundled_home(), packaged)
@@ -412,7 +482,7 @@ class McpRobustnessTests(unittest.TestCase):
                         "params": {"name": "read_skill", "arguments": {"name": 7}}}),
             json.dumps({"jsonrpc": "2.0", "id": 5, "method": "ping"}),
         ]
-        cmd = [sys.executable, "-m", "the_librarian", "mcp", "--no-user-skills", "--no-bundled", "--skills-dir", tmp]
+        cmd = [sys.executable, "-m", "the_cartographer", "mcp", "--no-user-skills", "--no-bundled", "--skills-dir", tmp]
         r = subprocess.run(cmd, input=("\n".join(lines) + "\n").encode("utf-8"), capture_output=True, cwd=ROOT,
                            timeout=60)
         msgs = [json.loads(l) for l in r.stdout.decode("utf-8").splitlines() if l.strip()]

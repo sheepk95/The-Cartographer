@@ -1,9 +1,9 @@
-# Add to ~/.codex/config.toml (or run: codex mcp add the-librarian -- uvx the-librarian mcp)
-# Needs uv (https://docs.astral.sh/uv/). After `pipx install the-librarian` you can use command = "librarian",
+# Add to ~/.codex/config.toml (or run: codex mcp add the-cartographer -- uvx the-cartographer mcp)
+# Needs uv (https://docs.astral.sh/uv/). After `pipx install the-cartographer` you can use command = "cartographer",
 # args = ["mcp"] instead.
-[mcp_servers.the-librarian]
+[mcp_servers.the-cartographer]
 command = "uvx"
-args = ["the-librarian", "mcp"]
+args = ["the-cartographer", "mcp"]
 # The first uvx start downloads the package, so give the server longer than Codex's default 10 seconds to start.
 startup_timeout_sec = 60
 # An ask is one model call over the whole catalogue (about 30k tokens with the bundled skills), so give the tool room.

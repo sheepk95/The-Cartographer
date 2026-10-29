@@ -75,8 +75,8 @@ def notices(entries):
     lines = ["# Third-party notices", "",
              "The `skills/` folder bundles %d agent skills written by other people. Each skill keeps its own "
              "licence: the LICENSE file inside its folder applies to that folder. They are copied unchanged from "
-             "the upstream commit listed below. The Librarian's own code (everything outside `skills/`) is under "
-             "the MIT licence in `LICENSE`." % len(entries), "",
+             "the upstream commit listed below. The Cartographer's own code (everything outside `skills/`) is under "
+             "the Apache License 2.0 in `LICENSE`, with the notice in `NOTICE`." % len(entries), "",
              "| skill | licence | source (pinned commit) |", "|---|---|---|"]
     for e in entries:
         src = "https://github.com/%s/tree/%s/%s" % (e["repo"], e["commit"], e["path"]) if e["path"] else \

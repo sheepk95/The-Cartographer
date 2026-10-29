@@ -190,14 +190,14 @@ def parse_repo_page(h):
 # ---------------------------------------------------------------- the cache and the index
 
 def cache_dir():
-    """LIBRARIAN_CACHE, else %LOCALAPPDATA%/the-librarian on Windows, else $XDG_CACHE_HOME or ~/.cache."""
-    env = os.environ.get("LIBRARIAN_CACHE")
+    """CARTOGRAPHER_CACHE, else %LOCALAPPDATA%/the-cartographer on Windows, else $XDG_CACHE_HOME or ~/.cache."""
+    env = os.environ.get("CARTOGRAPHER_CACHE")
     if env:
         return os.path.abspath(env)
     if os.name == "nt" and os.environ.get("LOCALAPPDATA"):
-        return os.path.join(os.environ["LOCALAPPDATA"], "the-librarian")
+        return os.path.join(os.environ["LOCALAPPDATA"], "the-cartographer")
     base = os.environ.get("XDG_CACHE_HOME") or os.path.join(os.path.expanduser("~"), ".cache")
-    return os.path.join(base, "the-librarian")
+    return os.path.join(base, "the-cartographer")
 
 
 def finder_dir(root=None):
@@ -317,7 +317,7 @@ def page_rows(fdir):
 
 
 def fetcher_for(fdir, gap=web.DEFAULT_GAP, out=None, opener=None, clock=None, sleep=None):
-    """A Fetcher whose lock and state are shared with every other librarian process using this cache."""
+    """A Fetcher whose lock and state are shared with every other cartographer process using this cache."""
     kw = {}
     if clock:
         kw["clock"] = clock
@@ -426,7 +426,7 @@ def refresh_names(f, fdir, max_age=NAMES_MAX_AGE, out=print, force=False):
     if f.robots is None:
         f.load_robots(max_age=max_age)
     ids, maps = sitemap_ids(f, out)
-    d = {"format": "the-librarian/finder-names-1", "built_at": web.utc(), "epoch": time.time(),
+    d = {"format": "the-cartographer/finder-names-1", "built_at": web.utc(), "epoch": time.time(),
          "sitemaps": maps, "ids": ids}
     write_json(names_path(fdir), d)
     return d
@@ -553,7 +553,7 @@ def fetch_repo_extras(f, owner, repo, seen):
 
 
 def summary(root=None):
-    """What the finder cache holds, for `librarian doctor` and `finder status`."""
+    """What the finder cache holds, for `cartographer doctor` and `finder status`."""
     fdir = finder_dir(root)
     names = load_names(fdir)
     pages_path = os.path.join(fdir, "pages.jsonl")

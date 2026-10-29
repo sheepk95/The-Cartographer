@@ -1,4 +1,5 @@
-"""`librarian install`: vet one skill from GitHub and copy it into a local skills folder, with its licence and source.
+"""`cartographer install`: vet one skill from GitHub, then copy it into a local skills folder with its licence and
+its source.
 
 Steps (nothing downloaded is ever run):
   1. The target: a skills.sh page URL, or owner/repo[/skill]. A skills.sh page (robots permitting) gives the repo,
@@ -9,7 +10,7 @@ Steps (nothing downloaded is ever run):
   5. The licence: SKILL.md front matter, and the licence files of the nearest folder that has any (the skill folder,
      then each parent up to the repository root). Their text is carried into the installed folder. When the two
      disagree, both apply, and a refused one decides. Unknown, missing, non-commercial, no-derivatives and
-     source-available licences (and any in $LIBRARIAN_REFUSE_LICENCES) are refused unless --allow-any-licence.
+     source-available licences (and any in $CARTOGRAPHER_REFUSE_LICENCES) are refused unless --allow-any-licence.
      Copyleft licences are allowed, with a note. A skills.sh audit that says Fail is refused unless
      --allow-audit-fail.
   6. The file list, with scripts, binaries, executable files and agent configuration flagged. Agent configuration
@@ -19,7 +20,8 @@ Steps (nothing downloaded is ever run):
      names below the top of the skill folder are listed as a warning. Names that cannot be written the same way on
      every OS are refused. Then a yes/no question unless --yes.
   7. The copy: into <dest>/<safe name> (never over an existing folder), files written without execute bits, plus
-     .librarian-source.json (repository, commit, path, licence, SHA-256 per file, the skills.sh figures and the time).
+     .cartographer-source.json (repository, commit, path, licence, SHA-256 per file, the skills.sh figures and the
+     time).
 
 Exit codes: 0 installed, 1 refused (licence, audit, exists, declined, not found), 2 bad arguments, 3 transient failure
 (network, rate limit): run it again later.
@@ -28,8 +30,8 @@ import hashlib, json, os, re, secrets, shutil, sys, tarfile, time, unicodedata
 
 from . import __version__, frontmatter, licences, skillsh, web
 
-SOURCE_FILE = ".librarian-source.json"
-FORMAT = "the-librarian/source-1"
+SOURCE_FILE = ".cartographer-source.json"
+FORMAT = "the-cartographer/source-1"
 MAX_TARBALL = 200 * 1024 * 1024
 MAX_FILES = 500
 MAX_SKILL_BYTES = 20 * 1024 * 1024
@@ -392,7 +394,7 @@ def front_matter_agent_keys(text):
     content = [l for l in lines if l.strip() and not l.lstrip().startswith("#")]
     for n, line in enumerate(content):
         if not line[:1].isspace() and ODD_FRONT_MATTER_RE.match(line):
-            out.append("front matter in a YAML form the librarian cannot check (%s)" % skillsh.clean(line, 40))
+            out.append("front matter in a YAML form the cartographer cannot check (%s)" % skillsh.clean(line, 40))
             continue
         m = AGENT_KEY_RE.match(line)
         if not m:
@@ -454,7 +456,7 @@ def write_skill(dest_root, name, files, added, record):
     if os.path.lexists(final):
         raise Refusal("%s already exists; nothing was changed (remove it yourself or use --name)" % final)
     os.makedirs(dest_root, exist_ok=True)
-    tmp = os.path.join(dest_root, ".librarian-tmp-%s" % secrets.token_hex(4))
+    tmp = os.path.join(dest_root, ".cartographer-tmp-%s" % secrets.token_hex(4))
     os.mkdir(tmp)
     try:
         for inner, data in [(i, d) for i, d, _ in files] + [(i, d) for i, (d, _) in added.items()]:
@@ -491,19 +493,19 @@ def run(target, dest=None, name=None, path=None, ref=None, yes=False, allow_any_
     try:
         owner, repo, slug, page = parse_target(target)
     except BadTarget as e:
-        out("librarian install: %s" % e)
+        out("cartographer install: %s" % e)
         return 2
     if ref is not None and not SHA_RE.match(ref):
-        out("librarian install: --ref must be a full 40-character commit sha")
+        out("cartographer install: --ref must be a full 40-character commit sha")
         return 2
     try:
         name = safe_name(name or slug or repo) if name or slug else None
     except BadTarget as e:
-        out("librarian install: %s" % e)
+        out("cartographer install: %s" % e)
         return 2
     fdir = skillsh.finder_dir(cache)
     f = fetcher or skillsh.fetcher_for(fdir, out=out)
-    tok = os.environ.get("LIBRARIAN_GITHUB_TOKEN")
+    tok = os.environ.get("CARTOGRAPHER_GITHUB_TOKEN")
     if tok and not fetcher:
         f.extra_headers["api.github.com"] = {"Authorization": "Bearer " + tok}
     stage = os.path.join(skillsh.cache_dir() if cache is None else cache, "staging", secrets.token_hex(6))
@@ -583,7 +585,7 @@ def run(target, dest=None, name=None, path=None, ref=None, yes=False, allow_any_
         for inner, (_, rel) in added.items():
             out("  + %s (from %s, kept for the licence terms)" % (inner, rel))
         if any(fl for _, _, fl in files):
-            out("Read the flagged files before you let an agent run them. The librarian never runs them.")
+            out("Read the flagged files before you let an agent run them. The cartographer never runs them.")
         for n, why_agent in agent:
             out("  agent config: %s (%s)" % (n, why_agent))
         for n, why_warn in warn:
@@ -620,11 +622,11 @@ def run(target, dest=None, name=None, path=None, ref=None, yes=False, allow_any_
             "licence_override": bool(not ok and allow_any_licence), "licence_text": text_names or None,
             "copyleft": bool(copyleft), "agent_config": [n for n, _ in agent] or None,
             "agent_config_warnings": [n for n, _ in warn] or None,
-            "review": "not reviewed: installed by `librarian install`; read it before an agent uses it",
+            "review": "not reviewed: installed by `cartographer install`; read it before an agent uses it",
             "files": {i: sha256(d) for i, d, _ in files},
             "added": {i: {"sha256": sha256(d), "from": rel} for i, (d, rel) in added.items()},
             "flags": {i: fl for i, _, fl in files if fl},
-            "skills_sh": facts, "fetched_at": web.utc(), "tool": "the-librarian %s" % __version__,
+            "skills_sh": facts, "fetched_at": web.utc(), "tool": "the-cartographer %s" % __version__,
         }
         final = write_skill(dest_root, name, files, added, record)
         out("installed: %s (%s; provenance in %s)" % (final, spdx, SOURCE_FILE))

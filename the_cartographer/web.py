@@ -1,7 +1,7 @@
 """The finder's only door to the network: a URL whitelist, robots.txt, and a polite one-at-a-time fetcher (stdlib).
 
 Every request the finder or the installer makes goes through `Fetcher.get`, which refuses any URL that is not on the
-whitelist (also after a redirect) and, for skills.sh, any path robots.txt disallows. Requests from every librarian
+whitelist (also after a redirect) and, for skills.sh, any path robots.txt disallows. Requests from every cartographer
 process share one lock and one state file, so two commands never hit a host at once, the gap holds across processes,
 and a 429 or 403 stops every fetch until the host's wait is over. Tests pass their own `opener`, so no test touches
 the network.
@@ -13,20 +13,20 @@ from email.utils import parsedate_to_datetime
 from . import PROJECT_URL, __version__
 
 # Generic on purpose: the tool, its version and where to read about it or report a problem; nothing about the user.
-USER_AGENT = ("the-librarian/%s (+%s; skill finder; reads robots.txt; one request at a time, at least 1.3 s apart)"
+USER_AGENT = ("the-cartographer/%s (+%s; skill finder; reads robots.txt; one request at a time, at least 1.3 s apart)"
               % (__version__, PROJECT_URL))
-ROBOTS_TOKEN = "the-librarian"
+ROBOTS_TOKEN = "the-cartographer"
 SKILLS_SH = "https://www.skills.sh"
-MIN_GAP = 1.3          # seconds between requests to one host, across every librarian process; never lower
+MIN_GAP = 1.3          # seconds between requests to one host, across every cartographer process; never lower
 DEFAULT_GAP = 1.5
 BULK_MIN_GAP = 3.0     # the optional bulk index goes slower than a live search
 BLOCK_403_S = 6 * 3600  # a 403 stops every request to that host for six hours
 MAX_BLOCK_S = 30 * 86400  # a longer Retry-After is read as 30 days (a date past year 3000 breaks gmtime on Windows)
 LOCK_STALE_S = 120
-NO_NETWORK_ENV = "LIBRARIAN_NO_NETWORK"  # set (to anything) and no request leaves this machine
-DAILY = {"page": ("LIBRARIAN_FINDER_DAILY_PAGES", 300),   # live skill page fetches per UTC day
-         "list": ("LIBRARIAN_FINDER_DAILY_LISTS", 12),    # robots.txt and sitemap requests per UTC day
-         "bulk": ("LIBRARIAN_FINDER_DAILY_BULK", 2000)}   # bulk index pages (skill and repo pages) per UTC day
+NO_NETWORK_ENV = "CARTOGRAPHER_NO_NETWORK"  # set (to anything) and no request leaves this machine
+DAILY = {"page": ("CARTOGRAPHER_FINDER_DAILY_PAGES", 300),   # live skill page fetches per UTC day
+         "list": ("CARTOGRAPHER_FINDER_DAILY_LISTS", 12),    # robots.txt and sitemap requests per UTC day
+         "bulk": ("CARTOGRAPHER_FINDER_DAILY_BULK", 2000)}   # bulk index pages (skill and repo pages) per UTC day
 CAP_NAMES = {"page": "skill page", "list": "robots and sitemap", "bulk": "bulk index"}
 
 _SEG = r"[A-Za-z0-9_.-]{1,100}"
@@ -227,7 +227,7 @@ class NetState:
                 except OSError:
                     continue
                 if time.time() - t0 > wait:
-                    raise WebError("another librarian process holds the fetch lock (%s)" % p)
+                    raise WebError("another cartographer process holds the fetch lock (%s)" % p)
                 time.sleep(0.2)
 
     def unlock(self):
@@ -253,7 +253,7 @@ class NetState:
 
     def take(self, kind):
         """Spend one of today's requests of this kind; Refused when the cap is reached. Call while locked.
-        A kind without a cap in DAILY is only counted, so `librarian finder status` can show it."""
+        A kind without a cap in DAILY is only counted, so `cartographer finder status` can show it."""
         if not kind:
             return
         if kind not in DAILY:

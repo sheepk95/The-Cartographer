@@ -1,4 +1,4 @@
-"""Build the skill catalogue the librarian reads: bundled skills plus the user's own skill folders.
+"""Build the skill catalogue the cartographer reads: bundled skills plus the user's own skill folders.
 
 The catalogue text is deterministic (sorted, no timestamps), so an unchanged set of skills gives a byte-identical
 prompt and the backend's prompt cache keeps hitting.
@@ -15,9 +15,9 @@ PACKAGE_BUNDLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bundl
 
 
 def bundled_home():
-    """Folder that holds catalogue/bundled.json and skills/: LIBRARIAN_HOME, else the copy a regular install carries
+    """Folder that holds catalogue/bundled.json and skills/: CARTOGRAPHER_HOME, else the copy a regular install carries
     in the package, else the cloned repository (an editable install)."""
-    env = os.environ.get("LIBRARIAN_HOME")
+    env = os.environ.get("CARTOGRAPHER_HOME")
     if env:
         return env
     for d in (PACKAGE_BUNDLE, REPO_ROOT):
@@ -123,7 +123,7 @@ def scan_dir(d):
     return out
 
 
-SOURCE_FILE = ".librarian-source.json"  # written by `librarian install` beside the skill's files
+SOURCE_FILE = ".cartographer-source.json"  # written by `cartographer install` beside the skill's files
 
 
 def provenance(skill_dir):
@@ -133,7 +133,7 @@ def provenance(skill_dir):
             d = json.load(f)
     except (OSError, ValueError):
         return None
-    return d if isinstance(d, dict) and d.get("format") == "the-librarian/source-1" else None
+    return d if isinstance(d, dict) and d.get("format") == "the-cartographer/source-1" else None
 
 
 def build(extra_dirs=(), user_skills=True, bundled=True, home=None):
@@ -145,7 +145,7 @@ def build(extra_dirs=(), user_skills=True, bundled=True, home=None):
     dirs = list(extra_dirs)
     if user_skills:
         dirs += default_user_dirs()
-    env_dirs = os.environ.get("LIBRARIAN_SKILLS_DIRS", "")
+    env_dirs = os.environ.get("CARTOGRAPHER_SKILLS_DIRS", "")
     dirs += [d for d in env_dirs.split(os.pathsep) if d.strip()]
     for d in dirs:
         groups.append(scan_dir(d))

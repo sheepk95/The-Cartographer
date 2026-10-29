@@ -1,4 +1,4 @@
-"""Name a skill's licence and decide whether `librarian install` may take it without an explicit override.
+"""Name a skill's licence and decide whether `cartographer install` may take it without an explicit override.
 
 skills.sh shows no licence, so the installer reads one from the repository itself, nearest first: the SKILL.md front
 matter `license:` field, a LICENSE/LICENCE/COPYING file in the skill folder, then the same in each parent folder up to
@@ -11,13 +11,13 @@ OPEN = {"MIT", "MIT-0", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "0B
         "CC-BY-4.0", "CC-BY-SA-4.0", "MPL-2.0", "Zlib", "BSL-1.0", "GPL-2.0", "GPL-3.0", "LGPL-2.0", "LGPL-2.1",
         "LGPL-3.0", "AGPL-3.0", "EPL-2.0", "Python-2.0", "Artistic-2.0", "NCSA", "OFL-1.1"}
 # Open licences whose terms follow the skill when it is passed on (share-alike): install prints a one-line note and
-# records "copyleft" in .librarian-source.json. They are allowed: installing a skill for your own agent is neither
+# records "copyleft" in .cartographer-source.json. They are allowed: installing a skill for your own agent is neither
 # passing it on nor offering it as a network service. (OFL-1.1: changed fonts stay under the OFL, and the fonts may
 # not be sold on their own.)
 COPYLEFT = {"GPL-2.0", "GPL-3.0", "LGPL-2.0", "LGPL-2.1", "LGPL-3.0", "AGPL-3.0", "MPL-2.0", "EPL-2.0", "CC-BY-SA-4.0",
             "OFL-1.1"}
 # An organisation that bans some open licences lists them here, comma-separated (for example AGPL-3.0,GPL-3.0).
-REFUSE_ENV = "LIBRARIAN_REFUSE_LICENCES"
+REFUSE_ENV = "CARTOGRAPHER_REFUSE_LICENCES"
 REFUSED_WHY = {
     "NONE": "no licence found: without one you have no right to copy it",
     "UNKNOWN": "the licence text was not recognised",
@@ -216,7 +216,7 @@ def split(spdx):
 
 
 def refused_here(env=None):
-    """The licence ids this machine refuses on top of the policy ($LIBRARIAN_REFUSE_LICENCES), lower-cased."""
+    """The licence ids this machine refuses on top of the policy ($CARTOGRAPHER_REFUSE_LICENCES), lower-cased."""
     raw = (os.environ if env is None else env).get(REFUSE_ENV) or ""
     return {(_one(x) or x.strip()).lower() for x in raw.split(",") if x.strip()}
 

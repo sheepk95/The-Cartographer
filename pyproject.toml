@@ -3,7 +3,7 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "the-librarian"
+name = "the-cartographer"
 version = "0.1.0"
 description = "Ask which agent skills fit a task before you start it: one cached model call over the whole skill catalogue, with a checked answer. Find and vet the ones you lack on skills.sh."
 readme = {file = "README.md", content-type = "text/markdown"}
@@ -33,24 +33,25 @@ dependencies = []
 api = ["anthropic"]
 
 [project.urls]
-# The same URL is PROJECT_URL in the_librarian/__init__.py; keep the two in step.
-Homepage = "https://github.com/sheepk95/The-Librarian"
-Source = "https://github.com/sheepk95/The-Librarian"
-Issues = "https://github.com/sheepk95/The-Librarian/issues"
-Changelog = "https://github.com/sheepk95/The-Librarian/blob/main/CHANGELOG.md"
+# The same URL is PROJECT_URL in the_cartographer/__init__.py; keep the two in step.
+Homepage = "https://github.com/sheepk95/The-Cartographer"
+Source = "https://github.com/sheepk95/The-Cartographer"
+Issues = "https://github.com/sheepk95/The-Cartographer/issues"
+Changelog = "https://github.com/sheepk95/The-Cartographer/blob/main/CHANGELOG.md"
 
 [project.scripts]
-librarian = "the_librarian.cli:main"
-# The same entry point under the package's own name, so `uvx the-librarian ...` and `pipx run the-librarian ...` work
-# (both run the command named after the package) and MCP clients that launch PyPI servers that way find it.
-the-librarian = "the_librarian.cli:main"
+cartographer = "the_cartographer.cli:main"
+# The same entry point under the package's own name, so `uvx the-cartographer ...` and
+# `pipx run the-cartographer ...` work (both run the command named after the package) and MCP clients that launch
+# PyPI servers that way find it.
+the-cartographer = "the_cartographer.cli:main"
 
 [tool.setuptools]
-# the_librarian.bundle is the repository root, so a regular install (pip install ., pipx, uv tool install) carries the
-# bundled skills too. An editable install (pip install -e .) reads them straight from the clone.
-packages = ["the_librarian", "the_librarian.bundle"]
-package-dir = {"the_librarian.bundle" = "."}
+# the_cartographer.bundle is the repository root, so a regular install (pip install ., pipx, uv tool install)
+# carries the bundled skills too. An editable install (pip install -e .) reads them straight from the clone.
+packages = ["the_cartographer", "the_cartographer.bundle"]
+package-dir = {"the_cartographer.bundle" = "."}
 include-package-data = false
 
 [tool.setuptools.package-data]
-"the_librarian.bundle" = ["catalogue/bundled.json", "skills/**/*", "skills/**/.*"]
+"the_cartographer.bundle" = ["catalogue/bundled.json", "skills/**/*", "skills/**/.*"]

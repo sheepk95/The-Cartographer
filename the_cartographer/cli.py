@@ -1,24 +1,24 @@
-"""librarian: ask which skills fit a task.
+"""cartographer: ask which skills fit a task.
 
-  librarian ask "Write a property-based test suite for our date parser"
-  librarian ask --brief-file task.md --backend claude
-  librarian search react performance          (offline keyword search, no model)
-  librarian list | show <name> | catalogue | doctor
-  librarian mcp                               (run as an MCP server over stdio)
-  librarian find "<task>"                     (skills on skills.sh that your catalogue lacks; nothing is installed)
-  librarian install <skills.sh URL | owner/repo[/skill]>   (vet one: licence, files, provenance; asks first)
-  librarian finder index | status             (optional bulk index of skills.sh pages; cache status)
+  cartographer ask "Write a property-based test suite for our date parser"
+  cartographer ask --brief-file task.md --backend claude
+  cartographer search react performance          (offline keyword search, no model)
+  cartographer list | show <name> | catalogue | doctor
+  cartographer mcp                               (run as an MCP server over stdio)
+  cartographer find "<task>"                     (skills on skills.sh that your catalogue lacks; nothing is installed)
+  cartographer install <skills.sh URL | owner/repo[/skill]>   (vet one: licence, files, provenance; asks first)
+  cartographer finder index | status             (optional bulk index of skills.sh pages; cache status)
 
-Exit 0: the answer is printed. Exit 3: LIBRARIAN_UNAVAILABLE (reason) - use `librarian search` instead. Exit 2: bad
-arguments or an empty brief. `find`: exit 1 when nothing fits, 3 when the network or the judge failed or some
-matches could not be checked. `install`: exit 1 refused, 3 transient.
+Exit 0: the answer is printed. Exit 3: CARTOGRAPHER_UNAVAILABLE (reason) - use `cartographer search` instead.
+Exit 2: bad arguments or an empty brief. `find`: exit 1 when nothing fits, 3 when the network or the judge failed or
+some matches could not be checked. `install`: exit 1 refused, 3 transient.
 """
 import argparse, json, os, sys, time
 
 from . import __version__, answer, backends, catalogue
 
 MAX_BRIEF = 6000
-UNAVAILABLE = "LIBRARIAN_UNAVAILABLE (%s): run `librarian search <2-4 task words>` instead."
+UNAVAILABLE = "CARTOGRAPHER_UNAVAILABLE (%s): run `cartographer search <2-4 task words>` instead."
 
 
 def utf8_stdio():
@@ -38,7 +38,7 @@ def ask(skills, brief, requester="unknown", backend=None, model=None, effort=Non
     """Return (exit_code, answer_text, info). Shared by the CLI and the MCP server."""
     brief = (brief or "").strip()
     if not brief:
-        return 2, "librarian: refused an empty brief (say what the task is).", {}
+        return 2, "cartographer: refused an empty brief (say what the task is).", {}
     if len(brief) > MAX_BRIEF:
         brief = brief[:MAX_BRIEF] + "\n[brief truncated to %d characters]" % MAX_BRIEF
     if not skills:
@@ -46,8 +46,8 @@ def ask(skills, brief, requester="unknown", backend=None, model=None, effort=Non
     name = backend_name(backend, command)
     if not name:
         return 3, UNAVAILABLE % "no backend: set ANTHROPIC_API_KEY, or install Claude Code or Codex", {}
-    model = model or os.environ.get("LIBRARIAN_MODEL")
-    effort = effort or os.environ.get("LIBRARIAN_EFFORT") or "medium"
+    model = model or os.environ.get("CARTOGRAPHER_MODEL")
+    effort = effort or os.environ.get("CARTOGRAPHER_EFFORT") or "medium"
     text = catalogue.render(skills)
     t0 = time.time()
     try:
@@ -68,7 +68,7 @@ def ask(skills, brief, requester="unknown", backend=None, model=None, effort=Non
 def backend_name(backend=None, command=None):
     # A flag beats its environment variable, which beats the default. An explicit --command means the command
     # backend unless --backend names another one.
-    return (backend or ("command" if command else None) or os.environ.get("LIBRARIAN_BACKEND")
+    return (backend or ("command" if command else None) or os.environ.get("CARTOGRAPHER_BACKEND")
             or backends.pick_default())
 
 
@@ -80,7 +80,7 @@ def read_brief(args):
             with open(args.brief_file, encoding="utf-8") as f:
                 brief = f.read()
         except OSError as e:
-            return None, "librarian: cannot read --brief-file: %s" % e
+            return None, "cartographer: cannot read --brief-file: %s" % e
     if brief == "-" or args.brief_file == "-":
         brief = sys.stdin.read()
     return brief, None
@@ -115,7 +115,7 @@ def cmd_search(args):
 
 
 def provenance_note(s):
-    """For a skill `librarian install` put in place: where it came from and its licence, or a warning."""
+    """For a skill `cartographer install` put in place: where it came from and its licence, or a warning."""
     prov = (s.extra or {}).get("provenance")
     if not prov:
         return ""
@@ -146,7 +146,7 @@ def find_skill(skills, name):
 def cmd_show(args):
     s = find_skill(load_skills(args), args.name)
     if s is None:
-        print("no skill named %r (try `librarian search`)" % args.name)
+        print("no skill named %r (try `cartographer search`)" % args.name)
         return 1
     print("# %s  (%s, %d bytes)\n# %s\n" % (s.name, s.origin, s.size, s.path.replace("\\", "/")))
     print(catalogue.read_skill_file(s.path))
@@ -162,17 +162,17 @@ def cmd_doctor(args):
     skills = load_skills(args)
     text = catalogue.render(skills)
     bundled = sum(1 for s in skills if s.origin == "bundled")
-    print("the-librarian %s" % __version__)
+    print("the-cartographer %s" % __version__)
     print("bundled home: %s" % catalogue.bundled_home())
     print("skills: %d (%d bundled, %d local)" % (len(skills), bundled, len(skills) - bundled))
     if not bundled and not args.no_bundled:
-        print("  no bundled skills found: install from the clone (pip install -e .) or set LIBRARIAN_HOME")
+        print("  no bundled skills found: install from the clone (pip install -e .) or set CARTOGRAPHER_HOME")
     print("catalogue: %d bytes, about %dk tokens, id %s" % (len(text.encode("utf-8")), len(text) // 3600,
                                                             catalogue.fingerprint(text)))
     for name, cls in backends.BACKENDS.items():
         ok, hint = cls.available()
         print("backend %-9s %s" % (name, "ready" if ok else "not ready: " + hint))
-    print("default backend: %s" % (os.environ.get("LIBRARIAN_BACKEND") or backends.pick_default() or "none"))
+    print("default backend: %s" % (os.environ.get("CARTOGRAPHER_BACKEND") or backends.pick_default() or "none"))
     doctor_installed(skills)
     doctor_finder()
     return 0
@@ -181,7 +181,7 @@ def cmd_doctor(args):
 def doctor_installed(skills):
     from . import install, licences
     tracked = [s for s in skills if (s.extra or {}).get("provenance")]
-    print("installed by `librarian install`: %d" % len(tracked))
+    print("installed by `cartographer install`: %d" % len(tracked))
     for s in tracked:
         prov = s.extra["provenance"]
         problems = []
@@ -204,7 +204,7 @@ def doctor_finder():
     if sm["names"]:
         print("  names list: %d skills from the skills.sh sitemaps, %s h old" % (sm["names"], sm["names_age_h"]))
     else:
-        print("  names list: none yet (the first `librarian find` builds it from robots.txt and the sitemaps: "
+        print("  names list: none yet (the first `cartographer find` builds it from robots.txt and the sitemaps: "
               "about 4 requests)")
     print("  skill pages cached: %d (%d KB)%s" % (sm["pages"], sm["pages_bytes"] // 1024,
                                                   "; robots.txt read %s" % sm["robots_read_at"]
@@ -224,17 +224,17 @@ def find_result(args, brief):
     from . import finder, skillsh, web
     brief = (brief or "").strip()
     if not brief:
-        return 2, {"error": "librarian find: refused an empty brief (say what the task is)."}
+        return 2, {"error": "cartographer find: refused an empty brief (say what the task is)."}
     if len(brief) > MAX_BRIEF:
         brief = brief[:MAX_BRIEF]
     try:
         lex = finder.load_lexicon(getattr(args, "lexicon", None))
     except finder.LexiconError as e:
-        return 2, {"error": "librarian find: %s" % e}
+        return 2, {"error": "cartographer find: %s" % e}
     limit = getattr(args, "limit", None)
     if limit is not None:
         if not 1 <= int(limit) <= 10:
-            return 2, {"error": "librarian find: --limit must be 1 to 10, not %s" % limit}
+            return 2, {"error": "cartographer find: --limit must be 1 to 10, not %s" % limit}
         lex["max_rows"] = int(limit)
     fdir = skillsh.finder_dir()
     offline = bool(getattr(args, "offline", False))
@@ -242,21 +242,22 @@ def find_result(args, brief):
         res = finder.find(brief, load_skills(args), lex, fdir, offline=offline, verdicts=finder.read_verdicts(),
                           budget_s=getattr(args, "budget_s", None))
     except OSError as e:  # the cache folder cannot be written or read
-        return 3, {"error": "LIBRARIAN_UNAVAILABLE (finder: cannot use the cache folder %s: %s)" % (fdir, e)}
+        return 3, {"error": "CARTOGRAPHER_UNAVAILABLE (finder: cannot use the cache folder %s: %s)" % (fdir, e)}
     if not res["candidates"] and not res["stats"]["names"] and not res["stats"]["pages"]:
-        return 3, dict(res, error="LIBRARIAN_UNAVAILABLE (finder: %s): no names list and no cached pages yet; check "
-                                  "the network and run `librarian find` again" % ("; ".join(res["notes"]) or "no data"))
+        return 3, dict(res, error="CARTOGRAPHER_UNAVAILABLE (finder: %s): no names list and no cached pages yet; check "
+                                  "the network and run `cartographer find` again"
+                                  % ("; ".join(res["notes"]) or "no data"))
     if not res["candidates"] and res["stats"].get("unchecked") and not offline:
         # matches whose pages could not be read: "no find" would be a guess, so say it is transient
-        return 3, dict(res, error="LIBRARIAN_UNAVAILABLE (finder): %d name match(es) could not be checked; run "
-                                  "`librarian find` again later" % res["stats"]["unchecked"])
+        return 3, dict(res, error="CARTOGRAPHER_UNAVAILABLE (finder): %d name match(es) could not be checked; run "
+                                  "`cartographer find` again later" % res["stats"]["unchecked"])
     if getattr(args, "judge", False) and res["candidates"]:
         name = backend_name(args.backend, args.command)
         if not name:
             return 3, dict(res, error=UNAVAILABLE % "no backend for --judge")
         try:
-            b = backends.make(name, model=args.model or os.environ.get("LIBRARIAN_MODEL"),
-                              effort=args.effort or os.environ.get("LIBRARIAN_EFFORT") or "medium",
+            b = backends.make(name, model=args.model or os.environ.get("CARTOGRAPHER_MODEL"),
+                              effort=args.effort or os.environ.get("CARTOGRAPHER_EFFORT") or "medium",
                               timeout=args.timeout, command=args.command)
             verdicts, info = finder.judge(brief, res["candidates"], b)
         except (backends.BackendError, finder.JudgeError) as e:
@@ -309,7 +310,7 @@ def render_find(res):
         if c.get("note"):
             lines.append("   %s" % finder.display(c["note"], 160))
         lines.append("   %s" % (finder.display(r.get("description"), 300) or "(no description)"))
-        lines.append("   vet and install: librarian install %s" % r["url"])
+        lines.append("   vet and install: cartographer install %s" % r["url"])
     if not cands and not res.get("error"):
         lines.append("no skills.sh find for this task (concepts: %s)" % (", ".join(
             res.get("stats", {}).get("task_concepts") or []) or "none"))
@@ -366,7 +367,7 @@ def cmd_finder_index(args):
     except Exception as e:  # noqa: BLE001  robots or the sitemap could not be read: say so plainly
         from . import web
         if isinstance(e, (web.WebError, web.Refused)):
-            print("librarian finder index: %s" % e)
+            print("cartographer finder index: %s" % e)
             return 3
         raise
 
@@ -382,9 +383,9 @@ def cmd_mcp(args):
 
 
 def build_parser():
-    ap = argparse.ArgumentParser(prog="librarian", description=__doc__,
+    ap = argparse.ArgumentParser(prog="cartographer", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--version", action="version", version="the-librarian " + __version__)
+    ap.add_argument("--version", action="version", version="the-cartographer " + __version__)
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--skills-dir", action="append", metavar="DIR",
                         help="extra skill folder (DIR/<name>/SKILL.md); repeatable")
@@ -394,14 +395,15 @@ def build_parser():
     model = argparse.ArgumentParser(add_help=False)
     model.add_argument("--backend", choices=sorted(backends.BACKENDS), help="default: first one ready")
     model.add_argument("--model", help="model id or alias for the backend")
-    model.add_argument("--effort", help="low, medium, high, xhigh, max, or none (default: LIBRARIAN_EFFORT or medium)")
+    model.add_argument("--effort",
+                       help="low, medium, high, xhigh, max, or none (default: CARTOGRAPHER_EFFORT or medium)")
     model.add_argument("--timeout", type=float, help="seconds to wait for the backend")
     model.add_argument("--command", help="for --backend command: a command that reads the prompt on stdin")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("ask", parents=[common, model], help="ask which skills fit a task")
     p.add_argument("brief", nargs="?", help='the task in 2-10 lines, or "-" to read stdin')
     p.add_argument("--brief-file", help='a file holding the brief, or "-" for stdin')
-    p.add_argument("--from", dest="requester", default=os.environ.get("LIBRARIAN_REQUESTER", "unknown"))
+    p.add_argument("--from", dest="requester", default=os.environ.get("CARTOGRAPHER_REQUESTER", "unknown"))
     p.add_argument("--json", action="store_true", help="print the answer, the parsed picks and usage as JSON")
     p.add_argument("-v", "--verbose", action="store_true", help="print usage and timing to stderr")
     p.set_defaults(fn=cmd_ask)
@@ -420,7 +422,7 @@ def build_parser():
     p = sub.add_parser("doctor", parents=[common], help="check skills and backends")
     p.set_defaults(fn=cmd_doctor)
     p = sub.add_parser("mcp", parents=[common, model], help="run as an MCP server over stdio")
-    p.add_argument("--lexicon", help="finder lexicon file for find_skills (default: LIBRARIAN_LEXICON or built in)")
+    p.add_argument("--lexicon", help="finder lexicon file for find_skills (default: CARTOGRAPHER_LEXICON or built in)")
     p.set_defaults(fn=cmd_mcp)
     p = sub.add_parser("find", parents=[common, model],
                        help="search skills.sh for skills your catalogue lacks (nothing is installed)")

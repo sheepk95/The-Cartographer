@@ -1,10 +1,10 @@
 """Model backends. Each takes the catalogue text and a brief and returns (answer_text, info). complete(system, message)
-is the same call with any system text (the finder's judge uses it); ask() goes through it with the librarian's own.
+is the same call with any system text (the finder's judge uses it); ask() goes through it with the cartographer's own.
 
 anthropic  Claude API through the official SDK. The catalogue is a cached system block (1 hour TTL), so repeat asks
            read it from cache instead of paying for it again.
 claude     Claude Code CLI in print mode (`claude -p`), using whatever login the user already has. Customisations,
-           tools and session saving are switched off so the librarian sees only its own prompt.
+           tools and session saving are switched off so the cartographer sees only its own prompt.
 codex      Codex CLI (`codex exec`), read-only sandbox, shell tool off, ephemeral session.
 command    Any command that reads the full prompt on stdin and prints the answer (local models, other CLIs).
 """
@@ -151,7 +151,7 @@ class AnthropicBackend:
 
 
 def find_claude():
-    return os.environ.get("LIBRARIAN_CLAUDE_BIN") or shutil.which("claude")
+    return os.environ.get("CARTOGRAPHER_CLAUDE_BIN") or shutil.which("claude")
 
 
 class ClaudeCliBackend:
@@ -173,8 +173,8 @@ class ClaudeCliBackend:
     def complete(self, system_text, msg):
         exe = self.exe or find_claude()
         if not exe:
-            raise BackendError("the claude command was not found (set LIBRARIAN_CLAUDE_BIN)")
-        work = tempfile.mkdtemp(prefix="librarian-")
+            raise BackendError("the claude command was not found (set CARTOGRAPHER_CLAUDE_BIN)")
+        work = tempfile.mkdtemp(prefix="cartographer-")
         try:
             sp = os.path.join(work, "system-prompt.md")
             with open(sp, "w", encoding="utf-8", newline="\n") as f:
@@ -198,7 +198,7 @@ class ClaudeCliBackend:
 
 
 def find_codex():
-    exe = os.environ.get("LIBRARIAN_CODEX_BIN") or shutil.which("codex")
+    exe = os.environ.get("CARTOGRAPHER_CODEX_BIN") or shutil.which("codex")
     if exe:
         return exe
     if os.name == "nt":  # the Codex desktop app keeps its CLI under %LOCALAPPDATA%\OpenAI\Codex\bin\<build>\
@@ -217,7 +217,7 @@ class CodexCliBackend:
         self.effort = effort
         self.timeout = timeout
         self.exe = exe
-        self.keep_user_config = keep_user_config or bool(os.environ.get("LIBRARIAN_CODEX_KEEP_CONFIG"))
+        self.keep_user_config = keep_user_config or bool(os.environ.get("CARTOGRAPHER_CODEX_KEEP_CONFIG"))
 
     @staticmethod
     def available():
@@ -232,8 +232,8 @@ class CodexCliBackend:
     def _run_prompt(self, prompt):
         exe = self.exe or find_codex()
         if not exe:
-            raise BackendError("the codex command was not found (set LIBRARIAN_CODEX_BIN)")
-        work = tempfile.mkdtemp(prefix="librarian-")
+            raise BackendError("the codex command was not found (set CARTOGRAPHER_CODEX_BIN)")
+        work = tempfile.mkdtemp(prefix="cartographer-")
         try:
             last = os.path.join(work, "answer.md")
             args = [exe, "exec", "--ephemeral", "-s", "read-only", "--skip-git-repo-check", "--ignore-rules",
@@ -263,12 +263,12 @@ class CommandBackend:
     name = "command"
 
     def __init__(self, command=None, timeout=240):
-        self.command = command or os.environ.get("LIBRARIAN_COMMAND")
+        self.command = command or os.environ.get("CARTOGRAPHER_COMMAND")
         self.timeout = timeout
 
     @staticmethod
     def available():
-        return (True, "") if os.environ.get("LIBRARIAN_COMMAND") else (False, "set LIBRARIAN_COMMAND")
+        return (True, "") if os.environ.get("CARTOGRAPHER_COMMAND") else (False, "set CARTOGRAPHER_COMMAND")
 
     def ask(self, catalogue_text, brief, requester="unknown"):
         return self._run_prompt(single_prompt(catalogue_text, brief, requester))
@@ -278,7 +278,7 @@ class CommandBackend:
 
     def _run_prompt(self, prompt):
         if not self.command:
-            raise BackendError("no command given (--command or LIBRARIAN_COMMAND)")
+            raise BackendError("no command given (--command or CARTOGRAPHER_COMMAND)")
         args = shlex.split(self.command, posix=(os.name != "nt"))
         args = [a[1:-1] if len(a) > 1 and a[0] == a[-1] == '"' else a for a in args]
         code, out, err = _run(args, prompt, self.timeout)

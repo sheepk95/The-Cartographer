@@ -101,10 +101,10 @@ def _words(v):
 
 
 def load_lexicon(path=None):
-    """The default lexicon, extended by a user file (path, else LIBRARIAN_LEXICON). A user file adds to the default
+    """The default lexicon, extended by a user file (path, else CARTOGRAPHER_LEXICON). A user file adds to the default
     unless it says "replace": true; concept term lists add up, scalars replace."""
     lex = copy.deepcopy(DEFAULT_LEXICON)
-    path = path or os.environ.get("LIBRARIAN_LEXICON")
+    path = path or os.environ.get("CARTOGRAPHER_LEXICON")
     if not path:
         return lex
     try:
@@ -330,7 +330,7 @@ RUN_RE = re.compile(r"([=\-_~*#`<>|])\1{2,}")
 
 def display(s, n):
     """Third-party text for a terminal or an agent: one clean line, cut by characters, and runs of 3+ = - _ ~ * # ` < >
-    | collapsed, so a page cannot imitate the librarian's own end line or headings."""
+    | collapsed, so a page cannot imitate the cartographer's own end line or headings."""
     return RUN_RE.sub(r"\1", skillsh.clean(s, n * 2))[:n].strip()
 
 

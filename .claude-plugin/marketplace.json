@@ -1,31 +1,31 @@
 {
-  "name": "the-librarian",
-  "description": "The Librarian: ask which agent skills fit a task before you start it.",
+  "name": "the-cartographer",
+  "description": "The Cartographer: ask which agent skills fit a task before you start it.",
   "owner": {
     "name": "sheepk95",
     "url": "https://github.com/sheepk95"
   },
   "plugins": [
     {
-      "name": "the-librarian",
-      "displayName": "The Librarian",
+      "name": "the-cartographer",
+      "displayName": "The Cartographer",
       "source": "./",
       "version": "0.1.0",
-      "description": "Ask which agent skills fit a task before you start it. Adds The Librarian's MCP server (ask_librarian, read_skill, search_skills, find_skills) and a skill that asks it at the start of each task. Needs uv.",
+      "description": "Ask which agent skills fit a task before you start it. Adds The Cartographer's MCP server (ask_cartographer, read_skill, search_skills, find_skills) and a skill that asks it at the start of each task. Needs uv.",
       "author": {
         "name": "sheepk95",
         "url": "https://github.com/sheepk95"
       },
-      "homepage": "https://github.com/sheepk95/The-Librarian",
-      "repository": "https://github.com/sheepk95/The-Librarian",
+      "homepage": "https://github.com/sheepk95/The-Cartographer",
+      "repository": "https://github.com/sheepk95/The-Cartographer",
       "license": "Apache-2.0 AND MIT AND CC-BY-SA-4.0 AND Unlicense",
       "keywords": ["skills", "agent skills", "skill.md", "mcp", "skills.sh"],
       "category": "productivity",
       "skills": ["./integrations/claude-code/plugin/skills/"],
       "mcpServers": {
-        "the-librarian": {
+        "the-cartographer": {
           "command": "uvx",
-          "args": ["--from", "${CLAUDE_PLUGIN_ROOT}", "librarian", "mcp"]
+          "args": ["--from", "${CLAUDE_PLUGIN_ROOT}", "cartographer", "mcp"]
         }
       }
     }

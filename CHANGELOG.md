@@ -6,22 +6,23 @@ First public version.
 
 - Licence: the code is under the Apache License 2.0, with a NOTICE file (copyright 2026 Blake W). The bundled
   skills keep their own licences.
-- Install: `pipx install the-librarian`, `pip install the-librarian` or `uvx the-librarian ...` (the package also
-  installs the command under its own name, `the-librarian`). Claude Code: the repository is a plugin marketplace
-  (`/plugin marketplace add sheepk95/The-Librarian`, then `/plugin install the-librarian@the-librarian`). MCP
+- Install: `pipx install the-cartographer`, `pip install the-cartographer` or `uvx the-cartographer ...` (the package also
+  installs the command under its own name, `the-cartographer`). Claude Code: the repository is a plugin marketplace
+  (`/plugin marketplace add sheepk95/The-Cartographer`, then `/plugin install the-cartographer@the-cartographer`). MCP
   Registry metadata in `server.json`; releases publish to PyPI through Trusted Publishing (`publish.yml`).
-- `librarian ask`: one model call reads a 2-10 line brief against the whole skill catalogue and answers with
-  PICKS / MAYBE / ALSO GREP / NOTE, ending in `--- end of librarian answer ---`. Every name is checked against the
-  catalogue; invented names are dropped and wrong paths corrected.
+- `cartographer ask`: one model call reads a 2-10 line brief against the whole skill catalogue and answers with
+  PICKS / MAYBE / ALSO GREP / NOTE, ending in `--- end of cartographer answer ---`. Every name is checked against the
+  catalogue; invented names are dropped and wrong paths corrected. An answer with no readable PICKS and no explicit
+  `PICKS: none` exits 3 (`CARTOGRAPHER_UNAVAILABLE`) instead of reading as "no skill needed".
 - Backends: `anthropic` (official SDK, catalogue in a 1-hour prompt cache), `claude` (Claude Code print mode),
   `codex` (`codex exec`, read-only) and `command` (any stdin-to-stdout command).
 - Offline commands: `search`, `list`, `show`, `catalogue`, `doctor`.
-- `librarian mcp`: stdio MCP server with `ask_librarian`, `read_skill`, `search_skills` and `find_skills` (search
+- `cartographer mcp`: stdio MCP server with `ask_cartographer`, `read_skill`, `search_skills` and `find_skills` (search
   only: it never judges or installs).
 - Integrations for Claude Code (skill, CLAUDE.md snippet, `.mcp.json`) and Codex (AGENTS.md snippet, `config.toml`).
 - 193 bundled third-party skills from 59 upstream repositories, pinned by commit and SHA-256
   (`tools/vendor.py verify | fetch | notices`).
-- `librarian find`: skills on skills.sh that the catalogue lacks, by a lexicon fit rule over the sitemap names and
+- `cartographer find`: skills on skills.sh that the catalogue lacks, by a lexicon fit rule over the sitemap names and
   the current pages of the best matches (at most 8 fetched per search), with a popularity bar; installs nothing.
   Polite by construction: robots.txt first, one request at a time at least 1.3 s apart across processes, a stop on
   429/403, daily caps (300 pages, 12 robots/sitemap requests), conditional requests (an unchanged page costs a
@@ -31,14 +32,14 @@ First public version.
   `--brief-file` (`-` reads stdin), and `--judge` (one model call that marks each find KEEP or DROP; third-party
   text is fenced with `<` and `>` replaced; an unreadable reply exits 3 with `JUDGE FAILED`). Exit 3 also when no
   find was printed while some name matches could not be checked.
-- `librarian install`: vets a skills.sh find or `owner/repo[/skill]` at a pinned commit (file list with flags, safe
+- `cartographer install`: vets a skills.sh find or `owner/repo[/skill]` at a pinned commit (file list with flags, safe
   archive reading with member and size caps, never overwrites, never runs anything) and writes a
-  `.librarian-source.json` provenance record. Licence refusals (and `--judge` prompt-injection flags) go to the
+  `.cartographer-source.json` provenance record. Licence refusals (and `--judge` prompt-injection flags) go to the
   finder's `refused.jsonl`, so `find` stops offering them.
   - Licence: the SKILL.md `license` field (SPDX ids and flat `OR` / `AND` expressions) and the nearest licence
     files; when they disagree both apply and a refused one decides. Missing, unknown, non-commercial,
     no-derivatives, source-available and proprietary licences are refused (`--allow-any-licence` to override), and
-    so is any id in `LIBRARIAN_REFUSE_LICENCES`. A permissive text with a use rider (not for commercial use,
+    so is any id in `CARTOGRAPHER_REFUSE_LICENCES`. A permissive text with a use rider (not for commercial use,
     personal use only, no redistribution) is refused as restrictive. Copyleft licences, OFL-1.1 included, are
     allowed with a note and recorded as `"copyleft": true`.
   - The licence text is always carried into the installed folder, and the record's `licence_text` names it.
@@ -49,12 +50,12 @@ First public version.
   - Archives with a colon or backslash in a member name, and names that cannot be written the same way on every
     system, are refused; Windows device names include COM0, LPT0, COM¹-³, LPT¹-³, CONIN$ and CONOUT$. A GitHub
     token is never sent on to a redirect.
-- `librarian finder index | status`: an optional, resumable bulk index of skills.sh pages (at least 3 s apart, its
-  own daily cap of 2,000 via `LIBRARIAN_FINDER_DAILY_BULK`, repo pages counted), and the cache and today's request
+- `cartographer finder index | status`: an optional, resumable bulk index of skills.sh pages (at least 3 s apart, its
+  own daily cap of 2,000 via `CARTOGRAPHER_FINDER_DAILY_BULK`, repo pages counted), and the cache and today's request
   counts.
-- `LIBRARIAN_NO_NETWORK`: the finder and installer send no request (the test suite sets it).
+- `CARTOGRAPHER_NO_NETWORK`: the finder and installer send no request (the test suite sets it).
 - MCP `find_skills` stops fetching pages after 45 seconds and returns failures as tool errors.
 - Package metadata: a licence expression covering the code and the bundled skills, `LICENSE` and
   `THIRD_PARTY_NOTICES.md` as licence files, project URLs, and Python version classifiers (3.9 to 3.13).
-- `librarian list` shows where each installed skill came from; `librarian doctor` reports installed skills whose
+- `cartographer list` shows where each installed skill came from; `cartographer doctor` reports installed skills whose
   files changed or whose licence needed an override, and the finder cache.

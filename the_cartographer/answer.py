@@ -1,15 +1,25 @@
-"""Parse and check a librarian answer against the catalogue.
+"""Parse and check a cartographer answer against the catalogue.
 
 A model can still misspell a path or invent a name. Every pick is checked: a known name gets the catalogue's real
 path and read mode; an unknown name is dropped with a NOTE. The checked answer is re-rendered in the exact format.
 """
+import re
+
 from .prompt import END_MARKER
 
 MAX_PICKS, MAX_MAYBE = 6, 3
+# "none" alone, or "none" then a reason ("none (mechanical)", "none, ...", "none - ..."); never a name or path that
+# starts with it ("none-such", "nonexistent", "none/testing", "none_x", "none.md")
+_NONE = re.compile("none(?:\\Z|[\\s(]|[,;:.](?:\\s|\\Z)|[-\u2013\u2014]\\s)")
 
 
 class AnswerError(ValueError):
     pass
+
+
+def _says_none(text):
+    """An explicit none: "none", "(none)", "- none", or "none" with a reason after it ("none (mechanical task)")."""
+    return bool(_NONE.match(text.strip().lstrip("-*").strip().strip("`*_.()[] ").lower()))
 
 
 def _entry(line):
@@ -29,6 +39,10 @@ def parse(text):
         raise AnswerError("answer does not end with the end marker")
     out = {"picks": [], "maybe": [], "also_grep": "", "notes": []}
     section = None
+    # A missing or unreadable PICKS section is a malformed answer, not "no skill fits": only an explicit
+    # "PICKS: none" (or readable pick lines) says that, so a failed parse can never pass as a confident "none".
+    saw_picks = said_none = False
+    unread = []
     for raw in lines[:-1]:
         line = raw.strip()
         if not line or line.startswith("```"):
@@ -37,7 +51,12 @@ def parse(text):
         head = line.lstrip("#").strip().replace("**", "").replace("__", "")
         up = head.upper()
         if up.startswith("PICKS:"):
-            section = "picks"
+            section, saw_picks = "picks", True
+            rest = head.split(":", 1)[1].strip()
+            if _says_none(rest):
+                said_none = True
+            elif rest:
+                unread.append(line)
             continue
         if up.startswith("MAYBE:"):
             section = "maybe"
@@ -50,10 +69,21 @@ def parse(text):
             out["notes"].append(head.split(":", 1)[1].strip())
             section = None
             continue
-        if section and line.startswith(("-", "*")):
-            e = _entry(line)
-            if e:
-                out[section].append(e)
+        e = _entry(line) if section and line.startswith(("-", "*")) else None
+        if e:
+            out[section].append(e)
+        elif section == "picks":
+            if not out["picks"] and _says_none(line):  # "PICKS:" with "none" on the next line
+                said_none = True
+            else:
+                unread.append(line)
+    if not saw_picks:
+        raise AnswerError("answer has no PICKS section")
+    if not out["picks"] and not said_none:
+        raise AnswerError("PICKS lists nothing readable" + (": %r" % unread[0][:80] if unread else ""))
+    if unread:  # the answer is usable, but a line under PICKS was not a pick: say so rather than drop it silently
+        out["notes"].append("ignored %d line(s) under PICKS that are not in the pick format, first: %r"
+                            % (len(unread), unread[0][:80]))
     return out
 
 

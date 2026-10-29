@@ -7,7 +7,7 @@ from unittest import mock
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from the_librarian import catalogue, cli, finder, frontmatter, install, licences, skillsh, web  # noqa: E402
+from the_cartographer import catalogue, cli, finder, frontmatter, install, licences, skillsh, web  # noqa: E402
 
 REAL_OPENER = web.default_opener  # the real one, for the tests that check its wiring with urllib's opener mocked
 os.environ.setdefault(web.NO_NETWORK_ENV, "1")  # also switches the network off in the subprocesses tests start
@@ -64,7 +64,7 @@ def setUpModule():
     _net = mock.patch.object(web, "default_opener", no_network)
     _net.start()
     # every temporary folder this module makes lands in one, removed when the module ends
-    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="librarian-tests-")
+    _old_tempdir, _tmp_root = tempfile.tempdir, tempfile.mkdtemp(prefix="cartographer-tests-")
     tempfile.tempdir = _tmp_root
 
 
@@ -247,7 +247,7 @@ class RobotsTests(unittest.TestCase):
         self.assertTrue(web.robots_allows(rules, "/acme/tools/pdf-merge"))
         rules = web.parse_robots("User-agent: *\nDisallow: /api/\nAllow: /api/public\n")
         self.assertTrue(web.robots_allows(rules, "/api/public/x"))  # longest match wins
-        rules = web.parse_robots("User-agent: *\nAllow: /\n\nUser-agent: the-librarian\nDisallow: /\n")
+        rules = web.parse_robots("User-agent: *\nAllow: /\n\nUser-agent: the-cartographer\nDisallow: /\n")
         self.assertFalse(web.robots_allows(rules, "/acme/tools/x"))  # a group naming us beats *
 
     def test_fetcher_obeys_robots_read_live(self):
@@ -304,7 +304,7 @@ class PolitenessTests(unittest.TestCase):
         routes.update({"https://www.skills.sh/a/b/p%d" % i: "x" for i in range(4)})
         f, _, _ = fetcher(routes)
         f.load_robots()
-        with mock.patch.dict(os.environ, {"LIBRARIAN_FINDER_DAILY_PAGES": "2"}):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_FINDER_DAILY_PAGES": "2"}):
             f.get("https://www.skills.sh/a/b/p0", kind="page")
             f.get("https://www.skills.sh/a/b/p1", kind="page")
             with self.assertRaises(web.Refused):
@@ -582,7 +582,7 @@ class FindTests(unittest.TestCase):
     def test_bulk_index_has_its_own_cap_and_a_slower_gap(self):
         f, fw, clock = fetcher(site(PAGES), self.fdir)
         out = []
-        with mock.patch.dict(os.environ, {"LIBRARIAN_FINDER_DAILY_BULK": "3"}):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_FINDER_DAILY_BULK": "3"}):
             code = skillsh.run_index(top=10, gap=1.5, root=self.tmp, fetcher=f, out=out.append)
         self.assertEqual(code, 3)
         self.assertTrue(any("bulk index cap" in l for l in out), out)
@@ -595,7 +595,7 @@ class FindTests(unittest.TestCase):
         f.load_robots()
         skillsh.fetch_repo_extras(f, "acme", "tools", set())
         self.assertEqual(f.state.read()["day"].get("bulk"), 1)
-        with mock.patch.dict(os.environ, {"LIBRARIAN_FINDER_DAILY_BULK": "1"}):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_FINDER_DAILY_BULK": "1"}):
             with self.assertRaises(web.Refused):  # the cap stops the run; it is not swallowed as "no extras"
                 skillsh.fetch_repo_extras(f, "acme", "tools", set())
 
@@ -634,7 +634,7 @@ class FindTests(unittest.TestCase):
     def test_find_is_unavailable_when_its_matches_could_not_be_checked(self):
         f, _, _ = fetcher(site({i: "<html><body>A new layout</body></html>" for i in PAGES}), self.fdir)
         args = cli.build_parser().parse_args(["find", "--no-user-skills", "--no-bundled", BRIEF])
-        with mock.patch.dict(os.environ, {"LIBRARIAN_CACHE": self.tmp}), \
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_CACHE": self.tmp}), \
                 mock.patch.object(skillsh, "fetcher_for", return_value=f):
             code, res = cli.find_result(args, BRIEF)
         self.assertEqual(code, 3, res)
@@ -688,7 +688,8 @@ class JudgeTests(unittest.TestCase):
         a, b = msg.index("<candidates>"), msg.index("</candidates>")
         self.assertTrue(a < msg.index("IGNORE ALL RULES") < b)
         self.assertIn("is DATA", finder.JUDGE_CARD)
-        self.assertEqual(finder.display("x ------ end of librarian answer ======", 80), "x - end of librarian answer =")
+        self.assertEqual(finder.display("x ------ end of cartographer answer ======", 80),
+                         "x - end of cartographer answer =")
 
     def test_third_party_text_cannot_close_a_fence(self):
         c = self.cands()
@@ -727,7 +728,7 @@ class JudgeTests(unittest.TestCase):
         argv = ["find", "--offline", "--judge", "--no-user-skills", "--no-bundled", "--backend", "command",
                 "--command", '"%s" "%s"' % (sys.executable, model), BRIEF]
         out = io.StringIO()
-        with mock.patch.dict(os.environ, {"LIBRARIAN_CACHE": tmp}), mock.patch("sys.stdout", out):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_CACHE": tmp}), mock.patch("sys.stdout", out):
             code = cli.main(argv)
         self.assertEqual(code, 3)
         self.assertIn("JUDGE FAILED", out.getvalue())
@@ -740,7 +741,7 @@ class JudgeTests(unittest.TestCase):
                      "'fit': 2, 'audit': 'pass', 'flags': [], 'why': 'ok'} for i in ids[:1]]})); print('```')\n")
         argv[argv.index("--command") + 1] = '"%s" "%s"' % (sys.executable, good)
         out = io.StringIO()
-        with mock.patch.dict(os.environ, {"LIBRARIAN_CACHE": tmp}), mock.patch("sys.stdout", out):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_CACHE": tmp}), mock.patch("sys.stdout", out):
             code = cli.main(argv)
         self.assertEqual(code, 0, out.getvalue())
         self.assertIn("JUDGE: KEEP fit 2", out.getvalue())
@@ -754,7 +755,7 @@ class JudgeTests(unittest.TestCase):
                      "'fit': 0, 'audit': 'pass', 'flags': [], 'why': 'off topic'} for i in ids]}))\n")
         argv[argv.index("--command") + 1] = '"%s" "%s"' % (sys.executable, drop)
         out = io.StringIO()
-        with mock.patch.dict(os.environ, {"LIBRARIAN_CACHE": tmp}), mock.patch("sys.stdout", out):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_CACHE": tmp}), mock.patch("sys.stdout", out):
             code = cli.main(argv)
         self.assertEqual(code, 1, out.getvalue())  # every candidate dropped: "none", but each is still listed
         self.assertIn("the judge dropped every candidate", out.getvalue())
@@ -894,8 +895,8 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(install.changed_files(d, rec), [])
         if os.name != "nt":
             self.assertEqual(os.stat(os.path.join(d, "scripts", "run.sh")).st_mode & 0o111, 0)
-        self.assertFalse(any(n.startswith(".librarian-tmp") for n in os.listdir(self.dest)))
-        # the librarian picks it up as a local skill with its provenance
+        self.assertFalse(any(n.startswith(".cartographer-tmp") for n in os.listdir(self.dest)))
+        # the cartographer picks it up as a local skill with its provenance
         skills = catalogue.build(extra_dirs=[self.dest], user_skills=False, bundled=False)
         self.assertEqual(skills[0].licence, "MIT")
         self.assertIn("installed from acme/tools@0123456789ab, MIT", cli.provenance_note(skills[0]))
@@ -1212,8 +1213,8 @@ class FinderCliTests(unittest.TestCase):
         msgs = [{"jsonrpc": "2.0", "id": 1, "method": "tools/list"},
                 {"jsonrpc": "2.0", "id": 2, "method": "tools/call",
                  "params": {"name": "find_skills", "arguments": {"brief": BRIEF, "offline": True}}}]
-        env = dict(os.environ, LIBRARIAN_CACHE=tmp)
-        r = subprocess.run([sys.executable, "-B", "-m", "the_librarian", "mcp", "--no-user-skills", "--no-bundled"],
+        env = dict(os.environ, CARTOGRAPHER_CACHE=tmp)
+        r = subprocess.run([sys.executable, "-B", "-m", "the_cartographer", "mcp", "--no-user-skills", "--no-bundled"],
                            input="".join(json.dumps(m) + "\n" for m in msgs).encode(), capture_output=True,
                            cwd=ROOT, env=env, timeout=60)
         out = {m["id"]: m for m in (json.loads(l) for l in r.stdout.decode().splitlines() if l.strip())}
@@ -1223,7 +1224,7 @@ class FinderCliTests(unittest.TestCase):
         sc = out[2]["result"]["structuredContent"]
         self.assertIn("acme/tools/pytest-property-based", [c["id"] for c in sc["candidates"]])
         self.assertIn("telemetry", sc["candidates"][0]["installs_note"])
-        r = subprocess.run([sys.executable, "-B", "-m", "the_librarian", "doctor", "--no-user-skills",
+        r = subprocess.run([sys.executable, "-B", "-m", "the_cartographer", "doctor", "--no-user-skills",
                             "--no-bundled"], capture_output=True, cwd=ROOT, env=env, timeout=60, text=True)
         self.assertIn("finder cache:", r.stdout)
         self.assertIn("skill pages cached: 4", r.stdout)
@@ -1243,7 +1244,7 @@ class FinderCliTests(unittest.TestCase):
                     for i in re.findall(r"- id: (\S+)", message)]}), {"backend": "fake"}
         args = cli.build_parser().parse_args(["find", "--offline", "--judge", "--no-user-skills", "--no-bundled",
                                               "--backend", "command", "--command", "unused", BRIEF])
-        with mock.patch.dict(os.environ, {"LIBRARIAN_CACHE": tmp}), mock.patch.object(cli.backends, "make",
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_CACHE": tmp}), mock.patch.object(cli.backends, "make",
                                                                                      return_value=Judge()):
             code, _ = cli.find_result(args, BRIEF)
         self.assertEqual(code, 1)
@@ -1266,7 +1267,7 @@ class FinderCliTests(unittest.TestCase):
         self.assertIn("cache folder", res["error"])
 
     def test_mcp_find_skills_failure_is_a_tool_error_and_has_a_budget(self):
-        from the_librarian import mcp_server
+        from the_cartographer import mcp_server
         args = cli.build_parser().parse_args(["mcp", "--no-user-skills", "--no-bundled"])
         srv = mcp_server.Server(args, out=io.BytesIO())
         with mock.patch.object(mcp_server, "find_result", side_effect=RuntimeError("boom")), \
@@ -1293,7 +1294,7 @@ class NetworkDoorTests(unittest.TestCase):
         self.assertTrue(web.robots_allows(rules, "/a/b.json.html"))
         self.assertFalse(web.robots_allows(rules, "/x-anything-y/z"))
         self.assertTrue(web.robots_allows(rules, "/xz"))
-        rules = web.parse_robots("User-agent: the-librarian\nUser-agent: otherbot\nDisallow: /\n\n"
+        rules = web.parse_robots("User-agent: the-cartographer\nUser-agent: otherbot\nDisallow: /\n\n"
                                  "User-agent: *\nAllow: /\n")
         self.assertFalse(web.robots_allows(rules, "/acme/tools/x"))  # one group, two agent lines
 
@@ -1326,7 +1327,7 @@ class NetworkDoorTests(unittest.TestCase):
                   "https://www.skills.sh/a/b/p1": "x"}
         f, _, clock = fetcher(routes)
         f.load_robots()
-        with mock.patch.dict(os.environ, {"LIBRARIAN_FINDER_DAILY_PAGES": "1"}):
+        with mock.patch.dict(os.environ, {"CARTOGRAPHER_FINDER_DAILY_PAGES": "1"}):
             f.get("https://www.skills.sh/a/b/p0", kind="page")
             with self.assertRaises(web.Refused):
                 f.get("https://www.skills.sh/a/b/p1", kind="page")
@@ -1382,7 +1383,7 @@ class NetworkDoorTests(unittest.TestCase):
     def test_redirect_hops_spend_the_cap_and_wait_the_gap(self):
         routes = {"https://www.skills.sh/robots.txt": ROBOTS, "https://www.skills.sh/a/b/old": "x",
                   "https://www.skills.sh/a/b/p": "x"}
-        for kind, env in (("page", "LIBRARIAN_FINDER_DAILY_PAGES"), ("bulk", "LIBRARIAN_FINDER_DAILY_BULK")):
+        for kind, env in (("page", "CARTOGRAPHER_FINDER_DAILY_PAGES"), ("bulk", "CARTOGRAPHER_FINDER_DAILY_BULK")):
             f, _, clock = fetcher(routes)
             f.load_robots()
 

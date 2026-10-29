@@ -19,7 +19,7 @@ returns a short, checked list.
 - **The whole catalogue, not a shortlist.** Search-then-pick tools (embeddings, keyword ranking) are cheap and fast,
   but they decide what the model gets to consider. Here the model sees every description and judges fit the way a
   person would: by what the task needs, not by shared words. Search is still there as the offline fallback
-  (`librarian search`, `search_skills`).
+  (`cartographer search`, `search_skills`).
 - **Precision first.** The prompt asks for as few skills as do the job, puts doubtful ones under MAYBE (agents read
   only their first 40 lines), and treats "PICKS: none" as a good answer. The usual failure of skill pickers is
   naming something for a task that needs nothing.
@@ -29,9 +29,9 @@ returns a short, checked list.
 - **Checked output.** The answer is parsed and every name is matched to the catalogue before anyone sees it. Paths are
   rewritten to the real ones, invented names are dropped, LARGE marks come from the file size, not the model.
 - **Never blocking.** Every failure (no backend, timeout, malformed answer) exits 3 with one line,
-  `LIBRARIAN_UNAVAILABLE (reason)`, telling the agent to use keyword search instead.
+  `CARTOGRAPHER_UNAVAILABLE (reason)`, telling the agent to use keyword search instead.
 - **Isolated.** The model gets no tools. The CLI backends switch off the user's hooks, skills, MCP servers and
-  project instructions, so an "always ask the librarian" rule cannot recurse, and the brief is treated as data.
+  project instructions, so an "always ask the cartographer" rule cannot recurse, and the brief is treated as data.
 - **Coordinators ask once.** An agent that hands work to helpers lists every helper's task in one brief and passes
   each helper its picks, instead of every helper asking.
 
@@ -48,7 +48,7 @@ returns a short, checked list.
 
 ## The finder
 
-`librarian ask` can only pick from skills you have. The finder answers the other question, "is there a good skill
+`cartographer ask` can only pick from skills you have. The finder answers the other question, "is there a good skill
 for this that I don't have?", from skills.sh, without a model and without installing anything.
 
 - **Live by default, small by design.** A search uses the skills.sh names list (from its sitemaps, cached a day),
@@ -67,14 +67,14 @@ for this that I don't have?", from skills.sh, without a model and without instal
   and it is wrong in plain ways a reader can see. `--judge` adds one model call for meaning. The judge's input is
   fenced as data, its reply is parsed strictly against a fresh request id, an unreadable reply fails loudly instead
   of reading as "drop everything", a bad item is UNJUDGED rather than dropped, and no verdict ever installs.
-- **Install is where trust is decided.** A find is UNVETTED. `librarian install` pins a commit, reads the tarball
+- **Install is where trust is decided.** A find is UNVETTED. `cartographer install` pins a commit, reads the tarball
   member by member (never `extractall`), refuses unsafe and unportable names, writes no links or devices, drops
   executable bits, shows every file with flags, finds the licence (front matter and the nearest licence files; when
   they disagree both apply), carries its text, refuses anything that does not plainly allow use, refuses agent
   configuration a host could run on its own (at the top of the skill folder and in SKILL.md; pattern checks that
   fail closed) without a flag and warns about the same names deeper down, never overwrites, and runs nothing. Copyleft is allowed
   with a note: installing a skill for your own agent is neither passing it on nor offering it as a service, and
-  `LIBRARIAN_REFUSE_LICENCES` lets an organisation refuse more. Its provenance record uses the bundle's fields
+  `CARTOGRAPHER_REFUSE_LICENCES` lets an organisation refuse more. Its provenance record uses the bundle's fields
   (repository, commit, path, licence, SHA-256 per file) plus the licence evidence and text, and the skills.sh
   figures, so `doctor` can tell when an installed skill's files change.
 
@@ -89,14 +89,14 @@ Trade-offs:
   can break when the site changes; the finder then reports fewer finds with notes rather than guessing, and the
   parser tests pin the shapes it reads.
 - **Install copies the whole folder.** Unlike the bundle, which leaves out hidden tool folders such as `.github/`,
-  `librarian install` keeps every file of the skill folder except `.git/`, so what you review is what upstream
+  `cartographer install` keeps every file of the skill folder except `.git/`, so what you review is what upstream
   ships. Agent configuration at its top or in SKILL.md (plugin manifests, hook and MCP settings, front matter
   `hooks` or `allowed-tools`, `!` shell commands) is refused unless you pass `--allow-agent-config` after reading
   it; deeper copies are listed as warnings.
 
 ## Where it came from
 
-The Librarian started as a long-lived session in a multi-agent setup: one chat kept the catalogue in context, other
+The Cartographer started as a long-lived session in a multi-agent setup: one chat kept the catalogue in context, other
 agents dropped briefs into a file mailbox, and a keep-alive ping every 55 minutes kept its prompt cache warm. That
 worked, but it needed a chat kept open and a watcher to wake it. Prompt caching gives the same warm catalogue with a
 plain request, so this version is a single call: no daemon, no mailbox, any backend.

@@ -1,6 +1,6 @@
 # Third-party notices
 
-The `skills/` folder bundles 193 agent skills written by other people. Each skill keeps its own licence: the LICENSE file inside its folder applies to that folder. They are copied unchanged from the upstream commit listed below. The Librarian's own code (everything outside `skills/`) is under the Apache License 2.0 in `LICENSE`, with the notice in `NOTICE`.
+The `skills/` folder bundles 193 agent skills written by other people. Each skill keeps its own licence: the LICENSE file inside its folder applies to that folder. They are copied unchanged from the upstream commit listed below. The Cartographer's own code (everything outside `skills/`) is under the Apache License 2.0 in `LICENSE`, with the notice in `NOTICE`.
 
 | skill | licence | source (pinned commit) |
 |---|---|---|

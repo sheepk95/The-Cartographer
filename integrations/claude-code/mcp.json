@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "the-librarian": {
+    "the-cartographer": {
       "command": "uvx",
-      "args": ["the-librarian", "mcp"]
+      "args": ["the-cartographer", "mcp"]
     }
   }
 }

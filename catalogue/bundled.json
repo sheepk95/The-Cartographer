@@ -1,5 +1,5 @@
 {
- "about": "Third-party skills bundled with The Librarian. Each folder is the upstream files at the pinned commit, unchanged, plus the upstream LICENSE (and NOTICE) when the skill folder had none. tools/vendor.py verify checks every hash; tools/vendor.py fetch re-downloads from upstream.",
+ "about": "Third-party skills bundled with The Cartographer. Each folder is the upstream files at the pinned commit, unchanged, plus the upstream LICENSE (and NOTICE) when the skill folder had none. tools/vendor.py verify checks every hash; tools/vendor.py fetch re-downloads from upstream.",
  "skills": [
   {
    "id": "addyosmani/doubt-driven-development",
