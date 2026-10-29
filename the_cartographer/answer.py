@@ -18,18 +18,25 @@ _PAIRS = (("**", "**"), ("__", "__"), ("`", "`"), ("*", "*"), ("_", "_"), ("(", 
 _SEP = re.compile("\\s*[,;:]|\\.\\s|\\s*[-\u2013\u2014]\\s|\\s+[-\u2013\u2014]|\\s")
 _PATHY = "/\\|"
 
+# The pick-field separator the prompt asks for; a bare "|" inside a field ("str|None") is part of the text
+_FIELD = re.compile(r"\s\|\s")
+
 
 class AnswerError(ValueError):
     pass
 
 
 def _close(s):
-    """Index of the bracket that closes s[0] ("(" or "["), or -1 when it is never closed."""
-    depth = 0
+    """Index of the bracket that closes s[0] ("(" or "["), or -1 when it is never closed or a bracket mismatches."""
+    stack = []
     for i, c in enumerate(s):
-        depth += (c in "([") - (c in ")]")
-        if depth == 0:
-            return i
+        if c in "([":
+            stack.append(")]"["([".index(c)])
+        elif c in ")]":
+            if not stack or stack.pop() != c:
+                return -1
+            if not stack:
+                return i
     return -1
 
 
@@ -46,13 +53,17 @@ def _unwrap(s):
 
 
 def _prose_ok(s):
-    """A reason after "none": brackets balanced, and no path or pick-field character outside them."""
-    depth = 0
+    """A reason after "none": brackets matched, and no path or pick-field character outside them."""
+    stack = []
     for c in s:
-        depth += (c in "([") - (c in ")]")
-        if depth < 0 or (depth == 0 and c in _PATHY):
+        if c in "([":
+            stack.append(")]"["([".index(c)])
+        elif c in ")]":
+            if not stack or stack.pop() != c:
+                return False
+        elif not stack and c in _PATHY:
             return False
-    return depth == 0
+    return not stack
 
 
 def _says_none(text):
@@ -60,9 +71,12 @@ def _says_none(text):
     ("none (mechanical task)", "none: copying needs no skill", "none - ..."). Never a name or path that starts or ends
     with it ("none-such", ".none", "none_", "none.md", "none/testing", "none(foo)/SKILL.md")."""
     s = _unwrap(text)
-    bullet = re.match(r"[-*]\s*", s)
+    bullet = re.match(r"-\s*|\*\s+", s)  # "- none", "* none"; never the first "*" of "**none**"
     if bullet:
         s = _unwrap(s[bullet.end():])
+    token = re.match(r"(\*\*|__|`|\*|_)(none\.?)\1", s, re.I)  # "**none** (reason)": the wrapper is on none alone
+    if token:
+        s = token.group(2) + s[token.end():]
     if s.endswith("."):  # one trailing period, then any wrapper it closed ("(none).", "**None.**")
         s = _unwrap(s[:-1])
     s = s.lower()
@@ -72,7 +86,7 @@ def _says_none(text):
     if rest.lstrip().startswith("("):  # "none (reason)", then nothing or a separator and more reason
         rest = rest.lstrip()
         end = _close(rest)
-        if end < 0:
+        if end < 0 or _FIELD.search(rest[:end]):  # unclosed, mismatched, or a pick row inside the brackets
             return False
         rest = rest[end + 1:]
         if not rest.strip():
@@ -85,11 +99,14 @@ def _says_none(text):
 
 def _entry(line):
     """One pick or maybe row: exactly four fields, a name, a path and a why that are not empty, then "read: ..."."""
-    parts = [p.strip() for p in line.lstrip("-* ").split("|")]
+    body = line.lstrip("-* ")
+    parts = [p.strip() for p in _FIELD.split(body)]
+    if len(parts) != 4:  # no spaced separators at all ("a|b|c|read: whole"): split on the bare ones
+        parts = [p.strip() for p in body.split("|")]
     if len(parts) != 4:
         return None
     name, path, why, read = parts[0].strip("`* "), parts[1].strip("` "), parts[2], parts[3]
-    if not (name and path and why and read.lower().startswith("read:")):
+    if not (name and path and why and read.lower().startswith("read:") and read[5:].strip()):
         return None
     return {"name": name, "path": path, "why": why, "read": read}
 
@@ -114,7 +131,8 @@ def parse(text):
         m = _HEAD.match(line)
         if m:
             wrap, up, rest = m.group(1), " ".join(m.group(2).upper().split()), m.group(5).strip()
-            if m.group(4) and not wrap:  # "PICKS: **none**": that wrapper belongs to the value, not the header
+            # "PICKS: **none**" or "**PICKS**: **none**": that wrapper belongs to the value, not the header
+            if m.group(4) and (not wrap or m.group(3)):
                 rest = m.group(4) + rest
             if wrap and not (m.group(3) or m.group(4)) and rest.endswith(wrap):  # "**PICKS: none**"
                 rest = rest[:-len(wrap)].strip()

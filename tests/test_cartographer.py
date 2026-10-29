@@ -194,6 +194,23 @@ class AnswerTests(unittest.TestCase):
         self.assertEqual([e["name"] for e in p["maybe"]], ["gamma"])
         self.assertTrue(any("ghost" in n for n in p["notes"]), p["notes"])  # the bad row is noted, not dropped silently
 
+    def test_third_review_cases(self):
+        # a bare "|" inside a field is text, markdown may wrap the header and the none separately, "read:" needs a
+        # mode, and a bracketed reason must close with its own bracket and hold no pick row
+        p = answer.parse("PICKS:\n- alpha | a/SKILL.md | covers str|None unions | read: whole\n"
+                         "- beta|b/SKILL.md|fits|read: whole\n" + END_MARKER)
+        self.assertEqual([e["name"] for e in p["picks"]], ["alpha", "beta"])
+        self.assertEqual(p["picks"][0]["why"], "covers str|None unions")
+        for raw in ("**PICKS**: **none**\n", "__PICKS__: __none__\n", "PICKS: **none** (mechanical task)\n",
+                    "PICKS: `none` - mechanical\n", "**PICKS:** **none**.\n"):
+            with self.subTest(raw=raw):
+                self.assertEqual(answer.parse(raw + END_MARKER)["picks"], [])
+        for raw in ("PICKS:\n- alpha | a/SKILL.md | fits | read:\n", "PICKS:\n- alpha | a/SKILL.md | fits | read:  \n",
+                    "PICKS: none (x]\n", "PICKS: none [x)\n", "PICKS: none (a | b | why | read: whole)\n",
+                    "PICKS: **none\n", "PICKS: none**\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)
+
 
 FAKE_MODEL = textwrap.dedent("""\
     import sys
@@ -266,7 +283,9 @@ class CommandBackendTests(unittest.TestCase):
         for i, body in enumerate(("PICKS: .none\n", "PICKS: none_\n", "PICKS: none(foo)/SKILL.md\n",
                                   "PICKS: none(/testing\n", "PICKS:\n- ghost |  | why | read: whole\n",
                                   "PICKS:\n- alpha | a/SKILL.md | fits\n",
-                                  "PICKS:\n- alpha | a/SKILL.md | fits | read: whole | extra\n")):
+                                  "PICKS:\n- alpha | a/SKILL.md | fits | read: whole | extra\n",
+                                  "PICKS:\n- alpha | a/SKILL.md | fits | read:\n", "PICKS: none (x]\n",
+                                  "PICKS: none (a | b | why | read: whole)\n")):
             with self.subTest(body=body):
                 code, text, _ = self.ask_with(body, "bad_%d" % i)
                 self.assertEqual(code, 3, text)
