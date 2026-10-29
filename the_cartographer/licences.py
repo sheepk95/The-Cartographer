@@ -51,13 +51,20 @@ _IDS = {  # lower-cased front matter spellings -> SPDX id
 }
 _SPDX = {i.lower(): i for i in OPEN}
 _SPDX.update(_IDS)
+# Only this explicitly supported licence/exception pair is reduced to its base licence.
+# Unknown exceptions stay UNKNOWN: their names alone establish no permission.
+_WITH_EXCEPTIONS = {("Apache-2.0", "llvm-exception")}
 
 
 def _one(term):
-    """SPDX id for one licence id (not an expression): "-only", "-or-later" and "+" are dropped, and so is a "WITH"
-    exception (an exception only adds permissions). None when it is not an id this module knows."""
+    """Normalize a known id and supported WITH pair; an unknown WITH clause fails closed."""
     k = re.sub(r"\s+", " ", (term or "").strip().strip("()").strip().lower())
-    k = re.sub(r" with .*$", "", k)
+    if re.search(r"\bwith\b", k):
+        parts = k.split(" with ")
+        if len(parts) != 2:
+            return "UNKNOWN"
+        base = _one(parts[0])
+        return base if (base, parts[1]) in _WITH_EXCEPTIONS else "UNKNOWN"
     if k in _SPDX:
         return _SPDX[k]
     k = re.sub(r"(\+|-only|-or-later)$", "", k)
@@ -184,7 +191,11 @@ def from_field(value):
     key = v.lower()
     if key in _IDS:
         return _IDS[key]
-    if re.search(r"(?i)\b(see|in|complete terms)\b.*\b(licen[cs]e|copying)", v) or LICENCE_FILE_RE.match(v):
+    # Only a complete filename or pointer phrase can defer to a licence file. Finding "in LICENSE" later in an
+    # unknown SPDX clause must not discard that clause, including malformed WITH syntax. Filenames containing
+    # operator words (LICENSE-WITH-notes.txt) remain genuine pointers.
+    pointer = re.fullmatch(r"(?i)(?:see|in|complete terms(?:\s+in)?)\s+(.+)", v)
+    if LICENCE_FILE_RE.fullmatch(v) or (pointer and LICENCE_FILE_RE.fullmatch(pointer.group(1).strip("'\"`"))):
         return None  # a pointer to a file: classify that file instead
     inner = v
     while inner.startswith("(") and inner.endswith(")"):

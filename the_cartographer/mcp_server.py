@@ -92,7 +92,7 @@ class Server:
                 res["structuredContent"] = info.get("answer", {})
             return res
         if name == "read_skill":
-            s = find_skill(self.skills(), str(a.get("name") or ""))
+            s = find_skill(self.skills(fresh=True), str(a.get("name") or ""))
             if s is None:
                 return {"content": [{"type": "text", "text": "no skill named %r; use search_skills" % a.get("name")}],
                         "isError": True}
@@ -107,7 +107,9 @@ class Server:
             part = lines[off:off + lim]
             head = "# %s (%s) lines %d-%d of %d\n" % (s.name, s.path.replace("\\", "/"), off + 1, off + len(part),
                                                        len(lines))
-            return {"content": [{"type": "text", "text": head + "\n".join(part)}], "isError": False}
+            note = catalogue.skill_read_note(s)
+            return {"content": [{"type": "text", "text": head + (note + "\n" if note else "") + "\n".join(part)}],
+                    "isError": False}
         if name == "find_skills":
             fargs = argparse.Namespace(**vars(self.args))
             fargs.offline, fargs.judge, fargs.limit = bool(a.get("offline")), False, None
@@ -121,7 +123,7 @@ class Server:
             return {"content": [{"type": "text", "text": render_find(res)}], "isError": code not in (0, 1),
                     "structuredContent": find_json(res)}
         if name == "search_skills":
-            hits = catalogue.search(self.skills(), str(a.get("query", "")).split())
+            hits = catalogue.search(self.skills(fresh=True), str(a.get("query", "")).split())
             text = "\n".join("%s | %s%s\n    %s" % (s.name, s.path.replace("\\", "/"), " (LARGE)" if s.large else "",
                                                      s.description[:240]) for s in hits) or "no match"
             return {"content": [{"type": "text", "text": text}], "isError": False}

@@ -246,14 +246,18 @@ class CodexCliBackend:
                 args += ["-c", 'model_reasoning_effort="%s"' % self.effort]
             args.append("-")
             code, out, err = _run(args, prompt, self.timeout, work)
-            text = ""
-            if os.path.exists(last):
-                with open(last, encoding="utf-8", errors="replace") as f:
-                    text = f.read()
-            if code != 0 and not text.strip():
+            if code != 0:
                 errors = [l.strip() for l in (err + "\n" + out).splitlines() if l.strip().startswith("ERROR")]
                 detail = errors[-1] if errors else (err or out).strip()[-300:]
                 raise BackendError("codex exited %d: %s" % (code, detail))
+            text = ""
+            try:
+                with open(last, encoding="utf-8", errors="replace") as f:
+                    text = f.read()
+            except FileNotFoundError:
+                pass  # stdout-only Codex versions still provide a usable answer
+            except OSError as e:
+                raise BackendError("cannot read codex answer file: %s" % e) from e
             return text or out, {"backend": self.name, "model": self.model or "(codex default)"}
         finally:
             shutil.rmtree(work, ignore_errors=True)
@@ -279,8 +283,13 @@ class CommandBackend:
     def _run_prompt(self, prompt):
         if not self.command:
             raise BackendError("no command given (--command or CARTOGRAPHER_COMMAND)")
-        args = shlex.split(self.command, posix=(os.name != "nt"))
+        try:
+            args = shlex.split(self.command, posix=(os.name != "nt"))
+        except ValueError as e:
+            raise BackendError("invalid command quoting: %s" % e) from e
         args = [a[1:-1] if len(a) > 1 and a[0] == a[-1] == '"' else a for a in args]
+        if not args or not args[0].strip():
+            raise BackendError("the command is empty (--command or CARTOGRAPHER_COMMAND)")
         code, out, err = _run(args, prompt, self.timeout)
         if code != 0:
             raise BackendError("command exited %d: %s" % (code, _tail(out, err)))

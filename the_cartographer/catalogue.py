@@ -3,7 +3,7 @@
 The catalogue text is deterministic (sorted, no timestamps), so an unchanged set of skills gives a byte-identical
 prompt and the backend's prompt cache keeps hitting.
 """
-import hashlib, json, os, re
+import hashlib, json, os, re, shlex
 from dataclasses import dataclass, field
 
 from . import frontmatter
@@ -58,6 +58,23 @@ def _norm(p):
 def read_skill_file(path):
     with open(path, encoding="utf-8", errors="replace") as f:
         return f.read()
+
+
+def skill_read_note(skill):
+    """Cartographer-owned relocation guidance; never change pinned upstream skill bytes."""
+    if skill.origin != "bundled" or skill.name != "openai/playwright":
+        return ""
+    wrapper = os.path.join(os.path.dirname(skill.path), "scripts", "playwright_cli.sh").replace("\\", "/")
+    assignment = "export PWCLI=" + shlex.quote(wrapper)
+    if re.match(r"^[A-Za-z]:/", wrapper) or wrapper.startswith("//"):
+        assignment += ('; if [ -n "${WSL_DISTRO_NAME:-}${WSL_INTEROP:-}" ]; then '
+                       'PWCLI="$(wslpath -u "$PWCLI")"; export PWCLI; fi')
+    return ("Cartographer relocation: for this bundled copy, use `%s` for the skill's Bash commands "
+            "(Windows-hosted paths are converted with wslpath in WSL; Git Bash keeps the Windows path). "
+            "Run wrapper commands as `bash \"$PWCLI\" ...` (for example `bash \"$PWCLI\" --help`) in place of "
+            "direct `\"$PWCLI\" ...` invocations, so packaged files do not need executable permissions. "
+            "This replaces its original $CODEX_HOME/skills/playwright wrapper assignment. Resolve other relative "
+            "references beside the returned SKILL.md." % assignment)
 
 
 def _describe(text):

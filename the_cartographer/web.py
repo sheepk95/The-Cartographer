@@ -6,7 +6,7 @@ process share one lock and one state file, so two commands never hit a host at o
 and a 429 or 403 stops every fetch until the host's wait is over. Tests pass their own `opener`, so no test touches
 the network.
 """
-import http.client, json, os, re, secrets, time, urllib.error, urllib.parse, urllib.request
+import errno, http.client, json, os, re, secrets, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
@@ -22,12 +22,14 @@ DEFAULT_GAP = 1.5
 BULK_MIN_GAP = 3.0     # the optional bulk index goes slower than a live search
 BLOCK_403_S = 6 * 3600  # a 403 stops every request to that host for six hours
 MAX_BLOCK_S = 30 * 86400  # a longer Retry-After is read as 30 days (a date past year 3000 breaks gmtime on Windows)
-LOCK_STALE_S = 120
 NO_NETWORK_ENV = "CARTOGRAPHER_NO_NETWORK"  # set (to anything) and no request leaves this machine
 DAILY = {"page": ("CARTOGRAPHER_FINDER_DAILY_PAGES", 300),   # live skill page fetches per UTC day
          "list": ("CARTOGRAPHER_FINDER_DAILY_LISTS", 12),    # robots.txt and sitemap requests per UTC day
          "bulk": ("CARTOGRAPHER_FINDER_DAILY_BULK", 2000)}   # bulk index pages (skill and repo pages) per UTC day
 CAP_NAMES = {"page": "skill page", "list": "robots and sitemap", "bulk": "bulk index"}
+# Windows byte-range locks and POSIX flock do not reliably interoperate on a WSL-shared path. Refuse a cache
+# initialized by the other family, even after its owner exits; only a stopped-process manual migration may switch it.
+LOCK_MARKER = b"the-cartographer/os-lock-2/" + (b"windows" if os.name == "nt" else b"posix") + b"\n"
 
 _SEG = r"[A-Za-z0-9_.-]{1,100}"
 # Each allowed host with the path shapes the finder needs. Anything else is refused before a socket opens.
@@ -112,6 +114,21 @@ def parse_robots(text, token=ROBOTS_TOKEN):
     return [r for g in (mine or star) for r in g["rules"]]
 
 
+def _robots_octets(value):
+    """Compare RFC 9309 paths as octets: decode escaped unreserved ASCII only, retain reserved escapes, and
+    percent-encode non-ASCII UTF-8. Hex case cannot distinguish two encodings of the same reserved octet."""
+    unreserved = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"
+
+    def replace(match):
+        part = match.group()
+        if part.startswith("%"):
+            char = chr(int(part[1:], 16))
+            return char if char in unreserved else part.upper()
+        return urllib.parse.quote(part, safe="")
+
+    return re.sub(r"%[0-9a-fA-F]{2}|[^\x00-\x7f]", replace, value)
+
+
 def _pattern(p):
     rx = "".join(".*" if c == "*" else re.escape(c) for c in p.rstrip("$"))
     return re.compile("^" + rx + ("$" if p.endswith("$") else ""))
@@ -119,8 +136,10 @@ def _pattern(p):
 
 def robots_allows(rules, path):
     """Longest matching rule wins; on a tie Allow wins; no match means allowed."""
+    path = _robots_octets(path)
     best = None
     for allow, pat in rules:
+        pat = _robots_octets(pat)
         if _pattern(pat).match(path):
             n = len(pat)
             if best is None or n > best[0] or (n == best[0] and allow):
@@ -166,14 +185,16 @@ def _sane_state(d):
 
 
 class NetState:
-    """net.json (last request per host, blocks, today's counts, robots) under fetch.lock. With no folder (tests) the
-    state lives in memory."""
+    """net.json (last request per host, blocks, today's counts, robots) under an OS lock on persistent fetch.lock.
+    Never unlink the lock file: waiters must keep locking the same file. With no folder (tests) state is in memory.
+    """
 
     def __init__(self, folder=None, clock=time.time, sleep=time.sleep):
         self.folder = folder
         self.clock, self.sleep = clock, sleep
         self.mem = {}
         self._held = False
+        self._lock_fd = None
 
     def path(self, name):
         return os.path.join(self.folder, name)
@@ -205,44 +226,74 @@ class NetState:
         os.replace(tmp, self.path("net.json"))
 
     def lock(self, wait=90.0):
-        """One request at a time across processes. A lock older than LOCK_STALE_S is a crashed holder's."""
+        """One request at a time across processes, until this descriptor closes or its process exits. Age does not
+        imply a crashed owner: a slow live request must retain its lock for its entire lifetime."""
+        if self._held:
+            raise WebError("this cartographer state already holds the fetch lock")
         if not self.folder:
             self._held = True
             return
         os.makedirs(self.folder, exist_ok=True)
-        p, t0 = self.path("fetch.lock"), time.time()
-        while True:
-            try:
-                fd = os.open(p, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-                self._token = "%d %s" % (os.getpid(), secrets.token_hex(8))
-                os.write(fd, self._token.encode())
-                os.close(fd)
-                self._held = True
-                return
-            except FileExistsError:
+        p = self.path("fetch.lock")
+        deadline = time.monotonic() + max(0, wait)
+        flags = os.O_RDWR | getattr(os, "O_BINARY", 0)  # Windows CRT text mode hides Ctrl-Z and translates CRLF
+        try:
+            fd = os.open(p, os.O_CREAT | os.O_EXCL | flags, 0o600)
+            created = True
+        except FileExistsError:
+            fd = os.open(p, flags)  # never truncate or replace a holder's file
+            created = False
+        try:
+            while True:
                 try:
-                    if time.time() - os.path.getmtime(p) > LOCK_STALE_S:
-                        os.remove(p)
-                        continue
-                except OSError:
+                    if os.name == "nt":
+                        import msvcrt
+                        os.lseek(fd, 0, os.SEEK_SET)
+                        msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+                    else:
+                        import fcntl
+                        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except OSError as e:
+                    if e.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
+                        raise
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        raise WebError("another cartographer process holds the fetch lock (%s)" % p)
+                    time.sleep(min(0.2, remaining))
                     continue
-                if time.time() - t0 > wait:
-                    raise WebError("another cartographer process holds the fetch lock (%s)" % p)
-                time.sleep(0.2)
+                # Windows can lock beyond EOF. Only the exclusive creator may initialize an empty file. An
+                # existing empty file could belong to an old process between creation and its PID/token write.
+                os.lseek(fd, 0, os.SEEK_SET)
+                marker = os.read(fd, len(LOCK_MARKER) + 1)
+                if created and not marker:
+                    os.lseek(fd, 0, os.SEEK_SET)
+                    os.write(fd, LOCK_MARKER)
+                elif marker != LOCK_MARKER:
+                    # A concurrent NEW creator may not have initialized yet. Drop only our OS lock and let it
+                    # publish its marker. Never infer old-owner death from file age, PID lookup or empty bytes.
+                    if not marker and time.monotonic() < deadline:
+                        if os.name == "nt":
+                            os.lseek(fd, 0, os.SEEK_SET)
+                            msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+                        else:
+                            fcntl.flock(fd, fcntl.LOCK_UN)
+                        time.sleep(min(0.05, max(0, deadline - time.monotonic())))
+                        continue
+                    raise WebError("legacy or unrecognized fetch lock (%s); stop all cartographer processes "
+                                   "before migration, then remove this marker manually; never mix old/new versions "
+                                   "or Windows/POSIX processes on one cache (see README)" % p)
+                self._lock_fd, self._held = fd, True
+                return
+        except BaseException:
+            os.close(fd)
+            raise
 
     def unlock(self):
-        """Remove the lock only while it is still ours: a holder slower than LOCK_STALE_S may have lost it to another
-        process, and must not delete that process's lock."""
-        if self.folder and self._held:
-            p = self.path("fetch.lock")
-            try:
-                with open(p, encoding="utf-8", errors="replace") as f:
-                    mine = f.read() == getattr(self, "_token", None)
-                if mine:
-                    os.remove(p)
-            except OSError:
-                pass
+        """Close only our descriptor; the OS releases its lock. Keep the file so waiters share the same inode."""
+        fd, self._lock_fd = self._lock_fd, None
         self._held = False
+        if fd is not None:
+            os.close(fd)
 
     def count(self, d, kind):
         day = d.setdefault("day", {})
@@ -381,9 +432,15 @@ class Fetcher:
         self.robots = rules
         self.robots_info = {"url": url, "status": status, "read_at": utc(self.clock()), "epoch": self.clock(),
                             "disallow": [p for a, p in rules if not a]}
-        d = self.state.read()
-        d["robots"] = dict(self.robots_info, rules=[[a, p] for a, p in rules])
-        self.state.write(d)
+        self.state.lock()
+        try:
+            # The fetch released its lock before parsing. Another process may have spent requests or blocked a
+            # host since then: merge only our robots metadata into a fresh snapshot while holding the lock.
+            d = self.state.read()
+            d["robots"] = dict(self.robots_info, rules=[[a, p] for a, p in rules])
+            self.state.write(d)
+        finally:
+            self.state.unlock()
         return rules
 
     def check(self, url):
