@@ -4,6 +4,8 @@
 
 First public version.
 
+- Licence: the code is under the Apache License 2.0, with a NOTICE file (copyright 2026 Blake W). The bundled
+  skills keep their own licences.
 - Install: `pipx install the-librarian`, `pip install the-librarian` or `uvx the-librarian ...` (the package also
   installs the command under its own name, `the-librarian`). Claude Code: the repository is a plugin marketplace
   (`/plugin marketplace add sheepk95/The-Librarian`, then `/plugin install the-librarian@the-librarian`). MCP

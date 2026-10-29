@@ -18,7 +18,7 @@
       },
       "homepage": "https://github.com/sheepk95/The-Librarian",
       "repository": "https://github.com/sheepk95/The-Librarian",
-      "license": "MIT AND Apache-2.0 AND CC-BY-SA-4.0 AND Unlicense",
+      "license": "Apache-2.0 AND MIT AND CC-BY-SA-4.0 AND Unlicense",
       "keywords": ["skills", "agent skills", "skill.md", "mcp", "skills.sh"],
       "category": "productivity",
       "skills": ["./integrations/claude-code/plugin/skills/"],

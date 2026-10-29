@@ -8,9 +8,9 @@ version = "0.1.0"
 description = "Ask which agent skills fit a task before you start it: one cached model call over the whole skill catalogue, with a checked answer. Find and vet the ones you lack on skills.sh."
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.9"
-# The code is MIT; the bundled skills keep their own licences (see THIRD_PARTY_NOTICES.md and catalogue/bundled.json).
-license = "MIT AND Apache-2.0 AND CC-BY-SA-4.0 AND Unlicense"
-license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+# The code is Apache-2.0 (LICENSE, NOTICE); the bundled skills keep their own licences (see THIRD_PARTY_NOTICES.md and catalogue/bundled.json).
+license = "Apache-2.0 AND MIT AND CC-BY-SA-4.0 AND Unlicense"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
 keywords = ["agent skills", "skill.md", "claude code", "codex", "mcp", "model context protocol", "skills", "llm", "agents", "prompt caching", "skills.sh"]
 classifiers = [
   "Development Status :: 3 - Alpha",

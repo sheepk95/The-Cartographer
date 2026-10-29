@@ -2,7 +2,7 @@
 
 **Ask which agent skills fit a task before you start it.**
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue)
+![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Bundled skills: 193](https://img.shields.io/badge/bundled%20skills-193-2ea44f)
 ![MCP: stdio server](https://img.shields.io/badge/MCP-stdio%20server-8a2be2)
@@ -589,5 +589,7 @@ and [SECURITY.md](https://github.com/sheepk95/The-Librarian/blob/main/SECURITY.m
 
 ## Licence
 
-The Librarian's code and docs: MIT ([LICENSE](https://github.com/sheepk95/The-Librarian/blob/main/LICENSE)). Each bundled skill: its own licence, in its folder
+The Librarian's code and docs: Apache License 2.0 ([LICENSE](https://github.com/sheepk95/The-Librarian/blob/main/LICENSE)),
+copyright 2026 Blake W. If you pass on a copy or a changed version, keep the
+[NOTICE](https://github.com/sheepk95/The-Librarian/blob/main/NOTICE) file with it and mark the files you changed. Each bundled skill: its own licence, in its folder
 ([THIRD_PARTY_NOTICES.md](https://github.com/sheepk95/The-Librarian/blob/main/THIRD_PARTY_NOTICES.md) lists them all).
