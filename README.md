@@ -13,7 +13,7 @@ description sits in the context on every turn, or the agent guesses from names a
 is one model call instead: a model reads a 2-10 line brief of the task against the **whole** skill catalogue and names
 the few skills worth reading first. "None" is a valid answer.
 
-![librarian ask typing a task about property-based tests, then the answer: two picked skills with a reason each, one maybe, and a note](https://raw.githubusercontent.com/sheepk95/The-Librarian/main/docs/demo.svg)
+![librarian ask typing a task about property-based tests, then the answer: two picked skills with a reason each, one maybe, and a note](https://github.com/sheepk95/The-Librarian/raw/main/docs/demo.svg)
 
 ```text
 $ librarian ask "Add property-based tests for our Python date-parsing module, and check the existing tests actually catch bugs."
