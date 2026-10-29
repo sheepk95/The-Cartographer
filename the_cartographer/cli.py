@@ -18,6 +18,7 @@ import argparse, json, os, sys, time
 from . import __version__, answer, backends, catalogue
 
 MAX_BRIEF = 6000
+MAX_LISTED = 6  # unknown pick names quoted in an "every pick was unknown" error
 UNAVAILABLE = "CARTOGRAPHER_UNAVAILABLE (%s): run `cartographer search <2-4 task words>` instead."
 
 
@@ -58,9 +59,14 @@ def ask(skills, brief, requester="unknown", backend=None, model=None, effort=Non
     info["seconds"] = round(time.time() - t0, 1)
     info["catalogue"] = {"skills": len(skills), "bytes": len(text.encode("utf-8")), "id": catalogue.fingerprint(text)}
     try:
-        checked = answer.check(answer.parse(raw), skills)
+        parsed = answer.parse(raw)
+        checked = answer.check(parsed, skills)
     except answer.AnswerError as e:
         return 3, UNAVAILABLE % ("%s gave a malformed answer: %s" % (name, e)), dict(info, raw=raw[-2000:])
+    if parsed["picks"] and not checked["picks"]:
+        # the model named skills but none is in the catalogue: it did not say "none", so never print "PICKS: none"
+        unknown = ", ".join(e["name"][:60] for e in parsed["picks"][:MAX_LISTED])
+        return 3, UNAVAILABLE % ("%s: every pick was unknown: %s" % (name, unknown)), dict(info, raw=raw[-2000:])
     info["answer"] = checked
     return 0, answer.render(checked), info
 

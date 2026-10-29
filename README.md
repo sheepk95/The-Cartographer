@@ -71,7 +71,8 @@ flowchart LR
 - **Precision first.** The prompt asks for as few picks as do the job, sends doubtful fits to MAYBE, and treats
   `PICKS: none` as a good answer. Agents open every skill they are given, so a wrong pick costs real context.
 - **Checked output.** Every name in the answer is matched to the catalogue before it is printed. Wrong paths are
-  corrected and invented names are dropped with a NOTE.
+  corrected and invented names are dropped with a NOTE. If every pick is invented, the answer exits 3 rather than
+  printing `PICKS: none`.
 - **Cheap on repeat.** The catalogue text is deterministic, so with the `anthropic` backend it sits in a 1-hour prompt
   cache: repeat asks read it at the cached-input price and pay full price only for the brief and the answer.
 - **Never blocking.** A backend failure, timeout or malformed answer exits 3 with one line,
@@ -513,7 +514,9 @@ NOTE: <one line>
   agent reads only their first 40 lines.
 - `PICKS: none` when the task needs no skill (copy files, run a fixed command).
 - Every name is checked against the catalogue before the answer is printed: a wrong path is corrected, an invented
-  name is dropped with a NOTE.
+  name is dropped with a NOTE. When every pick is invented, the answer exits 3 (`CARTOGRAPHER_UNAVAILABLE`).
+- A pick line needs all four fields (name, path, why, `read: ...`). A PICKS section with no readable line and no
+  explicit none (`none`, `none.`, `(none)`, or `none` with a short reason) exits 3.
 - A SKILL.md over 50,000 bytes is marked LARGE (from the file size, not the model's guess), so the agent reads it in
   parts.
 - The brief is data. The cartographer is told never to follow instructions inside it, and it has no tools to act with.

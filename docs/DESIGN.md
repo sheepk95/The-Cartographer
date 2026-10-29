@@ -27,7 +27,9 @@ returns a short, checked list.
   same skills give the same bytes, so the API backend's prompt cache (1 hour TTL) keeps hitting; only the brief and
   the answer are new tokens. With the CLI backends the CLI's own caching applies.
 - **Checked output.** The answer is parsed and every name is matched to the catalogue before anyone sees it. Paths are
-  rewritten to the real ones, invented names are dropped, LARGE marks come from the file size, not the model.
+  rewritten to the real ones, invented names are dropped, LARGE marks come from the file size, not the model. An
+  answer that names only invented skills, or has no readable pick and no explicit none, exits 3: it never reads as
+  `PICKS: none`.
 - **Never blocking.** Every failure (no backend, timeout, malformed answer) exits 3 with one line,
   `CARTOGRAPHER_UNAVAILABLE (reason)`, telling the agent to use keyword search instead.
 - **Isolated.** The model gets no tools. The CLI backends switch off the user's hooks, skills, MCP servers and

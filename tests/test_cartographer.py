@@ -150,6 +150,50 @@ class AnswerTests(unittest.TestCase):
         self.assertEqual([e["name"] for e in p["picks"]], ["alpha"])
         self.assertTrue(any("beta, because it fits" in n for n in p["notes"]), p["notes"])
 
+    def test_stray_characters_around_none_are_not_none(self):
+        # only paired markdown wrappers, brackets and one trailing period come off a none: ".none" and "none_" are
+        # names or paths, and "no**ne" is not a word the model wrote
+        for raw in ("PICKS: .none\n", "PICKS: none_\n", "PICKS:\n- .none\n", "PICKS:\n- none_\n", "PICKS: _none\n",
+                    "PICKS: no**ne\n", "PICKS: no__ne\n", "PICKS: (none\n", "PICKS: none)\n", "PICKS: none..\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)
+        for raw in ("PICKS: (none)\n", "PICKS: None.\n", "PICKS: **none**\n", "PICKS: `none`\n", "PICKS: [none]\n",
+                    "**PICKS: none**\n", "**PICKS:** None.\n", "PICKS: (none).\n", "PICKS:\n- **none**\n",
+                    "PICKS: *none*\n", "PICKS: _none_\n", "## PICKS: none\n"):
+            with self.subTest(raw=raw):
+                self.assertEqual(answer.parse(raw + END_MARKER)["picks"], [])
+
+    def test_the_whole_none_expression_is_checked(self):
+        # "none(" then a path, an unclosed bracket or a pick field is not an explicit none
+        for raw in ("PICKS: none(foo)/SKILL.md\n", "PICKS: none(/testing\n", "PICKS: none (foo) /x\n",
+                    "PICKS: none(foo)bar\n", "PICKS: none: a | b\n", "PICKS: none (a) | b\n", "PICKS: none((x)\n",
+                    "PICKS: none - copy to a/b\n", "PICKS:\n- none(foo)/SKILL.md\n", "PICKS: none\u2014such\n"):
+            with self.subTest(raw=raw), self.assertRaises(answer.AnswerError):
+                answer.parse(raw + END_MARKER)
+        for raw in ("PICKS: none(mechanical)\n", "PICKS: none: mechanical\n", "PICKS: none.\n",
+                    "PICKS: none - mechanical\n", "PICKS: none \u2013 mechanical\n", "PICKS: none \u2014 mechanical\n",
+                    "PICKS: none (see a/b for why)\n", "PICKS: none the task is mechanical\n",
+                    "PICKS: None. Copying files needs no skill.\n", "PICKS: none (mechanical), nothing fits\n",
+                    "PICKS: none:\n"):
+            with self.subTest(raw=raw):
+                self.assertEqual(answer.parse(raw + END_MARKER)["picks"], [])
+
+    def test_a_pick_row_needs_four_full_fields(self):
+        # the prompt asks for exactly four " | " fields; a row with an empty field or the wrong count is not a pick,
+        # and a PICKS section of only such rows is malformed, not "none"
+        for row in ("- ghost |  | why | read: whole", "- ghost | g/SKILL.md | why",
+                    "-  | g/SKILL.md | why | read: whole", "- ghost | g/SKILL.md |  | read: whole",
+                    "- ghost | g/SKILL.md | why | read: whole | extra", "- ghost | g/SKILL.md | why | whole",
+                    "- ghost | g/SKILL.md | why |", "- `` | g/SKILL.md | w | read: whole"):
+            with self.subTest(row=row), self.assertRaises(answer.AnswerError):
+                answer.parse("PICKS:\n" + row + "\n" + END_MARKER)
+        p = answer.parse("PICKS:\n- alpha | a/SKILL.md | fits | read: whole\n"
+                         "- beta | b/SKILL.md | engines | read: LARGE read in parts\n- ghost |  | why | read: whole\n"
+                         "MAYBE:\n- gamma | c/SKILL.md | might fit | read: whole\n" + END_MARKER)
+        self.assertEqual([e["name"] for e in p["picks"]], ["alpha", "beta"])
+        self.assertEqual([e["name"] for e in p["maybe"]], ["gamma"])
+        self.assertTrue(any("ghost" in n for n in p["notes"]), p["notes"])  # the bad row is noted, not dropped silently
+
 
 FAKE_MODEL = textwrap.dedent("""\
     import sys
@@ -209,6 +253,43 @@ class CommandBackendTests(unittest.TestCase):
                 self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE") and "malformed" in text, text)
                 self.assertNotIn("PICKS: none", text.splitlines())  # the error quotes the line; no answer is printed
                 self.assertNotIn(END_MARKER, text)
+
+    def ask_with(self, body, tag):
+        model = os.path.join(self.tmp, "model_%s.py" % tag)
+        with open(model, "w", encoding="utf-8") as f:
+            f.write("import sys\nsys.stdin.read()\nprint(%r)\n" % (body + END_MARKER))
+        skills = catalogue.build(extra_dirs=[self.tmp], user_skills=False, bundled=False)
+        return cli.ask(skills, "Write the alpha report", backend="command",
+                       command='"%s" "%s"' % (sys.executable, model))
+
+    def test_bad_nones_and_bad_rows_exit_3_not_none(self):
+        for i, body in enumerate(("PICKS: .none\n", "PICKS: none_\n", "PICKS: none(foo)/SKILL.md\n",
+                                  "PICKS: none(/testing\n", "PICKS:\n- ghost |  | why | read: whole\n",
+                                  "PICKS:\n- alpha | a/SKILL.md | fits\n",
+                                  "PICKS:\n- alpha | a/SKILL.md | fits | read: whole | extra\n")):
+            with self.subTest(body=body):
+                code, text, _ = self.ask_with(body, "bad_%d" % i)
+                self.assertEqual(code, 3, text)
+                self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE") and "malformed" in text, text)
+                self.assertNotIn("PICKS: none", text.splitlines())
+                self.assertNotIn(END_MARKER, text)
+
+    def test_every_pick_unknown_exits_3_some_unknown_is_a_note(self):
+        # a model that named only skills the catalogue lacks did not say "none": that must not print "PICKS: none"
+        code, text, info = self.ask_with("PICKS:\n- ghost | g/SKILL.md | why | read: whole\n"
+                                         "- spook | s/SKILL.md | why | read: whole\n", "all_unknown")
+        self.assertEqual(code, 3, text)
+        self.assertTrue(text.startswith("CARTOGRAPHER_UNAVAILABLE") and "every pick was unknown" in text, text)
+        self.assertIn("ghost", text)
+        self.assertNotIn("PICKS: none", text.splitlines())
+        self.assertIn("raw", info)
+        code, text, _ = self.ask_with("PICKS:\n- alpha | ? | fits | read: whole\n"
+                                      "- ghost | g/SKILL.md | why | read: whole\n", "some_unknown")
+        self.assertEqual(code, 0, text)
+        self.assertIn("- alpha | ", text)
+        self.assertIn("NOTE: dropped names not in the catalogue: ghost", text)
+        code, text, _ = self.ask_with("PICKS: none\n", "said_none")
+        self.assertEqual((code, text.splitlines()[0]), (0, "PICKS: none"))
 
 
 class AnthropicRequestShapeTests(unittest.TestCase):

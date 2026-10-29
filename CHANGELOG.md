@@ -12,8 +12,9 @@ First public version.
   Registry metadata in `server.json`; releases publish to PyPI through Trusted Publishing (`publish.yml`).
 - `cartographer ask`: one model call reads a 2-10 line brief against the whole skill catalogue and answers with
   PICKS / MAYBE / ALSO GREP / NOTE, ending in `--- end of cartographer answer ---`. Every name is checked against the
-  catalogue; invented names are dropped and wrong paths corrected. An answer with no readable PICKS and no explicit
-  `PICKS: none` exits 3 (`CARTOGRAPHER_UNAVAILABLE`) instead of reading as "no skill needed".
+  catalogue; invented names are dropped and wrong paths corrected. An answer with no readable PICKS (a pick line
+  needs all four fields) and no explicit `PICKS: none`, or whose every pick is invented, exits 3
+  (`CARTOGRAPHER_UNAVAILABLE`) instead of reading as "no skill needed".
 - Backends: `anthropic` (official SDK, catalogue in a 1-hour prompt cache), `claude` (Claude Code print mode),
   `codex` (`codex exec`, read-only) and `command` (any stdin-to-stdout command).
 - Offline commands: `search`, `list`, `show`, `catalogue`, `doctor`.

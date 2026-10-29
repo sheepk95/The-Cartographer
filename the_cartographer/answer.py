@@ -1,34 +1,97 @@
 """Parse and check a cartographer answer against the catalogue.
 
 A model can still misspell a path or invent a name. Every pick is checked: a known name gets the catalogue's real
-path and read mode; an unknown name is dropped with a NOTE. The checked answer is re-rendered in the exact format.
+path and read mode; an unknown name is dropped with a NOTE (when every pick is unknown, cli.ask exits 3 instead).
+The checked answer is re-rendered in the exact format.
 """
 import re
 
 from .prompt import END_MARKER
 
 MAX_PICKS, MAX_MAYBE = 6, 3
-# "none" alone, or "none" then a reason ("none (mechanical)", "none, ...", "none - ..."); never a name or path that
-# starts with it ("none-such", "nonexistent", "none/testing", "none_x", "none.md")
-_NONE = re.compile("none(?:\\Z|[\\s(]|[,;:.](?:\\s|\\Z)|[-\u2013\u2014]\\s)")
+# A header, maybe dressed in markdown ("**PICKS:**", "## MAYBE:", "__NOTE:__ x", "**PICKS: none**"). Only the
+# wrappers around the label come off; the rest of the line is kept as written.
+_HEAD = re.compile(r"#*\s*(\*\*|__)?\s*(PICKS|MAYBE|ALSO GREP|NOTE)\s*(\*\*|__)?\s*:\s*(\*\*|__)?\s*(.*)\Z", re.I)
+# Paired wrappers a model may put round a whole none: markdown, code, brackets
+_PAIRS = (("**", "**"), ("__", "__"), ("`", "`"), ("*", "*"), ("_", "_"), ("(", ")"), ("[", "]"))
+# What may follow "none" before a one-line reason: a comma, semicolon, colon or ". ", a spaced dash, or a space
+_SEP = re.compile("\\s*[,;:]|\\.\\s|\\s*[-\u2013\u2014]\\s|\\s+[-\u2013\u2014]|\\s")
+_PATHY = "/\\|"
 
 
 class AnswerError(ValueError):
     pass
 
 
+def _close(s):
+    """Index of the bracket that closes s[0] ("(" or "["), or -1 when it is never closed."""
+    depth = 0
+    for i, c in enumerate(s):
+        depth += (c in "([") - (c in ")]")
+        if depth == 0:
+            return i
+    return -1
+
+
+def _unwrap(s):
+    s = s.strip()
+    while True:
+        for a, b in _PAIRS:
+            if len(s) >= len(a) + len(b) and s.startswith(a) and s.endswith(b) \
+                    and (a not in "([" or _close(s) == len(s) - 1):
+                s = s[len(a):len(s) - len(b)].strip()
+                break
+        else:
+            return s
+
+
+def _prose_ok(s):
+    """A reason after "none": brackets balanced, and no path or pick-field character outside them."""
+    depth = 0
+    for c in s:
+        depth += (c in "([") - (c in ")]")
+        if depth < 0 or (depth == 0 and c in _PATHY):
+            return False
+    return depth == 0
+
+
 def _says_none(text):
-    """An explicit none: "none", "(none)", "- none", or "none" with a reason after it ("none (mechanical task)")."""
-    return bool(_NONE.match(text.strip().lstrip("-*").strip().strip("`*_.()[] ").lower()))
+    """An explicit none: "none", "None.", "(none)", "- none", "**none**", or "none" with a reason after it
+    ("none (mechanical task)", "none: copying needs no skill", "none - ..."). Never a name or path that starts or ends
+    with it ("none-such", ".none", "none_", "none.md", "none/testing", "none(foo)/SKILL.md")."""
+    s = _unwrap(text)
+    bullet = re.match(r"[-*]\s*", s)
+    if bullet:
+        s = _unwrap(s[bullet.end():])
+    if s.endswith("."):  # one trailing period, then any wrapper it closed ("(none).", "**None.**")
+        s = _unwrap(s[:-1])
+    s = s.lower()
+    if not s.startswith("none"):
+        return False
+    rest = s[4:]
+    if rest.lstrip().startswith("("):  # "none (reason)", then nothing or a separator and more reason
+        rest = rest.lstrip()
+        end = _close(rest)
+        if end < 0:
+            return False
+        rest = rest[end + 1:]
+        if not rest.strip():
+            return True
+    if not rest:
+        return True
+    sep = _SEP.match(rest)
+    return bool(sep) and _prose_ok(rest[sep.end():])
 
 
 def _entry(line):
-    parts = [p.strip() for p in line.lstrip("-* ").split(" | ")]
-    if len(parts) < 3:
+    """One pick or maybe row: exactly four fields, a name, a path and a why that are not empty, then "read: ..."."""
+    parts = [p.strip() for p in line.lstrip("-* ").split("|")]
+    if len(parts) != 4:
         return None
-    name, path, why = parts[0], parts[1], parts[2]
-    read = parts[3] if len(parts) > 3 else "read: whole"
-    return {"name": name.strip("`* "), "path": path.strip("` "), "why": why, "read": read}
+    name, path, why, read = parts[0].strip("`* "), parts[1].strip("` "), parts[2], parts[3]
+    if not (name and path and why and read.lower().startswith("read:")):
+        return None
+    return {"name": name, "path": path, "why": why, "read": read}
 
 
 def parse(text):
@@ -48,25 +111,31 @@ def parse(text):
         if not line or line.startswith("```"):
             continue
         # Models sometimes dress headers in markdown ("**PICKS:**", "## Maybe:"); read them the same.
-        head = line.lstrip("#").strip().replace("**", "").replace("__", "")
-        up = head.upper()
-        if up.startswith("PICKS:"):
+        m = _HEAD.match(line)
+        if m:
+            wrap, up, rest = m.group(1), " ".join(m.group(2).upper().split()), m.group(5).strip()
+            if m.group(4) and not wrap:  # "PICKS: **none**": that wrapper belongs to the value, not the header
+                rest = m.group(4) + rest
+            if wrap and not (m.group(3) or m.group(4)) and rest.endswith(wrap):  # "**PICKS: none**"
+                rest = rest[:-len(wrap)].strip()
+        else:
+            up = rest = ""
+        if up == "PICKS":
             section, saw_picks = "picks", True
-            rest = head.split(":", 1)[1].strip()
             if _says_none(rest):
                 said_none = True
             elif rest:
                 unread.append(line)
             continue
-        if up.startswith("MAYBE:"):
+        if up == "MAYBE":
             section = "maybe"
             continue
-        if up.startswith("ALSO GREP:"):
-            out["also_grep"] = head.split(":", 1)[1].strip()
+        if up == "ALSO GREP":
+            out["also_grep"] = rest
             section = None
             continue
-        if up.startswith("NOTE:"):
-            out["notes"].append(head.split(":", 1)[1].strip())
+        if up == "NOTE":
+            out["notes"].append(rest)
             section = None
             continue
         e = _entry(line) if section and line.startswith(("-", "*")) else None
